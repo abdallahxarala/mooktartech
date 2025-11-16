@@ -1,0 +1,883 @@
+{
+  "products": [
+    {
+      "id": "carte-pvc-blanche-cr80",
+      "name": "Cartes PVC Blanches CR80",
+      "slug": "carte-pvc-blanche-cr80",
+      "brand": "Standard",
+      "category": "cartes-pvc",
+      "price": 50,
+      "priceUnit": "FCFA/carte",
+      "stock": 10000,
+      "shortDescription": "Cartes blanches vierges format standard CR80. Qualité premium pour impression directe.",
+      "description": "Cartes PVC blanches de haute qualité au format standard CR80 (85.6 x 54 mm), épaisseur 0.76mm (30 mil). Parfaites pour l'impression directe de badges, cartes d'accès, cartes de membre, etc.\n\nMatériau PVC premium garantissant une excellente durabilité et une impression de qualité professionnelle. Compatible avec toutes les imprimantes à cartes du marché (Entrust, Datacard, HiTi, Evolis, Zebra, etc.).",
+      "features": [
+        "Format standard CR80 : 85.6 x 54 mm",
+        "Épaisseur 0.76mm (30 mil)",
+        "PVC blanc brillant haute qualité",
+        "Compatible toutes imprimantes",
+        "Surface optimisée pour impression directe",
+        "Résistant à l'eau et aux UV",
+        "Durée de vie : 3-5 ans",
+        "Conditionnement par 500 ou 1000 cartes"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "materiau": "PVC premium",
+        "epaisseur": "0.76mm (30 mil)",
+        "finition": "Blanc brillant",
+        "temperature": "Résistant -25°C à +50°C",
+        "compatibilite": "Toutes imprimantes à cartes"
+      },
+      "applications": [
+        "Badges employés",
+        "Cartes d'accès",
+        "Cartes de membre",
+        "Cartes étudiants",
+        "Cartes de fidélité",
+        "Pass événementiels"
+      ],
+      "featured": true,
+      "new": false,
+      "mainImage": "/products/carte-pvc-blanche.jpg",
+      "images": [
+        "/products/carte-pvc-blanche.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.969Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "carte-pvc-preimprimee-photo",
+      "name": "Cartes PVC Pré-imprimées Photo",
+      "slug": "carte-pvc-preimprimee-photo",
+      "brand": "Premium",
+      "category": "cartes-pvc",
+      "price": 150,
+      "priceUnit": "FCFA/carte",
+      "stock": 5000,
+      "shortDescription": "Cartes pré-imprimées avec zone photo et informations. Design professionnel personnalisé.",
+      "description": "Cartes PVC pré-imprimées avec votre design personnalisé, incluant zone photo, logo entreprise, et champs d'information. Idéales pour badges professionnels avec impression recto-verso.\n\nNous créons votre design personnalisé selon votre charte graphique. Impression offset haute définition avec finitions premium (vernis, hologrammes optionnels).",
+      "features": [
+        "Design 100% personnalisé",
+        "Impression offset haute définition",
+        "Recto-verso disponible",
+        "Zone photo pré-définie",
+        "Logo et charte graphique inclus",
+        "Finitions premium disponibles",
+        "Vernis de protection",
+        "Quantité minimum : 100 cartes"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "materiau": "PVC premium",
+        "impression": "Offset 4 couleurs CMJN",
+        "resolution": "300 DPI minimum",
+        "finitions": "Vernis brillant ou mat",
+        "delai": "5-7 jours ouvrés"
+      },
+      "applications": [
+        "Badges entreprise avec photo",
+        "Cartes étudiants universitaires",
+        "Cartes professionnelles santé",
+        "Pass VIP événements",
+        "Cartes de presse"
+      ],
+      "featured": true,
+      "new": false,
+      "mainImage": "/products/carte-pvc-preimprimee.jpg",
+      "images": [
+        "/products/carte-pvc-preimprimee.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "carte-pvc-magnetique",
+      "name": "Cartes PVC avec Bande Magnétique",
+      "slug": "carte-pvc-magnetique",
+      "brand": "HiCo/LoCo",
+      "category": "cartes-pvc",
+      "price": 120,
+      "priceUnit": "FCFA/carte",
+      "stock": 3000,
+      "shortDescription": "Cartes PVC avec piste magnétique HiCo ou LoCo. Pour systèmes d'accès et paiement.",
+      "description": "Cartes PVC blanches équipées d'une bande magnétique HiCo (haute coercivité) ou LoCo (basse coercivité). Compatibles avec tous les systèmes de contrôle d'accès et terminaux de paiement.\n\nLa bande magnétique permet le stockage de données pour identification, accès sécurisé, transactions, etc. Format standard ISO 7811.",
+      "features": [
+        "Bande magnétique HiCo (2750 Oe) ou LoCo (300 Oe)",
+        "Norme ISO 7811 (Track 1, 2, 3)",
+        "Encodage possible sur demande",
+        "PVC haute qualité",
+        "Compatible lecteurs magnétiques",
+        "Durée de vie piste : 2-5 ans (HiCo)",
+        "Surface imprimable",
+        "Résistant démagnétisation (HiCo)"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "materiau": "PVC + bande magnétique",
+        "coercivite": "HiCo 2750 Oe ou LoCo 300 Oe",
+        "norme": "ISO 7811",
+        "tracks": "3 pistes disponibles",
+        "capacite": "79 caractères (Track 2)"
+      },
+      "applications": [
+        "Contrôle d'accès entreprise",
+        "Badges parking",
+        "Cartes hôtelières",
+        "Cartes de paiement",
+        "Cartes transport",
+        "Systèmes de pointage"
+      ],
+      "featured": false,
+      "new": false,
+      "mainImage": "/products/carte-pvc-magnetique.jpg",
+      "images": [
+        "/products/carte-pvc-magnetique.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "carte-pvc-rfid-125khz",
+      "name": "Cartes PVC RFID 125 kHz",
+      "slug": "carte-pvc-rfid-125khz",
+      "brand": "EM4100/TK4100",
+      "category": "cartes-pvc",
+      "price": 200,
+      "priceUnit": "FCFA/carte",
+      "stock": 2000,
+      "shortDescription": "Cartes RFID 125 kHz lecture seule. Pour contrôle d'accès sans contact.",
+      "description": "Cartes PVC avec puce RFID 125 kHz (EM4100/TK4100) en lecture seule. Technologie sans contact pour contrôle d'accès et identification à distance jusqu'à 10cm.\n\nCompatibles avec la majorité des systèmes de contrôle d'accès RFID du marché. Chaque carte possède un numéro unique non modifiable.",
+      "features": [
+        "Puce RFID 125 kHz (EM4100/TK4100)",
+        "Lecture seule (Read-Only)",
+        "Portée de lecture : jusqu'à 10 cm",
+        "Numéro unique pré-enregistré",
+        "Sans contact, sans batterie",
+        "Résistant à l'eau (IP67)",
+        "Durée de vie : 10+ ans",
+        "Format carte bancaire standard"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "frequence": "125 kHz",
+        "protocole": "EM4100 / TK4100",
+        "portee": "2-10 cm",
+        "type": "Lecture seule",
+        "memoire": "64 bits UID",
+        "materiau": "PVC + antenne RFID"
+      },
+      "applications": [
+        "Contrôle d'accès bâtiments",
+        "Badges parking RFID",
+        "Gestion temps et présence",
+        "Accès zones sécurisées",
+        "Systèmes de pointage",
+        "Contrôle périmétrique"
+      ],
+      "featured": false,
+      "new": false,
+      "mainImage": "/products/carte-rfid-125khz.jpg",
+      "images": [
+        "/products/carte-rfid-125khz.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "carte-pvc-mifare-13-56mhz",
+      "name": "Cartes PVC MIFARE Classic 1K",
+      "slug": "carte-pvc-mifare-13-56mhz",
+      "brand": "NXP MIFARE",
+      "category": "cartes-pvc",
+      "price": 350,
+      "priceUnit": "FCFA/carte",
+      "stock": 1500,
+      "shortDescription": "Cartes MIFARE 13.56 MHz réinscriptibles 1Ko. Standard mondial contrôle d'accès.",
+      "description": "Cartes PVC avec puce NXP MIFARE Classic 1K, technologie sans contact 13.56 MHz. Mémoire de 1Ko réinscriptible et sécurisée par clés cryptographiques.\n\nStandard mondial pour les applications de contrôle d'accès, transport, paiement sans contact. Compatible NFC avec smartphones récents.",
+      "features": [
+        "Puce NXP MIFARE Classic 1K",
+        "Fréquence 13.56 MHz (NFC)",
+        "1024 octets mémoire réinscriptible",
+        "Sécurité par clés crypto",
+        "Portée lecture : jusqu'à 10 cm",
+        "Compatible lecteurs MIFARE",
+        "Compatible NFC smartphones",
+        "Durée de vie : 100 000 cycles"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "puce": "NXP MIFARE Classic 1K",
+        "frequence": "13.56 MHz",
+        "memoire": "1024 bytes (1Ko)",
+        "uid": "4 bytes unique",
+        "norme": "ISO 14443A",
+        "securite": "Clés crypto 48 bits"
+      },
+      "applications": [
+        "Contrôle d'accès avancé",
+        "Transport en commun",
+        "Paiement sans contact",
+        "Cartes étudiants multiservices",
+        "Badges entreprise sécurisés",
+        "Systèmes de cashless événements"
+      ],
+      "featured": true,
+      "new": false,
+      "mainImage": "/products/carte-mifare.jpg",
+      "images": [
+        "/products/carte-mifare.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "carte-pvc-double-technologie",
+      "name": "Cartes Double Technologie Mag + RFID",
+      "slug": "carte-pvc-double-technologie",
+      "brand": "Hybrid",
+      "category": "cartes-pvc",
+      "price": 450,
+      "priceUnit": "FCFA/carte",
+      "stock": 1000,
+      "shortDescription": "Cartes hybrides : bande magnétique + RFID 125kHz. Maximum de compatibilité.",
+      "description": "Cartes PVC combinant bande magnétique HiCo ET puce RFID 125 kHz. Solution idéale pour la transition ou la compatibilité avec systèmes anciens et nouveaux.\n\nPermet l'utilisation sur systèmes à bande magnétique classiques ET lecteurs RFID sans contact. Investissement durable pour évolution progressive des infrastructures.",
+      "features": [
+        "Bande magnétique HiCo 2750 Oe",
+        "Puce RFID 125 kHz intégrée",
+        "Double compatibilité",
+        "Idéal phase de transition",
+        "Même numéro sur mag et RFID",
+        "PVC renforcé",
+        "Surface imprimable",
+        "Encodage double possible"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "magnetique": "HiCo 2750 Oe, ISO 7811",
+        "rfid": "125 kHz EM4100",
+        "epaisseur": "0.84mm (33 mil)",
+        "materiau": "PVC composite renforcé",
+        "poids": "6g"
+      },
+      "applications": [
+        "Migration systèmes accès",
+        "Entreprises multi-sites",
+        "Compatibilité anciennes installations",
+        "Parkings double technologie",
+        "Hôtels en modernisation",
+        "Universités en transition"
+      ],
+      "featured": false,
+      "new": true,
+      "mainImage": "/products/carte-double-techno.jpg",
+      "images": [
+        "/products/carte-double-techno.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "porte-badge-rigide-vertical",
+      "name": "Porte-Badge Rigide Vertical",
+      "slug": "porte-badge-rigide-vertical",
+      "brand": "Accessoires",
+      "category": "accessoires",
+      "price": 500,
+      "priceUnit": "FCFA/pièce",
+      "stock": 5000,
+      "shortDescription": "Porte-badge rigide transparent vertical avec clip. Protection optimale.",
+      "description": "Porte-badge rigide en polycarbonate transparent, orientation verticale. Protège vos badges contre l'usure, l'eau et les chocs tout en maintenant une parfaite visibilité.\n\nClip métallique rotatif inclus pour fixation sur vêtements. Ouverture par le haut pour insertion/retrait facile de la carte.",
+      "features": [
+        "Polycarbonate rigide transparent",
+        "Format vertical (portrait)",
+        "Clip métallique rotatif 360°",
+        "Ouverture par le haut",
+        "Protection contre eau et usure",
+        "Parfaite visibilité carte",
+        "Dimensions : 90 x 60 mm",
+        "Épaisseur carte : jusqu'à 1mm"
+      ],
+      "specifications": {
+        "materiau": "Polycarbonate transparent",
+        "dimensions": "90 x 60 x 8 mm",
+        "orientation": "Verticale (portrait)",
+        "clip": "Métal rotatif 360°",
+        "ouverture": "Par le haut",
+        "epaisseur_carte": "Jusqu'à 1mm"
+      },
+      "applications": [
+        "Badges employés",
+        "Événements et salons",
+        "Cartes étudiants",
+        "Visiteurs entreprise",
+        "Personnel soignant",
+        "Agents sécurité"
+      ],
+      "featured": false,
+      "new": false,
+      "mainImage": "/products/porte-badge-vertical.jpg",
+      "images": [
+        "/products/porte-badge-vertical.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "tour-de-cou-textile-personnalise",
+      "name": "Tour de Cou Textile Personnalisé",
+      "slug": "tour-de-cou-textile-personnalise",
+      "brand": "Accessoires",
+      "category": "accessoires",
+      "price": 800,
+      "priceUnit": "FCFA/pièce",
+      "stock": 3000,
+      "shortDescription": "Lanyard textile avec logo personnalisé. Confortable et professionnel.",
+      "description": "Tour de cou en textile polyester haute qualité avec impression de votre logo en sublimation. Confortable pour port toute la journée, largeur 20mm.\n\nAttache sécurisée anti-étranglement et crochet métal pour porte-badge. Personnalisation 1 ou 2 faces avec vos couleurs d'entreprise. Minimum de commande : 50 pièces.",
+      "features": [
+        "Textile polyester premium",
+        "Largeur 20mm",
+        "Impression logo sublimation",
+        "1 ou 2 faces personnalisables",
+        "Attache sécurité anti-étranglement",
+        "Crochet métal pour badge",
+        "Longueur ajustable",
+        "Minimum : 50 pièces"
+      ],
+      "specifications": {
+        "materiau": "Polyester tissé",
+        "largeur": "20mm",
+        "longueur": "90cm (ajustable)",
+        "impression": "Sublimation quadri",
+        "attache": "Sécurité détachable",
+        "crochet": "Métal pivotant",
+        "delai": "7-10 jours"
+      },
+      "applications": [
+        "Événements d'entreprise",
+        "Salons et conférences",
+        "Personnel badges",
+        "Festivals et concerts",
+        "Universités",
+        "Hôpitaux"
+      ],
+      "featured": false,
+      "new": false,
+      "mainImage": "/products/tour-de-cou.jpg",
+      "images": [
+        "/products/tour-de-cou.jpg"
+      ],
+      "createdAt": "2025-10-29T23:45:57.970Z",
+      "updatedAt": "2025-10-29T23:45:57.970Z"
+    },
+    {
+      "id": "carte-pvc-preimprimee-badge",
+      "name": "Cartes PVC Pré-imprimées Badge Photo",
+      "slug": "carte-pvc-preimprimee-badge",
+      "brand": "Premium",
+      "category": "cartes-pvc",
+      "price": 150,
+      "priceUnit": "FCFA/carte",
+      "stock": 5000,
+      "shortDescription": "Cartes pré-imprimées avec zone photo et infos. Design professionnel personnalisé.",
+      "description": "Cartes PVC pré-imprimées avec votre design personnalisé, incluant zone photo, logo entreprise, et champs d'information. Idéales pour badges professionnels avec impression recto-verso.\n\nNous créons votre design personnalisé selon votre charte graphique. Impression offset haute définition avec finitions premium (vernis, hologrammes optionnels). Minimum de commande : 100 cartes.",
+      "features": [
+        "Design 100% personnalisé",
+        "Impression offset haute définition",
+        "Recto-verso disponible",
+        "Zone photo pré-définie",
+        "Logo et charte graphique inclus",
+        "Finitions premium disponibles",
+        "Vernis de protection brillant ou mat",
+        "Quantité minimum : 100 cartes"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "materiau": "PVC premium",
+        "impression": "Offset 4 couleurs CMJN",
+        "resolution": "300 DPI minimum",
+        "finitions": "Vernis brillant, mat ou hologramme",
+        "delai": "5-7 jours ouvrés",
+        "minimum": "100 cartes"
+      },
+      "applications": [
+        "Badges entreprise avec photo",
+        "Cartes étudiants universitaires",
+        "Cartes professionnelles santé",
+        "Pass VIP événements",
+        "Cartes de presse"
+      ],
+      "featured": true,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes PVC Pré-imprimées Personnalisées | Xarala Solutions",
+        "metaDescription": "Cartes PVC pré-imprimées avec votre design à 150 FCFA. Zone photo, logo, vernis. Minimum 100 cartes. Livraison Dakar 5-7 jours.",
+        "keywords": "carte pvc personnalisée, badge photo, carte preimprimée, badge entreprise",
+        "canonicalUrl": "/fr/products/carte-pvc-preimprimee-badge"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-magnetique-hico",
+      "name": "Cartes PVC avec Bande Magnétique HiCo",
+      "slug": "carte-pvc-magnetique-hico",
+      "brand": "HiCo",
+      "category": "cartes-pvc",
+      "price": 120,
+      "priceUnit": "FCFA/carte",
+      "stock": 3000,
+      "shortDescription": "Cartes PVC avec piste magnétique haute coercivité. Pour systèmes d'accès sécurisés.",
+      "description": "Cartes PVC blanches équipées d'une bande magnétique HiCo (haute coercivité 2750 Oe). Compatibles avec tous les systèmes de contrôle d'accès et terminaux de paiement utilisant la technologie magnétique.\n\nLa bande magnétique HiCo permet le stockage sécurisé de données pour identification, accès, transactions. Plus résistante à la démagnétisation que les bandes LoCo. Format standard ISO 7811 avec 3 pistes disponibles.",
+      "features": [
+        "Bande magnétique HiCo (2750 Oe)",
+        "Haute résistance démagnétisation",
+        "Norme ISO 7811 (Track 1, 2, 3)",
+        "Encodage possible sur demande",
+        "PVC haute qualité imprimable",
+        "Compatible lecteurs magnétiques",
+        "Durée de vie piste : 5+ ans",
+        "Surface blanche pour impression"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "materiau": "PVC + bande magnétique",
+        "coercivite": "HiCo 2750 Oersted",
+        "norme": "ISO 7811",
+        "tracks": "3 pistes (Track 1, 2, 3)",
+        "capacite": "79 caractères alphanumériques (Track 2)",
+        "duree_vie": "5+ ans en usage normal"
+      },
+      "applications": [
+        "Contrôle d'accès entreprise",
+        "Badges parking sécurisés",
+        "Cartes hôtelières",
+        "Cartes de paiement",
+        "Cartes transport en commun",
+        "Systèmes de pointage"
+      ],
+      "featured": false,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes PVC Bande Magnétique HiCo | Xarala Solutions Dakar",
+        "metaDescription": "Cartes PVC piste magnétique haute coercivité à 120 FCFA. ISO 7811. Pour contrôle d'accès et paiement. Stock Dakar.",
+        "keywords": "carte magnétique, carte hico, bande magnétique, carte accès magnétique",
+        "canonicalUrl": "/fr/products/carte-pvc-magnetique-hico"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-magnetique-loco",
+      "name": "Cartes PVC avec Bande Magnétique LoCo",
+      "slug": "carte-pvc-magnetique-loco",
+      "brand": "LoCo",
+      "category": "cartes-pvc",
+      "price": 80,
+      "priceUnit": "FCFA/carte",
+      "stock": 4000,
+      "shortDescription": "Cartes PVC avec piste magnétique basse coercivité. Solution économique.",
+      "description": "Cartes PVC blanches avec bande magnétique LoCo (basse coercivité 300 Oe). Alternative économique pour applications ne nécessitant pas une sécurité maximale ou réencodages fréquents.\n\nIdéales pour badges temporaires, cartes de fidélité, systèmes d'accès basiques. Plus faciles à encoder et moins chères que les HiCo. Compatibles lecteurs magnétiques standards.",
+      "features": [
+        "Bande magnétique LoCo (300 Oe)",
+        "Solution économique",
+        "Encodage facile et rapide",
+        "Norme ISO 7811",
+        "PVC blanc imprimable",
+        "Compatible lecteurs standards",
+        "Durée de vie piste : 2-3 ans",
+        "Idéal cartes temporaires"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "materiau": "PVC + bande magnétique",
+        "coercivite": "LoCo 300 Oersted",
+        "norme": "ISO 7811",
+        "tracks": "3 pistes disponibles",
+        "encodage": "Réinscriptible multiple fois",
+        "duree_vie": "2-3 ans"
+      },
+      "applications": [
+        "Cartes de fidélité magasins",
+        "Badges visiteurs temporaires",
+        "Cartes de membre clubs",
+        "Systèmes accès basiques",
+        "Cartes événementielles",
+        "Badges parking courte durée"
+      ],
+      "featured": false,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes PVC Bande Magnétique LoCo Économique | Xarala",
+        "metaDescription": "Cartes PVC piste magnétique LoCo à 80 FCFA. Solution économique pour fidélité et accès. Stock disponible Dakar.",
+        "keywords": "carte magnétique loco, carte fidélité, badge magnétique économique",
+        "canonicalUrl": "/fr/products/carte-pvc-magnetique-loco"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-mifare-classic-1k",
+      "name": "Cartes PVC MIFARE Classic 1K (13.56 MHz)",
+      "slug": "carte-pvc-mifare-classic-1k",
+      "brand": "NXP MIFARE",
+      "category": "cartes-pvc",
+      "price": 350,
+      "priceUnit": "FCFA/carte",
+      "stock": 1500,
+      "shortDescription": "Cartes MIFARE 13.56 MHz réinscriptibles 1Ko. Standard mondial NFC.",
+      "description": "Cartes PVC avec puce NXP MIFARE Classic 1K, technologie sans contact 13.56 MHz. Mémoire de 1024 octets réinscriptible et sécurisée par clés cryptographiques.\n\nStandard mondial pour applications de contrôle d'accès avancé, transport, paiement sans contact, cashless événements. Compatible NFC avec smartphones récents pour lecture et écriture. Norme ISO 14443A.",
+      "features": [
+        "Puce NXP MIFARE Classic 1K originale",
+        "Fréquence 13.56 MHz (NFC)",
+        "1024 octets mémoire réinscriptible",
+        "Sécurité par clés crypto 48 bits",
+        "Portée lecture : jusqu'à 10 cm",
+        "Compatible lecteurs MIFARE",
+        "Compatible NFC smartphones Android/iOS",
+        "Durée de vie : 100 000 cycles écriture"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "puce": "NXP MIFARE Classic 1K",
+        "frequence": "13.56 MHz",
+        "memoire": "1024 bytes (1Ko) EEPROM",
+        "uid": "4 bytes unique (32 bits)",
+        "norme": "ISO 14443A",
+        "securite": "Clés crypto 48 bits",
+        "secteurs": "16 secteurs de 4 blocs",
+        "cycles": "100 000 écritures minimum"
+      },
+      "applications": [
+        "Contrôle d'accès multi-zones",
+        "Transport en commun (titres)",
+        "Paiement sans contact sécurisé",
+        "Cartes étudiants multiservices",
+        "Badges entreprise avec droits",
+        "Cashless festivals et événements",
+        "Porte-monnaie électronique"
+      ],
+      "featured": true,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes MIFARE Classic 1K NFC 13.56 MHz | Xarala Solutions",
+        "metaDescription": "Cartes MIFARE Classic 1K à 350 FCFA. NFC 13.56 MHz, 1Ko mémoire. Standard mondial contrôle d'accès. Compatible smartphones.",
+        "keywords": "carte mifare, mifare classic 1k, carte nfc, badge nfc 13.56mhz",
+        "canonicalUrl": "/fr/products/carte-pvc-mifare-classic-1k"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-mifare-classic-4k",
+      "name": "Cartes PVC MIFARE Classic 4K (13.56 MHz)",
+      "slug": "carte-pvc-mifare-classic-4k",
+      "brand": "NXP MIFARE",
+      "category": "cartes-pvc",
+      "price": 500,
+      "priceUnit": "FCFA/carte",
+      "stock": 800,
+      "shortDescription": "Cartes MIFARE 4Ko mémoire. Pour applications complexes multiservices.",
+      "description": "Cartes PVC avec puce NXP MIFARE Classic 4K offrant 4096 octets de mémoire EEPROM réinscriptible. Version haute capacité pour applications nécessitant stockage important de données.\n\nIdéale pour systèmes multiservices complexes : transport + paiement + accès + identification + services additionnels sur une seule carte. Même technologie que MIFARE 1K avec 4x plus de mémoire.",
+      "features": [
+        "Puce NXP MIFARE Classic 4K",
+        "4096 octets mémoire (4Ko)",
+        "Fréquence 13.56 MHz NFC",
+        "40 secteurs de stockage",
+        "Sécurité cryptographique",
+        "Compatible MIFARE 1K",
+        "Applications multiservices",
+        "Durée de vie : 100 000 cycles"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "puce": "NXP MIFARE Classic 4K",
+        "frequence": "13.56 MHz",
+        "memoire": "4096 bytes (4Ko) EEPROM",
+        "uid": "4 bytes unique",
+        "norme": "ISO 14443A",
+        "secteurs": "40 secteurs",
+        "securite": "Clés crypto 48 bits"
+      },
+      "applications": [
+        "Cartes universitaires multiservices",
+        "Transport + paiement combinés",
+        "Systèmes loyauté avancés",
+        "Badges entreprise haute sécurité",
+        "Cartes santé électroniques",
+        "Smart cities"
+      ],
+      "featured": false,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes MIFARE Classic 4K NFC Haute Capacité | Xarala",
+        "metaDescription": "Cartes MIFARE Classic 4K à 500 FCFA. 4Ko mémoire NFC pour applications multiservices complexes. Stock Dakar.",
+        "keywords": "carte mifare 4k, mifare haute capacité, carte nfc 4ko",
+        "canonicalUrl": "/fr/products/carte-pvc-mifare-classic-4k"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-mifare-desfire-ev2",
+      "name": "Cartes PVC MIFARE DESFire EV2 (13.56 MHz)",
+      "slug": "carte-pvc-mifare-desfire-ev2",
+      "brand": "NXP MIFARE",
+      "category": "cartes-pvc",
+      "price": 1200,
+      "priceUnit": "FCFA/carte",
+      "stock": 500,
+      "shortDescription": "Cartes MIFARE DESFire EV2 haute sécurité. Cryptage AES 128 bits.",
+      "description": "Cartes PVC avec puce NXP MIFARE DESFire EV2, la solution la plus sécurisée de la gamme MIFARE. Cryptage AES 128 bits, gestion multi-applications, mémoire jusqu'à 8Ko.\n\nConçue pour applications critiques nécessitant sécurité maximale : paiement sans contact sécurisé, identité électronique, documents de voyage, accès haute sécurité. Certifiée EAL5+ Common Criteria.",
+      "features": [
+        "Puce NXP MIFARE DESFire EV2",
+        "Cryptage AES 128 bits",
+        "Jusqu'à 8Ko mémoire",
+        "Multi-applications isolées",
+        "Certification EAL5+ CC",
+        "Transaction Protocol",
+        "Compatible NFC",
+        "Sécurité bancaire"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "puce": "NXP MIFARE DESFire EV2",
+        "frequence": "13.56 MHz",
+        "memoire": "2Ko, 4Ko ou 8Ko disponible",
+        "cryptage": "AES 128 bits, 3DES",
+        "norme": "ISO 14443A Type 4",
+        "certification": "EAL5+ Common Criteria",
+        "vitesse": "Jusqu'à 848 kbit/s"
+      },
+      "applications": [
+        "Paiement sans contact bancaire",
+        "Identité électronique nationale",
+        "Passeports biométriques",
+        "Accès installations sensibles",
+        "Transport métropolitain",
+        "Badges gouvernementaux",
+        "Solutions militaires"
+      ],
+      "featured": false,
+      "new": true,
+      "seo": {
+        "metaTitle": "Cartes MIFARE DESFire EV2 Haute Sécurité AES | Xarala",
+        "metaDescription": "Cartes MIFARE DESFire EV2 à 1200 FCFA. Cryptage AES 128 bits, EAL5+. Pour applications haute sécurité. Stock Dakar.",
+        "keywords": "carte mifare desfire, desfire ev2, carte haute sécurité, aes 128",
+        "canonicalUrl": "/fr/products/carte-pvc-mifare-desfire-ev2"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-double-techno-mag-rfid",
+      "name": "Cartes PVC Double Technologie Mag + RFID",
+      "slug": "carte-pvc-double-techno-mag-rfid",
+      "brand": "Hybrid",
+      "category": "cartes-pvc",
+      "price": 450,
+      "priceUnit": "FCFA/carte",
+      "stock": 1000,
+      "shortDescription": "Cartes hybrides : bande magnétique HiCo + RFID 125kHz. Double compatibilité.",
+      "description": "Cartes PVC combinant bande magnétique HiCo 2750 Oe ET puce RFID 125 kHz EM4100. Solution idéale pour la transition technologique ou compatibilité avec systèmes mixtes anciens/nouveaux.\n\nPermet l'utilisation sur lecteurs magnétiques classiques ET lecteurs RFID sans contact. Même numéro d'identification sur les deux technologies. Investissement durable pour migration progressive des infrastructures sans remplacement immédiat des lecteurs.",
+      "features": [
+        "Bande magnétique HiCo 2750 Oe",
+        "Puce RFID 125 kHz EM4100 intégrée",
+        "Double compatibilité mag + RFID",
+        "Même ID sur les 2 technologies",
+        "Idéal phase de transition",
+        "PVC renforcé épaisseur 0.84mm",
+        "Surface imprimable",
+        "Encodage double possible"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.84 mm)",
+        "magnetique": "HiCo 2750 Oe, ISO 7811",
+        "rfid": "125 kHz EM4100 Read-Only",
+        "epaisseur": "0.84mm (33 mil)",
+        "materiau": "PVC composite renforcé",
+        "poids": "6g",
+        "synchronisation": "ID identique mag + RFID"
+      },
+      "applications": [
+        "Migration systèmes d'accès",
+        "Entreprises multi-sites hétérogènes",
+        "Compatibilité anciennes installations",
+        "Parkings double technologie",
+        "Hôtels en modernisation",
+        "Universités en transition",
+        "Immeubles mixtes ancien/neuf"
+      ],
+      "featured": false,
+      "new": true,
+      "seo": {
+        "metaTitle": "Cartes Double Technologie Magnétique + RFID | Xarala",
+        "metaDescription": "Cartes hybrides Mag HiCo + RFID 125kHz à 450 FCFA. Double compatibilité pour transition. Stock Dakar.",
+        "keywords": "carte double technologie, carte hybride mag rfid, carte transition",
+        "canonicalUrl": "/fr/products/carte-pvc-double-techno-mag-rfid"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-proximite-hid-prox",
+      "name": "Cartes PVC HID Prox (125 kHz)",
+      "slug": "carte-pvc-proximite-hid-prox",
+      "brand": "HID Global",
+      "category": "cartes-pvc",
+      "price": 600,
+      "priceUnit": "FCFA/carte",
+      "stock": 800,
+      "shortDescription": "Cartes HID Proximity 125 kHz. Standard leader mondial contrôle d'accès.",
+      "description": "Cartes PVC avec technologie HID Proximity 125 kHz, le standard de facto mondial pour systèmes de contrôle d'accès professionnels. Compatibles avec millions d'installations HID à travers le monde.\n\nOffre sécurité supérieure aux cartes EM4100 standard grâce au protocole propriétaire HID. Numéros de série uniques non duplicables. Garantie d'authenticité HID Global.",
+      "features": [
+        "Technologie HID Proximity originale",
+        "Fréquence 125 kHz sécurisée",
+        "Protocole propriétaire HID",
+        "Numéro unique non duplicable",
+        "Portée lecture : jusqu'à 12 cm",
+        "Compatible tous lecteurs HID Prox",
+        "Garantie authenticité HID Global",
+        "Durée de vie : 10+ ans"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "technologie": "HID Proximity",
+        "frequence": "125 kHz",
+        "portee": "Jusqu'à 12 cm",
+        "format_numero": "26-bit, 35-bit, 37-bit disponibles",
+        "securite": "Protocole propriétaire HID",
+        "certification": "HID Global authentique"
+      },
+      "applications": [
+        "Contrôle d'accès entreprises multinationales",
+        "Installations gouvernementales",
+        "Établissements bancaires",
+        "Hôpitaux et cliniques",
+        "Universités et écoles",
+        "Immeubles de bureaux premium",
+        "Datacenters"
+      ],
+      "featured": false,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes HID Proximity 125 kHz Authentiques | Xarala Dakar",
+        "metaDescription": "Cartes HID Prox 125 kHz à 600 FCFA. Standard mondial contrôle d'accès. Authentiques HID Global. Stock Dakar.",
+        "keywords": "carte hid prox, hid proximity, carte hid 125khz, hid global",
+        "canonicalUrl": "/fr/products/carte-pvc-proximite-hid-prox"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-contactless-dual-freq",
+      "name": "Cartes PVC Dual Frequency 125kHz + 13.56MHz",
+      "slug": "carte-pvc-contactless-dual-freq",
+      "brand": "Dual Freq",
+      "category": "cartes-pvc",
+      "price": 800,
+      "priceUnit": "FCFA/carte",
+      "stock": 600,
+      "shortDescription": "Cartes double fréquence RFID + NFC. Maximum de compatibilité.",
+      "description": "Cartes PVC intégrant DEUX puces sans contact : RFID 125 kHz (EM4100) ET NFC 13.56 MHz (MIFARE Classic 1K). La solution ultime pour compatibilité universelle avec tous types de lecteurs.\n\nFonctionne avec lecteurs RFID 125 kHz ancienne génération ET lecteurs NFC modernes 13.56 MHz, ainsi que smartphones NFC. Même ID sur les deux fréquences. Investissement pérenne pour tout type d'infrastructure.",
+      "features": [
+        "Double puce : RFID 125kHz + NFC 13.56MHz",
+        "RFID EM4100 125 kHz intégré",
+        "NFC MIFARE Classic 1K 13.56 MHz",
+        "Compatible TOUS lecteurs RFID/NFC",
+        "Compatible smartphones NFC",
+        "Même ID sur 2 fréquences",
+        "Mémoire 1Ko réinscriptible (partie NFC)",
+        "Solution pérenne universelle"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.84 mm)",
+        "rfid_125khz": "EM4100 Read-Only",
+        "nfc_1356mhz": "MIFARE Classic 1K",
+        "memoire": "1024 bytes (partie NFC)",
+        "epaisseur": "0.84mm (33 mil)",
+        "materiau": "PVC composite dual-chip",
+        "normes": "ISO 14443A + EM4100"
+      },
+      "applications": [
+        "Infrastructures hétérogènes",
+        "Installations multi-générations",
+        "Smart buildings neufs",
+        "Campuses universitaires modernes",
+        "Hôtels innovants",
+        "Systèmes multiservices",
+        "Applications mobiles NFC"
+      ],
+      "featured": false,
+      "new": true,
+      "seo": {
+        "metaTitle": "Cartes Dual Frequency RFID 125kHz + NFC 13.56MHz | Xarala",
+        "metaDescription": "Cartes double fréquence à 800 FCFA. RFID 125kHz + NFC MIFARE. Compatibilité universelle. Innovation Xarala Dakar.",
+        "keywords": "carte dual frequency, carte double fréquence, rfid nfc combo",
+        "canonicalUrl": "/fr/products/carte-pvc-contactless-dual-freq"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    },
+    {
+      "id": "carte-pvc-intelligente-java-card",
+      "name": "Cartes PVC Smart Card Java Card",
+      "slug": "carte-pvc-intelligente-java-card",
+      "brand": "Java Card",
+      "category": "cartes-pvc",
+      "price": 2000,
+      "priceUnit": "FCFA/carte",
+      "stock": 300,
+      "shortDescription": "Cartes à puce contact Java Card. Programmables pour applications sur mesure.",
+      "description": "Cartes PVC à puce contact avec système d'exploitation Java Card 3.0.4. Programmables pour développer vos propres applications sécurisées embarquées sur la carte.\n\nUtilise la plateforme Java standard pour créer des applets personnalisées : authentification forte, signature électronique, chiffrement, porte-monnaie, multi-applications. Conforme standards bancaires et gouvernementaux EMV, GlobalPlatform.",
+      "features": [
+        "Puce Java Card 3.0.4",
+        "Processeur cryptographique",
+        "Mémoire jusqu'à 144Ko",
+        "Multi-applications programmables",
+        "Conforme EMV + GlobalPlatform",
+        "Contacts ISO 7816 plaqués or",
+        "Algorithmes RSA, AES, 3DES",
+        "Personnalisation applets Java"
+      ],
+      "specifications": {
+        "format": "CR80 (85.6 x 54 x 0.76 mm)",
+        "os": "Java Card 3.0.4 Classic",
+        "processeur": "32-bit RISC crypto",
+        "memoire": "144Ko EEPROM, 10Ko RAM",
+        "contacts": "ISO 7816 C1-C8 plaqués or",
+        "cryptographie": "RSA 2048, AES 256, 3DES, SHA-256",
+        "normes": "ISO 7816, EMV, GlobalPlatform 2.3"
+      },
+      "applications": [
+        "Cartes bancaires EMV",
+        "Identité électronique nationale",
+        "Signature électronique",
+        "Authentification forte PKI",
+        "Cartes santé Vitale",
+        "SIM cards opérateurs",
+        "Applications gouvernementales"
+      ],
+      "featured": false,
+      "new": false,
+      "seo": {
+        "metaTitle": "Cartes à Puce Java Card Programmables EMV | Xarala",
+        "metaDescription": "Cartes smart card Java Card à 2000 FCFA. Programmables, 144Ko, EMV. Pour applications sur mesure. Xarala Dakar.",
+        "keywords": "java card, carte à puce, smart card, carte programmable emv",
+        "canonicalUrl": "/fr/products/carte-pvc-intelligente-java-card"
+      },
+      "images": [],
+      "createdAt": "2025-10-30T00:07:06.839Z",
+      "updatedAt": "2025-10-30T00:07:06.839Z"
+    }
+  ]
+}
