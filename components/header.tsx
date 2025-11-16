@@ -40,7 +40,12 @@ function getOrganizationConfig(slug: string | null) {
       ctaShadow: 'shadow-orange-500/30',
       mobileBg: 'bg-orange-50',
       mobileText: 'text-orange-600',
-      mobileCta: 'bg-orange-500'
+      mobileCta: 'bg-orange-500',
+      phone: '+221 77 539 81 39',
+      phoneHref: 'tel:+221775398139',
+      email: 'contact@xarala-solutions.com',
+      emailHref: 'mailto:contact@xarala-solutions.com',
+      location: 'Dakar, Sénégal'
     }
   }
   
@@ -65,7 +70,12 @@ function getOrganizationConfig(slug: string | null) {
       ctaShadow: 'shadow-blue-500/30',
       mobileBg: 'bg-blue-50',
       mobileText: 'text-blue-600',
-      mobileCta: 'bg-blue-500'
+      mobileCta: 'bg-blue-500',
+      phone: null, // Masqué pour mooktartech-com
+      phoneHref: null,
+      email: 'support@mooktar.com',
+      emailHref: 'mailto:support@mooktar.com',
+      location: 'Dakar, Sénégal'
     }
   }
   
@@ -90,7 +100,12 @@ function getOrganizationConfig(slug: string | null) {
       ctaShadow: 'shadow-green-500/30',
       mobileBg: 'bg-green-50',
       mobileText: 'text-green-600',
-      mobileCta: 'bg-green-500'
+      mobileCta: 'bg-green-500',
+      phone: '+221 77 539 81 39',
+      phoneHref: 'tel:+221775398139',
+      email: 'contact@xarala-solutions.com',
+      emailHref: 'mailto:contact@xarala-solutions.com',
+      location: 'Dakar, Sénégal'
     }
   }
   
@@ -115,7 +130,12 @@ function getOrganizationConfig(slug: string | null) {
     ctaShadow: 'shadow-orange-500/30',
     mobileBg: 'bg-orange-50',
     mobileText: 'text-orange-600',
-    mobileCta: 'bg-orange-500'
+    mobileCta: 'bg-orange-500',
+    phone: '+221 77 539 81 39',
+    phoneHref: 'tel:+221775398139',
+    email: 'contact@xarala-solutions.com',
+    emailHref: 'mailto:contact@xarala-solutions.com',
+    location: 'Dakar, Sénégal'
   }
 }
 
@@ -177,36 +197,42 @@ export function Header() {
           <div className="flex items-center justify-between h-10 text-xs">
             {/* Left - Contact rapide */}
             <div className="hidden lg:flex items-center gap-4">
-              <a 
-                href="tel:+221775398139"
-                className={`flex items-center gap-2 font-medium transition-colors ${
-                  isScrolled 
-                    ? `text-gray-700 ${orgConfig.hoverColor}` 
-                    : 'text-white/90 hover:text-white'
-                }`}
-              >
-                <Phone className="w-4 h-4" />
-                <span>+221 77 539 81 39</span>
-              </a>
+              {orgConfig.phone && orgConfig.phoneHref && (
+                <a 
+                  href={orgConfig.phoneHref}
+                  className={`flex items-center gap-2 font-medium transition-colors ${
+                    isScrolled 
+                      ? `text-gray-700 ${orgConfig.hoverColor}` 
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  <Phone className="w-4 h-4" />
+                  <span>{orgConfig.phone}</span>
+                </a>
+              )}
 
-              <a 
-                href="mailto:contact@xarala-solutions.com"
-                className={`flex items-center gap-2 font-medium transition-colors ${
-                  isScrolled 
-                    ? `text-gray-700 ${orgConfig.hoverColor}` 
-                    : 'text-white/90 hover:text-white'
-                }`}
-              >
-                <Mail className="w-4 h-4" />
-                <span>contact@xarala-solutions.com</span>
-              </a>
+              {orgConfig.email && orgConfig.emailHref && (
+                <a 
+                  href={orgConfig.emailHref}
+                  className={`flex items-center gap-2 font-medium transition-colors ${
+                    isScrolled 
+                      ? `text-gray-700 ${orgConfig.hoverColor}` 
+                      : 'text-white/90 hover:text-white'
+                  }`}
+                >
+                  <Mail className="w-4 h-4" />
+                  <span>{orgConfig.email}</span>
+                </a>
+              )}
 
-              <div className={`flex items-center gap-2 ${
-                isScrolled ? 'text-gray-600' : 'text-white/80'
-              }`}>
-                <MapPin className="w-4 h-4" />
-                <span>Dakar, Sénégal</span>
-              </div>
+              {orgConfig.location && (
+                <div className={`flex items-center gap-2 ${
+                  isScrolled ? 'text-gray-600' : 'text-white/80'
+                }`}>
+                  <MapPin className="w-4 h-4" />
+                  <span>{orgConfig.location}</span>
+                </div>
+              )}
             </div>
 
             {/* Right - Promo/Hours */}
@@ -379,13 +405,15 @@ export function Header() {
 
             {/* Mobile Contact */}
             <div className="pt-6 mt-6 border-t border-gray-200 space-y-3">
-              <a
-                href="tel:+221775398139"
-                className={`flex items-center gap-3 px-4 py-3 ${orgConfig.mobileBg} ${orgConfig.mobileText} rounded-xl font-semibold`}
-              >
-                <Phone className="w-5 h-5" />
-                <span>+221 77 539 81 39</span>
-              </a>
+              {orgConfig.phone && orgConfig.phoneHref && (
+                <a
+                  href={orgConfig.phoneHref}
+                  className={`flex items-center gap-3 px-4 py-3 ${orgConfig.mobileBg} ${orgConfig.mobileText} rounded-xl font-semibold`}
+                >
+                  <Phone className="w-5 h-5" />
+                  <span>{orgConfig.phone}</span>
+                </a>
+              )}
 
               <Link
                 href="/fr/contact"
