@@ -1,0 +1,117 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                  NAVBAR ACTIF - XARALA SOLUTIONS                     ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+Date: 2025-01-28
+
+════════════════════════════════════════════════════════════════════════
+1. CHAÎNE D'IMPORT
+════════════════════════════════════════════════════════════════════════
+
+app/[locale]/layout.tsx (ligne 10):
+  → import MainLayout from '@/components/layout/main-layout'
+
+components/layout/main-layout.tsx (ligne 4):
+  → import { Header } from '@/components/header'
+
+COMPOSANT NAVBAR ACTIF:
+  ✅ components/header.tsx
+  ✅ Composant: Header (export function Header)
+
+════════════════════════════════════════════════════════════════════════
+2. PREMIÈRES 50 LIGNES DE components/header.tsx
+════════════════════════════════════════════════════════════════════════
+
+'use client'
+
+import React, { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock,
+  ShoppingCart,
+  Menu,
+  X,
+  ChevronDown,
+  Sparkles,
+  Zap,
+  Package
+} from 'lucide-react'
+import { useCartStore } from '@/lib/store/cart-store'
+import { ModernMegaMenu } from '@/components/mega-menu/modern-menu'
+
+export function Header() {
+  const itemCount = useCartStore((state) => state.getItemCount())
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
+  const servicesRef = useRef<HTMLDivElement>(null)
+  const pathname = usePathname()
+
+  // Detect scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      // Header toujours visible, change juste l'apparence après 10px
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // Close Services menu on click outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(event.target as Node)) {
+        setIsServicesOpen(false)
+      }
+    }
+    document.addEventListener('click', handleClickOutside)
+    return () => document.removeEventListener('click', handleClickOutside)
+  }, [])
+
+════════════════════════════════════════════════════════════════════════
+3. NAVIGATION CONFIGURÉE
+════════════════════════════════════════════════════════════════════════
+
+Navigation array (lignes ~54-74):
+  [
+    { name: 'Accueil', href: '/fr' },
+    { 
+      name: 'Produits', 
+      href: '/fr/products',
+      dropdown: [...]
+    },
+    { 
+      name: 'Services', 
+      href: '#services',
+      dropdown: [
+        { name: 'Cartes NFC Virtuelles', href: '/fr/nfc-editor', icon: Sparkles, badge: 'GRATUIT' },
+        { name: 'Éditeur de Badges', href: '/fr/badge-editor', icon: Zap }
+      ]
+    },
+    { name: 'À propos', href: '/fr/about' }
+  ]
+
+════════════════════════════════════════════════════════════════════════
+4. MÉGA MENU INTÉGRÉ
+════════════════════════════════════════════════════════════════════════
+
+Composant: ModernMegaMenu
+Import: @/components/mega-menu/modern-menu
+Intégré dans: Menu "Services" avec hover/click handlers
+
+════════════════════════════════════════════════════════════════════════
+5. COMPOSANTS ALTERNATIFS DISPONIBLES
+════════════════════════════════════════════════════════════════════════
+
+NON ACTIFS mais disponibles:
+  - components/navigation/navbar.tsx (Navbar classique)
+  - components/layout/header-example.tsx (Header exemple)
+  - components/mega-menu/universal-mega-menu.tsx (Mega Menu universel)
+
+════════════════════════════════════════════════════════════════════════
+

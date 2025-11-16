@@ -1,0 +1,512 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "success": "Operation successful",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "currency": "FCFA",
+    "dateFormat": "MM/dd/yyyy",
+    "timeFormat": "hh:mm a",
+    "address": {
+      "street": "Street",
+      "city": "City",
+      "region": "Region",
+      "country": "Country"
+    }
+  },
+  "header": {
+    "home": "Home",
+    "products": "Products",
+    "cardEditor": "Card Editor",
+    "about": "About",
+    "login": "Login",
+    "signup": "Sign Up",
+    "cart": "Cart",
+    "language": "Language",
+    "items": "items",
+    "profile": "Profile",
+    "orders": "My Orders",
+    "myCards": "My Cards",
+    "logout": "Logout"
+  },
+  "footer": {
+    "about": "About Us",
+    "quickLinks": "Quick Links",
+    "contact": "Contact",
+    "rights": "All rights reserved",
+    "company": "Xarala Solutions",
+    "description": "Your trusted partner for professional identification solutions in Senegal. We create custom PVC cards, NFC and QR codes for your business.",
+    "address": "Dakar, Senegal",
+    "phone": "+221 XX XXX XX XX",
+    "email": "contact@xarala.sn",
+    "hours": "Mon-Fri: 8am-6pm",
+    "followUs": "Follow Us",
+    "allRightsReserved": "All rights reserved",
+    "links": {
+      "about": "About",
+      "contact": "Contact",
+      "privacy": "Privacy",
+      "terms": "Terms of Use",
+      "cookies": "Cookies",
+      "support": "Support"
+    },
+    "legal": {
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "cookies": "Cookie Settings"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  },
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "about": "About",
+    "language": "Language",
+    "items": "items",
+    "orders": "My Orders",
+    "myCards": "My Cards",
+    "register": "Register"
+  },
+  "hero": {
+    "title": "Your partner in professional identification solutions",
+    "subtitle": "PVC cards, professional printers and NFC virtual cards for your business in Senegal",
+    "description": "Professional identification solutions for Senegalese businesses",
+    "ctaPrimary": "Discover our products",
+    "ctaSecondary": "Create my virtual card",
+    "cta": "Discover our products",
+    "learnMore": "Learn more"
+  },
+  "featuredProducts": {
+    "title": "Our featured products",
+    "subtitle": "Complete solutions for your identification needs",
+    "pvcCards": {
+      "title": "PVC Cards",
+      "description": "Badges, smart cards, magnetic cards of professional quality",
+      "price": "From 500 XOF",
+      "button": "View cards"
+    },
+    "printers": {
+      "title": "Professional printers",
+      "description": "Evolis, Zebra, Fargo printers for card printing",
+      "price": "From 450,000 XOF",
+      "button": "View printers"
+    },
+    "nfcCards": {
+      "title": "NFC Virtual Cards",
+      "description": "Customizable and shareable digital business cards",
+      "price": "Free (basic version)",
+      "button": "Create my card"
+    },
+    "popular": "Popular",
+    "cta": {
+      "title": "Need a customized solution?",
+      "description": "Our team of experts can help you choose the perfect identification solution for your business.",
+      "contact": "Contact us",
+      "allProducts": "View all products"
+    }
+  },
+  "advantages": {
+    "title": "Why choose Xarala Solutions?",
+    "subtitle": "Concrete advantages for your business",
+    "fastDelivery": {
+      "title": "Fast delivery",
+      "description": "Delivery in Dakar in 24-48h, anywhere in Senegal in 3-5 days"
+    },
+    "securePayment": {
+      "title": "Secure payment",
+      "description": "Wave, Orange Money, Free Money and cash on delivery"
+    },
+    "support24": {
+      "title": "Responsive support",
+      "description": "Our team accompanies you from Monday to Saturday"
+    },
+    "qualityGuaranteed": {
+      "title": "Certified quality",
+      "description": "Authentic products with manufacturer warranty"
+    },
+    "cta": {
+      "title": "Ready to get started?",
+      "description": "Discover our professional identification solutions and transform your business.",
+      "button": "Discover our solutions",
+      "learnMore": "Learn more"
+    }
+  },
+  "finalCta": {
+    "title": "Ready to get started?",
+    "description": "Create your virtual card in less than 5 minutes, for free.",
+    "primaryButton": "Create my virtual card now",
+    "secondaryButton": "Explore the catalog"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Discover our complete range of identification solutions",
+    "metaDescription": "Discover our complete range of professional identification solutions: PVC cards, printers, accessories and NFC virtual cards for your business in Senegal.",
+    "loading": "Loading products...",
+    "results": "{count} product(s) found out of {total}",
+    "empty": {
+      "title": "No products found",
+      "description": "No products match your search criteria. Try modifying your filters.",
+      "resetFilters": "Reset filters"
+    },
+    "error": {
+      "title": "Loading error",
+      "retry": "Retry"
+    },
+    "filters": {
+      "title": "Filters",
+      "reset": "Reset",
+      "categories": {
+        "title": "Categories",
+        "all": "All categories",
+        "pvcCards": "PVC Cards",
+        "printers": "Printers",
+        "accessories": "Accessories",
+        "nfcCards": "NFC Virtual Cards"
+      },
+      "price": {
+        "title": "Price"
+      },
+      "search": {
+        "title": "Search",
+        "placeholder": "Search for a product..."
+      }
+    },
+    "sort": {
+      "title": "Sort by",
+      "nameAsc": "Name A-Z",
+      "nameDesc": "Name Z-A",
+      "priceAsc": "Price ascending",
+      "priceDesc": "Price descending"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "detail": {
+      "title": "Product details",
+      "breadcrumb": {
+        "home": "Home",
+        "products": "Products",
+        "category": "Category"
+      },
+      "gallery": {
+        "previous": "Previous image",
+        "next": "Next image",
+        "image": "Image {index} of {total}"
+      },
+      "stock": {
+        "inStock": "In stock ({count} available)",
+        "lowStock": "Limited stock ({count} remaining)",
+        "outOfStock": "Out of stock"
+      },
+      "quantity": {
+        "label": "Quantity:",
+        "min": "Minimum quantity: 1",
+        "max": "Maximum quantity: {max}"
+      },
+      "actions": {
+        "addToCart": "Add to cart",
+        "addToFavorites": "Add to favorites",
+        "removeFromFavorites": "Remove from favorites",
+        "share": "Share",
+        "shareOn": "Share on {platform}",
+        "copyLink": "Copy link",
+        "linkCopied": "Link copied!"
+      },
+      "specifications": {
+        "title": "Technical specifications",
+        "characteristic": "Characteristic",
+        "value": "Value"
+      },
+      "similar": {
+        "title": "Similar products",
+        "viewAll": "View all products"
+      },
+      "notFound": {
+        "title": "Product not found",
+        "description": "The requested product does not exist or is no longer available.",
+        "backToProducts": "Back to products"
+      }
+    },
+    "addToCart": "Add to cart",
+    "outOfStock": "Out of stock",
+    "inStock": "In stock",
+    "onOrder": "On order",
+    "filters": {
+      "title": "Filters",
+      "categories": "Categories",
+      "price": "Price",
+      "availability": "Availability"
+    },
+    "sort": {
+      "title": "Sort by",
+      "newest": "Newest",
+      "priceAsc": "Price: Low to High",
+      "priceDesc": "Price: High to Low",
+      "popularity": "Popularity"
+    }
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is empty",
+    "continueShopping": "Continue shopping",
+    "checkout": "Proceed to checkout",
+    "summary": {
+      "title": "Summary",
+      "subtotal": "Subtotal",
+      "shipping": "Shipping",
+      "tax": "VAT (18%)",
+      "total": "Total"
+    },
+    "shipping": {
+      "dakar": "Dakar (2000 FCFA)",
+      "regions": "Other regions (5000 FCFA)",
+      "time": "Estimated delivery: 24-48h"
+    },
+    "actions": {
+      "remove": "Remove",
+      "update": "Update",
+      "clear": "Clear cart"
+    }
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "phone": "Phone",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "login": {
+      "title": "Sign In",
+      "subtitle": "Access your Xarala Solutions space",
+      "metaDescription": "Sign in to your Xarala Solutions account to access your virtual cards and manage your orders.",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot Password?",
+      "signInButton": "Sign In",
+      "signingIn": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up",
+      "success": "Sign in successful!",
+      "welcome": "Welcome to Xarala Solutions",
+      "errors": {
+        "invalidCredentials": "Invalid email or password",
+        "emailNotConfirmed": "Please confirm your email before signing in",
+        "tooManyRequests": "Too many sign in attempts. Please try again later",
+        "userNotFound": "No account found with this email",
+        "invalidEmail": "Invalid email format",
+        "networkError": "Connection error. Please check your internet connection.",
+        "genericError": "An error occurred during sign in"
+      }
+    },
+    "register": {
+      "title": "Create Account",
+      "subtitle": "Join Xarala Solutions and create your virtual card",
+      "metaDescription": "Create your Xarala Solutions account to access our professional identification solutions and create your virtual cards.",
+      "fullNameLabel": "Full Name",
+      "fullNamePlaceholder": "Your full name",
+      "emailLabel": "Email Address",
+      "emailPlaceholder": "your@email.com",
+      "phoneLabel": "Phone",
+      "phonePlaceholder": "+221 XX XXX XX XX",
+      "companyLabel": "Company",
+      "companyPlaceholder": "Your company name",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "Your password",
+      "confirmPasswordLabel": "Confirm Password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "acceptTerms": "I accept the",
+      "termsLink": "terms of service",
+      "createAccountButton": "Create my account",
+      "creatingAccount": "Creating account...",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Sign in",
+      "success": "Account created!",
+      "checkEmail": "Check your emails to confirm your account",
+      "optional": "Optional",
+      "passwordStrength": {
+        "label": "Password strength",
+        "veryWeak": "Very weak",
+        "weak": "Weak",
+        "medium": "Medium",
+        "strong": "Strong",
+        "veryStrong": "Very strong",
+        "criteria": {
+          "length": "At least 8 characters",
+          "uppercase": "One uppercase letter",
+          "number": "One number",
+          "special": "One special character",
+          "bonus": "12+ characters (bonus)"
+        }
+      },
+      "errors": {
+        "userAlreadyExists": "An account already exists with this email",
+        "invalidEmail": "Invalid email format",
+        "weakPassword": "Password must be at least 6 characters",
+        "signupDisabled": "Signup is temporarily disabled",
+        "passwordMismatch": "Passwords do not match",
+        "termsRequired": "You must accept the terms of service",
+        "networkError": "Signup error. Please check your internet connection.",
+        "genericError": "An error occurred during account creation"
+      }
+    },
+    "errors": {
+      "invalidEmail": "Invalid email",
+      "invalidPassword": "Invalid password",
+      "invalidPhone": "Invalid phone number"
+    }
+  },
+  "cards": {
+    "title": "Virtual Cards",
+    "create": "Create card",
+    "createDescription": "Customize your professional virtual card",
+    "edit": "Edit card",
+    "delete": "Delete card",
+    "share": "Share",
+    "download": "Download",
+    "templates": {
+      "title": "Templates",
+      "classic": "Classic",
+      "modern": "Modern",
+      "elegant": "Elegant"
+    }
+  },
+  "badgeEditor": {
+    "title": "Badge Editor & Event Management",
+    "description": "Design, import and print your badges in bulk with complete event management",
+    "createEvent": "Create event",
+    "tabs": {
+      "events": "Events",
+      "design": "Design",
+      "templates": "Templates",
+      "import": "Import",
+      "print": "Print"
+    },
+    "events": {
+      "title": "My Events",
+      "subtitle": "Manage your events and their badges",
+      "empty": "No events created. Start by creating your first event.",
+      "create": "Create event",
+      "createFirst": "Create my first event",
+      "search": "Search events..."
+    },
+    "design": {
+      "title": "Badge Design",
+      "description": "Design your professional badges",
+      "startDesigning": "Start designing",
+      "openCanvas": "Open Canvas",
+      "subtitle": "Design your badges with our professional editor"
+    },
+    "templates": {
+      "browse": "Browse templates"
+    },
+    "import": {
+      "start": "Import participants"
+    },
+    "print": {
+      "manage": "Manage prints"
+    },
+    "exhibitors": {
+      "new": {
+        "title": "New Exhibitor",
+        "subtitle": "Add an exhibitor to your event",
+        "steps": {
+          "companyInfo": "Information",
+          "contactInfo": "Contact",
+          "review": "Review"
+        },
+        "stepTitles": {
+          "companyInfo": "Company Information",
+          "contactInfo": "Contact Details",
+          "review": "Verification"
+        },
+        "fields": {
+          "companyName": "Company Name",
+          "category": "Category",
+          "boothNumber": "Booth Number",
+          "description": "Description",
+          "website": "Website",
+          "contactName": "Contact Name",
+          "contactEmail": "Email",
+          "contactPhone": "Phone",
+          "status": "Status"
+        },
+        "placeholders": {
+          "companyName": "Ex: TechCorp Senegal",
+          "boothNumber": "Ex: A12",
+          "description": "Describe your company and activities...",
+          "website": "https://www.example.com",
+          "contactName": "Ex: Amadou Diallo",
+          "contactEmail": "contact@example.com",
+          "contactPhone": "+221 77 123 45 67"
+        },
+        "review": {
+          "contact": "Contact",
+          "email": "Email",
+          "phone": "Phone",
+          "booth": "Booth",
+          "website": "Website",
+          "description": "Description",
+          "note": "Please review the information above before creating the exhibitor."
+        },
+        "createButton": "Create Exhibitor",
+        "creating": "Creating...",
+        "success": "Exhibitor created successfully!"
+      },
+      "categories": {
+        "tech": "Technology",
+        "finance": "Finance",
+        "retail": "Retail",
+        "food": "Food",
+        "fashion": "Fashion",
+        "health": "Health",
+        "education": "Education",
+        "services": "Services",
+        "other": "Other"
+      },
+      "statuses": {
+        "pending": "Pending",
+        "approved": "Approved",
+        "active": "Active",
+        "rejected": "Rejected"
+      },
+      "errors": {
+        "companyNameRequired": "Company name is required",
+        "categoryRequired": "Category is required",
+        "contactNameRequired": "Contact name is required",
+        "contactEmailRequired": "Contact email is required",
+        "invalidEmail": "Invalid email",
+        "invalidUrl": "Invalid URL",
+        "validationFailed": "Validation failed",
+        "mustBeLoggedIn": "You must be logged in",
+        "organizationNotFound": "Organization not found",
+        "creationFailed": "Error creating exhibitor",
+        "unexpectedError": "Unexpected error"
+      }
+    }
+  }
+}

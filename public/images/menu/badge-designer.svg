@@ -1,0 +1,32 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="badge-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9333ea;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="200" height="200" rx="16" fill="url(#badge-gradient)"/>
+  
+  <!-- Badge Card -->
+  <rect x="50" y="60" width="100" height="80" rx="8" fill="white" opacity="0.95"/>
+  
+  <!-- Photo Placeholder -->
+  <circle cx="75" cy="90" r="15" fill="#3b82f6" opacity="0.3"/>
+  
+  <!-- Text Lines -->
+  <line x1="100" y1="80" x2="135" y2="80" stroke="#3b82f6" stroke-width="3"/>
+  <line x1="100" y1="90" x2="130" y2="90" stroke="#3b82f6" stroke-width="2" opacity="0.7"/>
+  <line x1="100" y1="100" x2="125" y2="100" stroke="#3b82f6" stroke-width="2" opacity="0.5"/>
+  
+  <!-- QR Code -->
+  <rect x="55" y="115" width="20" height="20" rx="2" fill="#3b82f6" opacity="0.5"/>
+  
+  <!-- Design Tools Icons -->
+  <circle cx="160" cy="50" r="6" fill="white" opacity="0.4"/>
+  <rect x="168" y="150" width="12" height="12" rx="2" fill="white" opacity="0.3"/>
+  
+  <!-- Sparkle -->
+  <path d="M 40 40 L 42 46 L 48 48 L 42 50 L 40 56 L 38 50 L 32 48 L 38 46 Z" fill="white" opacity="0.5"/>
+</svg>
+

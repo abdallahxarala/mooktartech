@@ -1,0 +1,717 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Une erreur est survenue",
+    "success": "Opération réussie",
+    "save": "Sauvegarder",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "create": "Créer",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "currency": "FCFA",
+    "dateFormat": "dd/MM/yyyy",
+    "timeFormat": "HH:mm",
+    "yes": "Oui",
+    "no": "Non",
+    "confirm": "Confirmer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "close": "Fermer",
+    "open": "Ouvrir",
+    "view": "Voir",
+    "hide": "Masquer",
+    "show": "Afficher",
+    "select": "Sélectionner",
+    "all": "Tous",
+    "none": "Aucun",
+    "required": "Requis",
+    "optional": "Optionnel",
+    "address": {
+      "street": "Rue",
+      "city": "Ville",
+      "region": "Région",
+      "country": "Pays",
+      "postalCode": "Code postal"
+    }
+  },
+  "header": {
+    "nav": {
+      "home": "Accueil",
+      "products": "Produits",
+      "cardEditor": "Éditeur de cartes",
+      "about": "À propos"
+    },
+    "auth": {
+      "login": "Connexion",
+      "signup": "Inscription"
+    },
+    "home": "Accueil",
+    "products": "Produits",
+    "cardEditor": "Éditeur de cartes",
+    "about": "À propos",
+    "login": "Connexion",
+    "signup": "Inscription",
+    "cart": "Panier",
+    "language": "Langue",
+    "items": "articles",
+    "profile": "Profil",
+    "orders": "Mes commandes",
+    "myCards": "Mes cartes",
+    "logout": "Déconnexion"
+  },
+  "footer": {
+    "about": "À propos de nous",
+    "quickLinks": "Liens rapides",
+    "contact": "Contact",
+    "rights": "Tous droits réservés",
+    "company": "Xarala Solutions",
+    "description": "Votre partenaire de confiance pour les solutions d'identification professionnelles au Sénégal. Nous créons des cartes PVC, NFC et QR codes sur mesure pour votre entreprise.",
+    "address": "Dakar, Sénégal",
+    "phone": "+221 XX XXX XX XX",
+    "email": "contact@xarala.sn",
+    "hours": "Lun-Ven : 8h-18h",
+    "followUs": "Suivez-nous",
+    "allRightsReserved": "Tous droits réservés",
+    "links": {
+      "about": "À propos",
+      "contact": "Contact",
+      "privacy": "Confidentialité",
+      "terms": "Conditions d'utilisation",
+      "cookies": "Cookies",
+      "support": "Support"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "products": "Produits",
+    "cart": "Panier",
+    "checkout": "Commande",
+    "dashboard": "Tableau de bord",
+    "profile": "Profil",
+    "settings": "Paramètres",
+    "logout": "Déconnexion",
+    "login": "Connexion",
+    "about": "À propos",
+    "language": "Langue",
+    "items": "articles",
+    "orders": "Mes commandes",
+    "myCards": "Mes cartes",
+    "register": "Inscription",
+    "contact": "Contact",
+    "help": "Aide",
+    "support": "Support"
+  },
+  "hero": {
+    "title": "Votre partenaire en solutions d'identification professionnelle",
+    "subtitle": "Cartes PVC, imprimantes professionnelles et cartes virtuelles NFC pour votre entreprise au Sénégal",
+    "description": "Solutions d'identification professionnelles pour les entreprises du Sénégal",
+    "ctaPrimary": "Découvrir nos produits",
+    "ctaSecondary": "Créer ma carte virtuelle",
+    "cta": "Découvrir nos produits",
+    "learnMore": "En savoir plus"
+  },
+  "featuredProducts": {
+    "title": "Nos produits phares",
+    "subtitle": "Solutions complètes pour vos besoins d'identification",
+    "pvcCards": {
+      "title": "Cartes PVC",
+      "description": "Badges, cartes à puce, cartes magnétiques de qualité professionnelle",
+      "price": "À partir de 500 XOF",
+      "button": "Voir les cartes"
+    },
+    "printers": {
+      "title": "Imprimantes professionnelles",
+      "description": "Imprimantes Evolis, Zebra, Fargo pour impression de cartes",
+      "price": "À partir de 450,000 XOF",
+      "button": "Voir les imprimantes"
+    },
+    "nfcCards": {
+      "title": "Cartes virtuelles NFC",
+      "description": "Cartes de visite digitales personnalisables et partageables",
+      "price": "Gratuit (version de base)",
+      "button": "Créer ma carte"
+    },
+    "popular": "Populaire",
+    "cta": {
+      "title": "Besoin d'une solution personnalisée ?",
+      "description": "Notre équipe d'experts peut vous aider à choisir la solution d'identification parfaite pour votre entreprise.",
+      "contact": "Nous contacter",
+      "allProducts": "Voir tous les produits"
+    }
+  },
+  "advantages": {
+    "title": "Pourquoi choisir Xarala Solutions ?",
+    "subtitle": "Des avantages concrets pour votre entreprise",
+    "fastDelivery": {
+      "title": "Livraison rapide",
+      "description": "Livraison à Dakar en 24-48h, partout au Sénégal en 3-5 jours"
+    },
+    "securePayment": {
+      "title": "Paiement sécurisé",
+      "description": "Wave, Orange Money, Free Money et paiement à la livraison"
+    },
+    "support24": {
+      "title": "Support réactif",
+      "description": "Notre équipe vous accompagne du lundi au samedi"
+    },
+    "qualityGuaranteed": {
+      "title": "Qualité certifiée",
+      "description": "Produits authentiques avec garantie constructeur"
+    },
+    "cta": {
+      "title": "Prêt à commencer ?",
+      "description": "Découvrez nos solutions d'identification professionnelle et transformez votre entreprise.",
+      "button": "Découvrir nos solutions",
+      "learnMore": "En savoir plus"
+    }
+  },
+  "finalCta": {
+    "title": "Prêt à commencer ?",
+    "description": "Créez votre carte virtuelle en moins de 5 minutes, gratuitement.",
+    "primaryButton": "Créer ma carte virtuelle maintenant",
+    "secondaryButton": "Explorer le catalogue"
+  },
+  "products": {
+    "title": "Nos Produits",
+    "subtitle": "Découvrez notre gamme complète de solutions d'identification",
+    "metaDescription": "Découvrez notre gamme complète de solutions d'identification professionnelle : cartes PVC, imprimantes, accessoires et cartes virtuelles NFC pour votre entreprise au Sénégal.",
+    "loading": "Chargement des produits...",
+    "results": "{count} produit(s) trouvé(s) sur {total}",
+    "empty": {
+      "title": "Aucun produit trouvé",
+      "description": "Aucun produit ne correspond à vos critères de recherche. Essayez de modifier vos filtres.",
+      "resetFilters": "Réinitialiser les filtres"
+    },
+    "error": {
+      "title": "Erreur de chargement",
+      "retry": "Réessayer"
+    },
+    "filters": {
+      "title": "Filtres",
+      "reset": "Réinitialiser",
+      "categories": {
+        "title": "Catégories",
+        "all": "Toutes les catégories",
+        "pvcCards": "Cartes PVC",
+        "printers": "Imprimantes",
+        "accessories": "Accessoires",
+        "nfcCards": "Cartes virtuelles NFC"
+      },
+      "price": {
+        "title": "Prix"
+      },
+      "search": {
+        "title": "Recherche",
+        "placeholder": "Rechercher un produit..."
+      }
+    },
+    "sort": {
+      "title": "Trier par",
+      "nameAsc": "Nom A-Z",
+      "nameDesc": "Nom Z-A",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant"
+    },
+    "pagination": {
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "detail": {
+      "title": "Détails du produit",
+      "breadcrumb": {
+        "home": "Accueil",
+        "products": "Produits",
+        "category": "Catégorie"
+      },
+      "gallery": {
+        "previous": "Image précédente",
+        "next": "Image suivante",
+        "image": "Image {index} de {total}"
+      },
+      "stock": {
+        "inStock": "En stock ({count} disponibles)",
+        "lowStock": "Stock limité ({count} restants)",
+        "outOfStock": "Rupture de stock"
+      },
+      "quantity": {
+        "label": "Quantité :",
+        "min": "Quantité minimale : 1",
+        "max": "Quantité maximale : {max}"
+      },
+      "actions": {
+        "addToCart": "Ajouter au panier",
+        "addToFavorites": "Ajouter aux favoris",
+        "removeFromFavorites": "Retirer des favoris",
+        "share": "Partager",
+        "shareOn": "Partager sur {platform}",
+        "copyLink": "Copier le lien",
+        "linkCopied": "Lien copié !"
+      },
+      "specifications": {
+        "title": "Spécifications techniques",
+        "characteristic": "Caractéristique",
+        "value": "Valeur"
+      },
+      "similar": {
+        "title": "Produits similaires",
+        "viewAll": "Voir tous les produits"
+      },
+      "notFound": {
+        "title": "Produit non trouvé",
+        "description": "Le produit demandé n'existe pas ou n'est plus disponible.",
+        "backToProducts": "Retour aux produits"
+      }
+    },
+    "addToCart": "Ajouter au panier",
+    "outOfStock": "Rupture de stock",
+    "inStock": "En stock",
+    "onOrder": "Sur commande",
+    "quantity": "Quantité",
+    "price": "Prix",
+    "description": "Description",
+    "specifications": "Spécifications",
+    "reviews": "Avis",
+    "related": "Produits similaires",
+    "categories": {
+      "all": "Tous les produits",
+      "cards": "Cartes virtuelles",
+      "qr": "Codes QR",
+      "nfc": "Technologie NFC",
+      "printers": "Imprimantes",
+      "pvc": "Cartes PVC"
+    },
+    "filters": {
+      "title": "Filtres",
+      "categories": "Catégories",
+      "price": "Prix",
+      "availability": "Disponibilité",
+      "brand": "Marque",
+      "rating": "Note"
+    },
+    "sort": {
+      "title": "Trier par",
+      "newest": "Plus récents",
+      "priceAsc": "Prix croissant",
+      "priceDesc": "Prix décroissant",
+      "popularity": "Popularité",
+      "rating": "Note"
+    }
+  },
+  "cart": {
+    "title": "Votre Panier",
+    "empty": "Votre panier est vide",
+    "continueShopping": "Continuer vos achats",
+    "checkout": "Procéder au paiement",
+    "items": "articles",
+    "item": "article",
+    "summary": {
+      "title": "Résumé",
+      "subtotal": "Sous-total",
+      "shipping": "Livraison",
+      "tax": "TVA (18%)",
+      "total": "Total",
+      "discount": "Remise"
+    },
+    "shipping": {
+      "dakar": "Dakar (2000 FCFA)",
+      "regions": "Autres régions (5000 FCFA)",
+      "time": "Délai de livraison: 24-48h",
+      "free": "Livraison gratuite"
+    },
+    "actions": {
+      "remove": "Retirer",
+      "update": "Mettre à jour",
+      "clear": "Vider le panier",
+      "save": "Sauvegarder pour plus tard"
+    }
+  },
+  "checkout": {
+    "title": "Finaliser votre commande",
+    "steps": {
+      "information": "Informations",
+      "shipping": "Livraison",
+      "payment": "Paiement",
+      "confirmation": "Confirmation"
+    },
+    "information": {
+      "title": "Informations de contact",
+      "email": "Email",
+      "phone": "Téléphone",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "company": "Entreprise"
+    },
+    "shipping": {
+      "title": "Adresse de livraison",
+      "address": "Adresse",
+      "city": "Ville",
+      "region": "Région",
+      "postalCode": "Code postal",
+      "method": "Méthode de livraison"
+    },
+    "payment": {
+      "title": "Méthode de paiement",
+      "methods": {
+        "card": "Carte bancaire",
+        "mobile": "Mobile Money",
+        "bank": "Virement bancaire",
+        "cash": "Paiement à la livraison"
+      },
+      "cardNumber": "Numéro de carte",
+      "expiry": "Date d'expiration",
+      "cvv": "CVV",
+      "nameOnCard": "Nom sur la carte"
+    },
+    "confirmation": {
+      "title": "Confirmation de commande",
+      "orderNumber": "Numéro de commande",
+      "estimatedDelivery": "Livraison estimée",
+      "emailSent": "Un email de confirmation a été envoyé"
+    }
+  },
+  "auth": {
+    "signIn": "Connexion",
+    "signUp": "Inscription",
+    "email": "Email",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "phone": "Téléphone",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "company": "Entreprise",
+    "forgotPassword": "Mot de passe oublié ?",
+    "noAccount": "Pas encore de compte ?",
+    "hasAccount": "Déjà un compte ?",
+    "resetPassword": "Réinitialiser le mot de passe",
+    "sendResetLink": "Envoyer le lien de réinitialisation",
+    "backToLogin": "Retour à la connexion",
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Accédez à votre espace Xarala Solutions",
+      "metaDescription": "Connectez-vous à votre compte Xarala Solutions pour accéder à vos cartes virtuelles et gérer vos commandes.",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "votre@email.com",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "Votre mot de passe",
+      "rememberMe": "Se souvenir de moi",
+      "forgotPassword": "Mot de passe oublié ?",
+      "signInButton": "Se connecter",
+      "signingIn": "Connexion en cours...",
+      "noAccount": "Pas encore de compte ?",
+      "signUpLink": "Inscrivez-vous",
+      "success": "Connexion réussie !",
+      "welcome": "Bienvenue sur Xarala Solutions",
+      "errors": {
+        "invalidCredentials": "Email ou mot de passe incorrect",
+        "emailNotConfirmed": "Veuillez confirmer votre email avant de vous connecter",
+        "tooManyRequests": "Trop de tentatives de connexion. Veuillez réessayer plus tard",
+        "userNotFound": "Aucun compte trouvé avec cet email",
+        "invalidEmail": "Format d'email invalide",
+        "networkError": "Erreur de connexion. Vérifiez votre connexion internet.",
+        "genericError": "Une erreur est survenue lors de la connexion"
+      }
+    },
+    "register": {
+      "title": "Créer un compte",
+      "subtitle": "Rejoignez Xarala Solutions et créez votre carte virtuelle",
+      "metaDescription": "Créez votre compte Xarala Solutions pour accéder à nos solutions d'identification professionnelle et créer vos cartes virtuelles.",
+      "fullNameLabel": "Nom complet",
+      "fullNamePlaceholder": "Votre nom complet",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "votre@email.com",
+      "phoneLabel": "Téléphone",
+      "phonePlaceholder": "+221 XX XXX XX XX",
+      "companyLabel": "Entreprise",
+      "companyPlaceholder": "Nom de votre entreprise",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "Votre mot de passe",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "confirmPasswordPlaceholder": "Confirmez votre mot de passe",
+      "acceptTerms": "J'accepte les",
+      "termsLink": "conditions d'utilisation",
+      "createAccountButton": "Créer mon compte",
+      "creatingAccount": "Création du compte...",
+      "hasAccount": "Déjà un compte ?",
+      "loginLink": "Connectez-vous",
+      "success": "Compte créé !",
+      "checkEmail": "Vérifiez vos emails pour confirmer votre compte",
+      "optional": "Optionnel",
+      "passwordStrength": {
+        "label": "Force du mot de passe",
+        "veryWeak": "Très faible",
+        "weak": "Faible",
+        "medium": "Moyen",
+        "strong": "Fort",
+        "veryStrong": "Très fort",
+        "criteria": {
+          "length": "Au moins 8 caractères",
+          "uppercase": "Une majuscule",
+          "number": "Un chiffre",
+          "special": "Un caractère spécial",
+          "bonus": "12+ caractères (bonus)"
+        }
+      },
+      "errors": {
+        "userAlreadyExists": "Un compte existe déjà avec cet email",
+        "invalidEmail": "Format d'email invalide",
+        "weakPassword": "Le mot de passe doit contenir au moins 6 caractères",
+        "signupDisabled": "L'inscription est temporairement désactivée",
+        "passwordMismatch": "Les mots de passe ne correspondent pas",
+        "termsRequired": "Vous devez accepter les conditions d'utilisation",
+        "networkError": "Erreur d'inscription. Vérifiez votre connexion internet.",
+        "genericError": "Une erreur est survenue lors de la création du compte"
+      }
+    },
+    "errors": {
+      "invalidEmail": "Email invalide",
+      "invalidPassword": "Mot de passe invalide",
+      "invalidPhone": "Numéro de téléphone invalide",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "emailRequired": "L'email est requis",
+      "passwordRequired": "Le mot de passe est requis",
+      "weakPassword": "Le mot de passe doit contenir au moins 8 caractères"
+    }
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "welcome": "Bienvenue",
+    "overview": "Aperçu",
+    "recentOrders": "Commandes récentes",
+    "statistics": "Statistiques",
+    "quickActions": "Actions rapides",
+    "notifications": "Notifications",
+    "profile": "Profil",
+    "orders": "Commandes",
+    "cards": "Mes cartes",
+    "analytics": "Analytiques"
+  },
+  "cards": {
+    "title": "Cartes Virtuelles",
+    "create": "Créer une carte",
+    "createDescription": "Personnalisez votre carte professionnelle virtuelle",
+    "edit": "Modifier la carte",
+    "delete": "Supprimer la carte",
+    "share": "Partager",
+    "download": "Télécharger",
+    "preview": "Aperçu",
+    "duplicate": "Dupliquer",
+    "myCards": "Mes cartes",
+    "templates": {
+      "title": "Modèles",
+      "classic": "Classique",
+      "modern": "Moderne",
+      "elegant": "Élégant",
+      "corporate": "Entreprise",
+      "creative": "Créatif"
+    },
+    "fields": {
+      "name": "Nom",
+      "title": "Titre",
+      "company": "Entreprise",
+      "email": "Email",
+      "phone": "Téléphone",
+      "website": "Site web",
+      "address": "Adresse",
+      "logo": "Logo",
+      "background": "Arrière-plan",
+      "color": "Couleur"
+    }
+  },
+  "qr": {
+    "title": "Générateur de codes QR",
+    "create": "Créer un code QR",
+    "text": "Texte",
+    "url": "URL",
+    "email": "Email",
+    "phone": "Téléphone",
+    "wifi": "WiFi",
+    "size": "Taille",
+    "color": "Couleur",
+    "background": "Arrière-plan",
+    "download": "Télécharger",
+    "preview": "Aperçu"
+  },
+  "nfc": {
+    "title": "Technologie NFC",
+    "description": "Gérez vos tags NFC",
+    "create": "Créer un tag",
+    "read": "Lire un tag",
+    "write": "Écrire sur un tag",
+    "format": "Formater un tag"
+  },
+  "analytics": {
+    "title": "Analytiques",
+    "overview": "Aperçu",
+    "visitors": "Visiteurs",
+    "pageViews": "Pages vues",
+    "conversions": "Conversions",
+    "revenue": "Revenus",
+    "topPages": "Pages les plus visitées",
+    "trafficSources": "Sources de trafic"
+  },
+  "admin": {
+    "title": "Administration",
+    "users": "Utilisateurs",
+    "orders": "Commandes",
+    "products": "Produits",
+    "analytics": "Analytiques",
+    "settings": "Paramètres",
+    "dashboard": "Tableau de bord"
+  },
+  "footer": {
+    "quickLinks": {
+      "title": "Liens rapides"
+    },
+    "links": {
+      "home": "Accueil",
+      "products": "Produits",
+      "cardEditor": "Éditeur de cartes",
+      "blog": "Blog",
+      "contact": "Contact"
+    },
+    "contact": {
+      "title": "Contact",
+      "address": "Dakar, Sénégal",
+      "region": "Afrique de l'Ouest",
+      "email": "contact@xarala.sn",
+      "phone": "+221 33 XXX XX XX"
+    },
+    "legal": {
+      "terms": "Conditions d'utilisation",
+      "privacy": "Politique de confidentialité",
+      "cookies": "Gestion des cookies"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Restez informé de nos dernières actualités",
+      "placeholder": "Votre email",
+      "subscribe": "S'abonner",
+      "disclaimer": "Nous respectons votre vie privée"
+    },
+    "description": "Votre partenaire de confiance pour toutes vos solutions d'identification professionnelle au Sénégal."
+  },
+  "badgeEditor": {
+    "title": "Éditeur de Badges & Gestion d'Événements",
+    "description": "Concevez, importez et imprimez vos badges en série avec gestion complète des événements",
+    "createEvent": "Créer un événement",
+    "tabs": {
+      "events": "Événements",
+      "design": "Design",
+      "templates": "Templates",
+      "import": "Import",
+      "print": "Impression"
+    },
+    "events": {
+      "title": "Mes Événements",
+      "subtitle": "Gérez vos événements et leurs badges",
+      "empty": "Aucun événement créé. Commencez par créer votre premier événement.",
+      "create": "Créer un événement",
+      "createFirst": "Créer mon premier événement",
+      "search": "Rechercher un événement..."
+    },
+    "design": {
+      "title": "Design de Badges",
+      "description": "Concevez vos badges professionnels",
+      "startDesigning": "Commencer le design",
+      "openCanvas": "Ouvrir le Canvas de Design",
+      "subtitle": "Concevez vos badges avec notre éditeur professionnel"
+    },
+    "templates": {
+      "browse": "Parcourir les templates"
+    },
+    "import": {
+      "start": "Importer des participants"
+    },
+    "print": {
+      "manage": "Gérer les impressions"
+    },
+    "exhibitors": {
+      "new": {
+        "title": "Nouvel Exposant",
+        "subtitle": "Ajoutez un exposant à votre événement",
+        "steps": {
+          "companyInfo": "Informations",
+          "contactInfo": "Contact",
+          "review": "Récapitulatif"
+        },
+        "stepTitles": {
+          "companyInfo": "Informations de l'entreprise",
+          "contactInfo": "Coordonnées du contact",
+          "review": "Vérification"
+        },
+        "fields": {
+          "companyName": "Nom de l'entreprise",
+          "category": "Catégorie",
+          "boothNumber": "Numéro de stand",
+          "description": "Description",
+          "website": "Site web",
+          "contactName": "Nom du contact",
+          "contactEmail": "Email",
+          "contactPhone": "Téléphone",
+          "status": "Statut"
+        },
+        "placeholders": {
+          "companyName": "Ex: TechCorp Sénégal",
+          "boothNumber": "Ex: A12",
+          "description": "Décrivez votre entreprise et vos activités...",
+          "website": "https://www.exemple.com",
+          "contactName": "Ex: Amadou Diallo",
+          "contactEmail": "contact@exemple.com",
+          "contactPhone": "+221 77 123 45 67"
+        },
+        "review": {
+          "contact": "Contact",
+          "email": "Email",
+          "phone": "Téléphone",
+          "booth": "Stand",
+          "website": "Site web",
+          "description": "Description",
+          "note": "Vérifiez les informations ci-dessus avant de créer l'exposant."
+        },
+        "createButton": "Créer l'exposant",
+        "creating": "Création...",
+        "success": "Exposant créé avec succès !"
+      },
+      "categories": {
+        "tech": "Technologie",
+        "finance": "Finance",
+        "retail": "Commerce",
+        "food": "Alimentation",
+        "fashion": "Mode",
+        "health": "Santé",
+        "education": "Éducation",
+        "services": "Services",
+        "other": "Autre"
+      },
+      "statuses": {
+        "pending": "En attente",
+        "approved": "Approuvé",
+        "active": "Actif",
+        "rejected": "Rejeté"
+      },
+      "errors": {
+        "companyNameRequired": "Le nom de l'entreprise est requis",
+        "categoryRequired": "La catégorie est requise",
+        "contactNameRequired": "Le nom du contact est requis",
+        "contactEmailRequired": "L'email du contact est requis",
+        "invalidEmail": "Email invalide",
+        "invalidUrl": "URL invalide",
+        "validationFailed": "La validation a échoué",
+        "mustBeLoggedIn": "Vous devez être connecté",
+        "organizationNotFound": "Organisation introuvable",
+        "creationFailed": "Erreur lors de la création de l'exposant",
+        "unexpectedError": "Erreur inattendue"
+      }
+    }
+  }
+}

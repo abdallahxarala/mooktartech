@@ -1,0 +1,473 @@
+{
+  "common": {
+    "loading": "Di xaar...",
+    "error": "Jafe jafe am na",
+    "success": "Baax na",
+    "save": "Denc",
+    "cancel": "Bayyi",
+    "delete": "Far",
+    "edit": "Soppi",
+    "create": "Sos",
+    "search": "Seet",
+    "filter": "Tann",
+    "sort": "Topp",
+    "currency": "FCFA",
+    "dateFormat": "dd/MM/yyyy",
+    "timeFormat": "HH:mm",
+    "address": {
+      "street": "Mbedd",
+      "city": "Dëkk",
+      "region": "Gox",
+      "country": "Réew"
+    }
+  },
+  "header": {
+    "home": "Dalal",
+    "products": "Jumtukaay yi",
+    "cardEditor": "Soppi kàrt",
+    "about": "Ci mbir",
+    "login": "Seet",
+    "signup": "Jëkkal",
+    "cart": "Panier",
+    "language": "Kàllaama",
+    "items": "jëf",
+    "profile": "Sama profil",
+    "orders": "Sama jënd",
+    "myCards": "Sama kàrt",
+    "logout": "Génn"
+  },
+  "footer": {
+    "about": "Ci mbir nu",
+    "quickLinks": "Lien yi",
+    "contact": "Jëndal",
+    "rights": "Xam-xam yépp ci moom",
+    "company": "Xarala Solutions",
+    "description": "Sunu jëfandikukat bu gëm ci jëfandikukaay yu yëngu ci Senegaal. Mën nanu sos kart PVC, NFC ak QR code ci sa koom-koom.",
+    "address": "Dakar, Senegaal",
+    "phone": "+221 XX XXX XX XX",
+    "email": "contact@xarala.sn",
+    "hours": "Altine-Jumaa : 8h-18h",
+    "followUs": "Toppal nu",
+    "allRightsReserved": "Xam-xam yépp ci moom",
+    "links": {
+      "about": "Ci mbir",
+      "contact": "Jëndal",
+      "privacy": "Sutura",
+      "terms": "Tëral yi",
+      "cookies": "Cookies",
+      "support": "Dimbali"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "linkedin": "LinkedIn",
+      "instagram": "Instagram"
+    }
+  },
+  "navigation": {
+    "home": "Dalal",
+    "products": "Jumtukaay yi",
+    "cart": "Panier",
+    "checkout": "Fey",
+    "dashboard": "Tablo",
+    "profile": "Sama profil",
+    "settings": "Paramètre yi",
+    "logout": "Génn",
+    "login": "Seet",
+    "about": "Ci mbir",
+    "language": "Kàllaama",
+    "items": "jëf",
+    "orders": "Sama jënd",
+    "myCards": "Sama kàrt",
+    "register": "Jëkkal"
+  },
+  "hero": {
+    "title": "Sa jëfandikukat ci jëfandikukaay yu yëngu",
+    "subtitle": "Kart PVC, printer yu yëngu ak kart NFC ci sa koom-koom ci Senegaal",
+    "description": "Jëfandikukaay yu yëngu ci koom-koom yi ci Senegaal",
+    "ctaPrimary": "Gis sunu jumtukaay",
+    "ctaSecondary": "Sos sama kart",
+    "cta": "Gis sunu jumtukaay",
+    "learnMore": "Xamal ci"
+  },
+  "featuredProducts": {
+    "title": "Sunu jumtukaay yu mag",
+    "subtitle": "Jëfandikukaay yu fees ak ci sa soxla yu yëngu",
+    "pvcCards": {
+      "title": "Kart PVC",
+      "description": "Badge, kart ak puce, kart magnétique yu yëngu",
+      "price": "Ci 500 XOF",
+      "button": "Gis kart yi"
+    },
+    "printers": {
+      "title": "Printer yu yëngu",
+      "description": "Printer Evolis, Zebra, Fargo ngir def kart",
+      "price": "Ci 450,000 XOF",
+      "button": "Gis printer yi"
+    },
+    "nfcCards": {
+      "title": "Kart NFC yu wuute",
+      "description": "Kart de visite digital yu defar ak seddoo",
+      "price": "Gratuit (version de base)",
+      "button": "Sos sama kart"
+    },
+    "popular": "Yu mag",
+    "cta": {
+      "title": "Sooxal jëfandikukaay wu defar?",
+      "description": "Sunu équipe d'experts mën na la dimbali ngir tànn jëfandikukaay bu rafet ci sa koom-koom.",
+      "contact": "Jëndal nu",
+      "allProducts": "Gis jumtukaay yépp"
+    }
+  },
+  "advantages": {
+    "title": "Lu tax Xarala Solutions?",
+    "subtitle": "Jëf yu fees ak ci sa koom-koom",
+    "fastDelivery": {
+      "title": "Yebbi ci yoon",
+      "description": "Yebbi ci Dakar ci 24-48h, fenn ci Senegaal ci 3-5 fan"
+    },
+    "securePayment": {
+      "title": "Fey bu wër",
+      "description": "Wave, Orange Money, Free Money ak fey ci yebbi"
+    },
+    "support24": {
+      "title": "Dimbali ci yoon",
+      "description": "Sunu équipe dina la dimbali ci Altine ba Jumaa"
+    },
+    "qualityGuaranteed": {
+      "title": "Yëngu bu wër",
+      "description": "Jumtukaay yu wër ak garantie ci constructeur"
+    },
+    "cta": {
+      "title": "Dégg nga ngir jëkk?",
+      "description": "Gis sunu jëfandikukaay yu yëngu ak soppi sa koom-koom.",
+      "button": "Gis sunu jëfandikukaay",
+      "learnMore": "Xamal ci"
+    }
+  },
+  "finalCta": {
+    "title": "Dégg nga ngir jëkk?",
+    "description": "Sos sa kart wuute ci 5 minit, ci yoon.",
+    "primaryButton": "Sos sama kart wuute léegi",
+    "secondaryButton": "Gis jumtukaay yi"
+  },
+  "products": {
+    "title": "Sunu Jumtukaay",
+    "subtitle": "Gis sunu jumtukaay yi",
+    "metaDescription": "Gis sunu jumtukaay yu fees ci yëngu yu yëngu : kart PVC, imprimante, jëfandikukaay ak kart wuute NFC ci sa koom-koom ci Senegaal.",
+    "loading": "Jëndal jumtukaay yi...",
+    "results": "{count} jumtukaay yu {total} ci",
+    "empty": {
+      "title": "Amul jumtukaay",
+      "description": "Amul jumtukaay bu mel ak sa seet. Jëkkal soppi sa filtres.",
+      "resetFilters": "Soppi filtres yi"
+    },
+    "error": {
+      "title": "Jëf bi baaxul",
+      "retry": "Jëkkal"
+    },
+    "filters": {
+      "title": "Filtres",
+      "reset": "Soppi",
+      "categories": {
+        "title": "Jëf yi",
+        "all": "Jëf yépp",
+        "pvcCards": "Kart PVC",
+        "printers": "Imprimante",
+        "accessories": "Jëfandikukaay",
+        "nfcCards": "Kart wuute NFC"
+      },
+      "price": {
+        "title": "Nataal"
+      },
+      "search": {
+        "title": "Seet",
+        "placeholder": "Seet jumtukaay..."
+      }
+    },
+    "sort": {
+      "title": "Tànn ci",
+      "nameAsc": "Tur A-Z",
+      "nameDesc": "Tur Z-A",
+      "priceAsc": "Nataal ci kaw",
+      "priceDesc": "Nataal ci suuf"
+    },
+    "pagination": {
+      "previous": "Gannaaw",
+      "next": "Kanam"
+    },
+    "detail": {
+      "title": "Jëfandikukaay bi",
+      "breadcrumb": {
+        "home": "Kër",
+        "products": "Jumtukaay",
+        "category": "Jëf"
+      },
+      "gallery": {
+        "previous": "Won wi gannaaw",
+        "next": "Won wi kanam",
+        "image": "Won {index} ci {total}"
+      },
+      "stock": {
+        "inStock": "Am na ({count} nekk)",
+        "lowStock": "Am na ci yoon ({count} nekk)",
+        "outOfStock": "Jeexna"
+      },
+      "quantity": {
+        "label": "Jafe-jafe :",
+        "min": "Jafe-jafe bu gën a tànn : 1",
+        "max": "Jafe-jafe bu gën a màgg : {max}"
+      },
+      "actions": {
+        "addToCart": "Dugal ci panier",
+        "addToFavorites": "Dugal ci favoris",
+        "removeFromFavorites": "Jox ci favoris",
+        "share": "Jëfandik",
+        "shareOn": "Jëfandik ci {platform}",
+        "copyLink": "Jox link bi",
+        "linkCopied": "Link bi jox na !"
+      },
+      "specifications": {
+        "title": "Jëfandikukaay yu yëngu",
+        "characteristic": "Jëfandikukaay",
+        "value": "Nataal"
+      },
+      "similar": {
+        "title": "Jumtukaay yu mel",
+        "viewAll": "Gis jumtukaay yépp"
+      },
+      "notFound": {
+        "title": "Amul jumtukaay",
+        "description": "Jumtukaay bi nga laaj amul mbaa nekk na ci yoon.",
+        "backToProducts": "Dex ci jumtukaay yi"
+      }
+    },
+    "addToCart": "Dugal ci panier",
+    "outOfStock": "Jeexna",
+    "inStock": "Am na",
+    "onOrder": "War nga ko commande",
+    "filters": {
+      "title": "Tann",
+      "categories": "Xeeti jumtukaay",
+      "price": "Njëg",
+      "availability": "Li am"
+    },
+    "sort": {
+      "title": "Topp",
+      "newest": "Li gëna bees",
+      "priceAsc": "Njëg bu gëna yées",
+      "priceDesc": "Njëg bu gëna baree",
+      "popularity": "Li ñu gëna bëgg"
+    }
+  },
+  "cart": {
+    "title": "Sa Panier",
+    "empty": "Sa panier ñàkk na dara",
+    "continueShopping": "Wéy di jënd",
+    "checkout": "Fey",
+    "summary": {
+      "title": "Mbind",
+      "subtotal": "Li nga war a fey",
+      "shipping": "Yobal",
+      "tax": "TVA (18%)",
+      "total": "Lépp"
+    },
+    "shipping": {
+      "dakar": "Dakar (2000 FCFA)",
+      "regions": "Yeneen gox yi (5000 FCFA)",
+      "time": "Di ñëw ci: 24-48h"
+    },
+    "actions": {
+      "remove": "Jële",
+      "update": "Yeesal",
+      "clear": "Fàcc panier bi"
+    }
+  },
+  "auth": {
+    "signIn": "Dugg",
+    "signUp": "Bindal",
+    "email": "Email",
+    "password": "Baatu",
+    "phone": "Téléphone",
+    "forgotPassword": "Fàtte nga sa baatu?",
+    "noAccount": "Amoo compte?",
+    "hasAccount": "Am nga compte?",
+    "login": {
+      "title": "Dugg",
+      "subtitle": "Jëndal sa bopp ci Xarala Solutions",
+      "metaDescription": "Dugg ci sa compte Xarala Solutions ngir jëndal sa kart yi ak soppi sa commande yi.",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "sa@email.com",
+      "passwordLabel": "Baatu",
+      "passwordPlaceholder": "Sa baatu",
+      "rememberMe": "Fàttal ma",
+      "forgotPassword": "Fàtte nga sa baatu?",
+      "signInButton": "Dugg",
+      "signingIn": "Duggi...",
+      "noAccount": "Amoo compte?",
+      "signUpLink": "Bindal",
+      "success": "Dugg bi rafet!",
+      "welcome": "Bienvenue ci Xarala Solutions",
+      "errors": {
+        "invalidCredentials": "Email walla baatu bi baaxul",
+        "emailNotConfirmed": "Tànn sa email ngir dugg",
+        "tooManyRequests": "Loolu lañu jëkk. Jëkkal ci kanam",
+        "userNotFound": "Amul compte ak email bii",
+        "invalidEmail": "Email bi baaxul",
+        "networkError": "Jëfandikukaay bi baaxul. Seetal sa connexion internet.",
+        "genericError": "Am na jëf bi ñu def ci duggi"
+      }
+    },
+    "register": {
+      "title": "Sos compte",
+      "subtitle": "Dugg ci Xarala Solutions ak sos sa kart wuute",
+      "metaDescription": "Sos sa compte Xarala Solutions ngir jëndal sunu jëfandikukaay yu yëngu ak sos sa kart yi.",
+      "fullNameLabel": "Tur bu fees",
+      "fullNamePlaceholder": "Sa tur bu fees",
+      "emailLabel": "Adresse email",
+      "emailPlaceholder": "sa@email.com",
+      "phoneLabel": "Téléphone",
+      "phonePlaceholder": "+221 XX XXX XX XX",
+      "companyLabel": "Koom-koom",
+      "companyPlaceholder": "Tur sa koom-koom",
+      "passwordLabel": "Baatu",
+      "passwordPlaceholder": "Sa baatu",
+      "confirmPasswordLabel": "Tànn baatu",
+      "confirmPasswordPlaceholder": "Tànn sa baatu",
+      "acceptTerms": "Damaa amal",
+      "termsLink": "jëfandikukaay yi",
+      "createAccountButton": "Sos sama compte",
+      "creatingAccount": "Sosu compte...",
+      "hasAccount": "Am nga compte?",
+      "loginLink": "Dugg",
+      "success": "Compte bi sos!",
+      "checkEmail": "Seetal sa email ngir tànn sa compte",
+      "optional": "Mën na",
+      "passwordStrength": {
+        "label": "Doole baatu",
+        "veryWeak": "Doole bu tuuti",
+        "weak": "Doole bu tuuti",
+        "medium": "Doole bu mag",
+        "strong": "Doole bu mag",
+        "veryStrong": "Doole bu mag lool",
+        "criteria": {
+          "length": "Ci kaw 8 xaraf",
+          "uppercase": "Benn xaraf bu mag",
+          "number": "Benn lim",
+          "special": "Benn xaraf bu yees",
+          "bonus": "12+ xaraf (bonus)"
+        }
+      },
+      "errors": {
+        "userAlreadyExists": "Am na compte ak email bii",
+        "invalidEmail": "Email bi baaxul",
+        "weakPassword": "Baatu bi war na am ci kaw 6 xaraf",
+        "signupDisabled": "Sosu compte bi ñu jàpp ci kanam",
+        "passwordMismatch": "Baatu yi du mel",
+        "termsRequired": "War nga amal jëfandikukaay yi",
+        "networkError": "Jëf bi baaxul. Seetal sa connexion internet.",
+        "genericError": "Am na jëf bi ñu def ci sosu compte"
+      }
+    },
+    "errors": {
+      "invalidEmail": "Email bi baaxul",
+      "invalidPassword": "Baatu bi baaxul",
+      "invalidPhone": "Numéro téléphone bi baaxul"
+    }
+  },
+  "cards": {
+    "title": "Kart yi",
+    "create": "Sos kart",
+    "createDescription": "Defar sa kart",
+    "edit": "Soppi kart",
+    "delete": "Far kart",
+    "share": "Séddoo",
+    "download": "Yebbi",
+    "templates": {
+      "title": "Royuwaay yi",
+      "classic": "Bu yàgg",
+      "modern": "Bu bees",
+      "elegant": "Bu rafet"
+    }
+  },
+  "badgeEditor": {
+    "exhibitors": {
+      "new": {
+        "title": "Jëfandikukat bu bees",
+        "subtitle": "Yokk jëfandikukat ci sa tàkk",
+        "steps": {
+          "companyInfo": "Xam-xam",
+          "contactInfo": "Jëndal",
+          "review": "Wone"
+        },
+        "stepTitles": {
+          "companyInfo": "Xam-xam koom-koom",
+          "contactInfo": "Jëndal",
+          "review": "Wone"
+        },
+        "fields": {
+          "companyName": "Tur koom-koom",
+          "category": "Wàll",
+          "boothNumber": "Nombar stand",
+          "description": "Wàllal",
+          "website": "Website",
+          "contactName": "Tur jëfandikukat",
+          "contactEmail": "Email",
+          "contactPhone": "Telefoon",
+          "status": "Tundu"
+        },
+        "placeholders": {
+          "companyName": "Ex: TechCorp Senegal",
+          "boothNumber": "Ex: A12",
+          "description": "Wàllal sa koom-koom ak jëfi...",
+          "website": "https://www.exemple.com",
+          "contactName": "Ex: Amadou Diallo",
+          "contactEmail": "contact@exemple.com",
+          "contactPhone": "+221 77 123 45 67"
+        },
+        "review": {
+          "contact": "Jëndal",
+          "email": "Email",
+          "phone": "Telefoon",
+          "booth": "Stand",
+          "website": "Website",
+          "description": "Wàllal",
+          "note": "Wone xam-xam yi ci kaw la nekk tey sos jëfandikukat bi."
+        },
+        "createButton": "Sos jëfandikukat bi",
+        "creating": "Sos...",
+        "success": "Jëfandikukat bi sos na!"
+      },
+      "categories": {
+        "tech": "Jëfandikukaay",
+        "finance": "Koppar",
+        "retail": "Jënd",
+        "food": "Lekk",
+        "fashion": "Màgg",
+        "health": "Sàkku",
+        "education": "Jàngale",
+        "services": "Jëf",
+        "other": "Yeneen"
+      },
+      "statuses": {
+        "pending": "Di xaar",
+        "approved": "Jëkkal na",
+        "active": "Jëf",
+        "rejected": "Génn"
+      },
+      "errors": {
+        "companyNameRequired": "Tur koom-koom laaj na",
+        "categoryRequired": "Wàll laaj na",
+        "contactNameRequired": "Tur jëfandikukat laaj na",
+        "contactEmailRequired": "Email jëfandikukat laaj na",
+        "invalidEmail": "Email bu baaxul",
+        "invalidUrl": "URL bu baaxul",
+        "validationFailed": "Wone wuñu",
+        "mustBeLoggedIn": "War nga seet",
+        "organizationNotFound": "Jëkkandikukat gisul",
+        "creationFailed": "Jafe jafe ci sos jëfandikukat",
+        "unexpectedError": "Jafe jafe bu gàttul"
+      }
+    }
+  }
+}
