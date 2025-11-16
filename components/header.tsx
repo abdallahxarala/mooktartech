@@ -17,6 +17,108 @@ import {
 import { useCartStore } from '@/lib/store/cart-store'
 import { MegaDropdown, menuConfig } from '@/components/mega-menu/mega-dropdown'
 
+// Configuration des organisations
+function getOrganizationConfig(slug: string | null) {
+  if (slug === 'xarala-solutions') {
+    return {
+      name: 'Xarala Solutions',
+      tagline: 'Identification Pro',
+      logoLetter: 'X',
+      primaryColor: 'orange',
+      gradientColors: 'from-orange-500/95 via-pink-500/95 to-purple-500/95',
+      logoGradient: 'from-orange-500 to-orange-600',
+      logoShadow: 'shadow-orange-500/30',
+      hoverColor: 'hover:text-orange-500',
+      activeColor: 'text-orange-500',
+      bgColor: 'bg-orange-500',
+      bgHoverColor: 'hover:bg-orange-600',
+      bgShadow: 'shadow-orange-500/30',
+      badgeBg: 'bg-orange-100',
+      badgeText: 'text-orange-700',
+      ctaBg: 'bg-orange-500',
+      ctaHover: 'hover:bg-orange-600',
+      ctaShadow: 'shadow-orange-500/30',
+      mobileBg: 'bg-orange-50',
+      mobileText: 'text-orange-600',
+      mobileCta: 'bg-orange-500'
+    }
+  }
+  
+  if (slug === 'mooktartech-com') {
+    return {
+      name: 'MOOKTAR Technologies',
+      tagline: 'Solutions Innovantes',
+      logoLetter: 'M',
+      primaryColor: 'blue',
+      gradientColors: 'from-blue-500/95 via-indigo-500/95 to-purple-500/95',
+      logoGradient: 'from-blue-500 to-indigo-600',
+      logoShadow: 'shadow-blue-500/30',
+      hoverColor: 'hover:text-blue-500',
+      activeColor: 'text-blue-500',
+      bgColor: 'bg-blue-500',
+      bgHoverColor: 'hover:bg-blue-600',
+      bgShadow: 'shadow-blue-500/30',
+      badgeBg: 'bg-blue-100',
+      badgeText: 'text-blue-700',
+      ctaBg: 'bg-blue-500',
+      ctaHover: 'hover:bg-blue-600',
+      ctaShadow: 'shadow-blue-500/30',
+      mobileBg: 'bg-blue-50',
+      mobileText: 'text-blue-600',
+      mobileCta: 'bg-blue-500'
+    }
+  }
+  
+  if (slug === 'foire-dakar-2025') {
+    return {
+      name: 'Foire Dakar 2025',
+      tagline: 'Événement International',
+      logoLetter: 'F',
+      primaryColor: 'green',
+      gradientColors: 'from-green-500/95 via-emerald-500/95 to-teal-500/95',
+      logoGradient: 'from-green-500 to-emerald-600',
+      logoShadow: 'shadow-green-500/30',
+      hoverColor: 'hover:text-green-500',
+      activeColor: 'text-green-500',
+      bgColor: 'bg-green-500',
+      bgHoverColor: 'hover:bg-green-600',
+      bgShadow: 'shadow-green-500/30',
+      badgeBg: 'bg-green-100',
+      badgeText: 'text-green-700',
+      ctaBg: 'bg-green-500',
+      ctaHover: 'hover:bg-green-600',
+      ctaShadow: 'shadow-green-500/30',
+      mobileBg: 'bg-green-50',
+      mobileText: 'text-green-600',
+      mobileCta: 'bg-green-500'
+    }
+  }
+  
+  // Par défaut: Xarala Solutions
+  return {
+    name: 'Xarala Solutions',
+    tagline: 'Identification Pro',
+    logoLetter: 'X',
+    primaryColor: 'orange',
+    gradientColors: 'from-orange-500/95 via-pink-500/95 to-purple-500/95',
+    logoGradient: 'from-orange-500 to-orange-600',
+    logoShadow: 'shadow-orange-500/30',
+    hoverColor: 'hover:text-orange-500',
+    activeColor: 'text-orange-500',
+    bgColor: 'bg-orange-500',
+    bgHoverColor: 'hover:bg-orange-600',
+    bgShadow: 'shadow-orange-500/30',
+    badgeBg: 'bg-orange-100',
+    badgeText: 'text-orange-700',
+    ctaBg: 'bg-orange-500',
+    ctaHover: 'hover:bg-orange-600',
+    ctaShadow: 'shadow-orange-500/30',
+    mobileBg: 'bg-orange-50',
+    mobileText: 'text-orange-600',
+    mobileCta: 'bg-orange-500'
+  }
+}
+
 export function Header() {
   const itemCount = useCartStore((state) => state.getItemCount())
   const [isScrolled, setIsScrolled] = useState(false)
@@ -24,6 +126,12 @@ export function Header() {
   const [activeMenu, setActiveMenu] = useState<"nfc" | "badges" | "produits" | null>(null)
   const menuRef = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
+  
+  // Extraire le slug de l'organisation depuis le pathname
+  // Format: /[locale]/org/[slug]/...
+  const orgSlugMatch = pathname.match(/\/[^\/]+\/org\/([^\/]+)/)
+  const orgSlug = orgSlugMatch ? orgSlugMatch[1] : null
+  const orgConfig = getOrganizationConfig(orgSlug)
 
   // Detect scroll
   useEffect(() => {
@@ -63,7 +171,7 @@ export function Header() {
       <div className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
         isScrolled 
           ? 'border-gray-200/80 bg-white/95 backdrop-blur-2xl shadow-sm' 
-          : 'border-white/20 bg-gradient-to-r from-orange-500/95 via-pink-500/95 to-purple-500/95 backdrop-blur-md'
+          : `border-white/20 bg-gradient-to-r ${orgConfig.gradientColors} backdrop-blur-md`
       }`}>
         <div className="container mx-auto px-6">
           <div className="flex items-center justify-between h-10 text-xs">
@@ -73,7 +181,7 @@ export function Header() {
                 href="tel:+221775398139"
                 className={`flex items-center gap-2 font-medium transition-colors ${
                   isScrolled 
-                    ? 'text-gray-700 hover:text-orange-500' 
+                    ? `text-gray-700 ${orgConfig.hoverColor}` 
                     : 'text-white/90 hover:text-white'
                 }`}
               >
@@ -85,7 +193,7 @@ export function Header() {
                 href="mailto:contact@xarala-solutions.com"
                 className={`flex items-center gap-2 font-medium transition-colors ${
                   isScrolled 
-                    ? 'text-gray-700 hover:text-orange-500' 
+                    ? `text-gray-700 ${orgConfig.hoverColor}` 
                     : 'text-white/90 hover:text-white'
                 }`}
               >
@@ -112,7 +220,7 @@ export function Header() {
 
               <div className={`flex items-center gap-2 px-3 py-1 rounded-full font-semibold text-xs ${
                 isScrolled 
-                  ? 'bg-orange-100 text-orange-700' 
+                  ? `${orgConfig.badgeBg} ${orgConfig.badgeText}` 
                   : 'bg-white/20 text-white backdrop-blur-sm'
               }`}>
                 <Sparkles className="w-3 h-3" />
@@ -133,26 +241,26 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link 
-            href="/fr" 
+            href={orgSlug ? `/${pathname.split('/')[1]}/org/${orgSlug}/dashboard` : '/fr'} 
             className="flex items-center gap-3 group"
           >
             <div className="relative">
               {/* Glow effect */}
-              <div className="absolute inset-0 rounded-2xl bg-orange-500/20 blur-xl" />
+              <div className={`absolute inset-0 rounded-2xl ${orgConfig.bgColor}/20 blur-xl`} />
               
-              {/* Logo badge - TOUJOURS ORANGE */}
-              <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center font-black text-2xl text-white shadow-lg shadow-orange-500/30 transition-transform group-hover:scale-110">
-                X
+              {/* Logo badge */}
+              <div className={`relative w-14 h-14 rounded-2xl bg-gradient-to-br ${orgConfig.logoGradient} flex items-center justify-center font-black text-2xl text-white shadow-lg ${orgConfig.logoShadow} transition-transform group-hover:scale-110`}>
+                {orgConfig.logoLetter}
               </div>
             </div>
             
             <div>
-              {/* Texte logo - TOUJOURS FONCÉ */}
+              {/* Texte logo */}
               <div className="font-black text-xl tracking-tight text-gray-900">
-                Xarala Solutions
+                {orgConfig.name}
               </div>
               <div className="text-xs font-semibold text-gray-600">
-                Identification Pro
+                {orgConfig.tagline}
               </div>
             </div>
           </Link>
@@ -168,8 +276,8 @@ export function Header() {
               >
                 {item.hasDropdown ? (
                   <button
-                    className={`flex items-center gap-1 text-gray-700 hover:text-orange-500 transition-colors font-medium ${
-                      isActive(item.href) ? 'text-orange-500' : ''
+                    className={`flex items-center gap-1 text-gray-700 ${orgConfig.hoverColor} transition-colors font-medium ${
+                      isActive(item.href) ? orgConfig.activeColor : ''
                     }`}
                   >
                     {item.name}
@@ -180,8 +288,8 @@ export function Header() {
                 ) : (
                   <Link
                     href={item.href}
-                    className={`text-gray-700 hover:text-orange-500 transition-colors font-medium ${
-                      isActive(item.href) ? 'text-orange-500' : ''
+                    className={`text-gray-700 ${orgConfig.hoverColor} transition-colors font-medium ${
+                      isActive(item.href) ? orgConfig.activeColor : ''
                     }`}
                   >
                     {item.name}
@@ -213,7 +321,7 @@ export function Header() {
             >
               <ShoppingCart className="w-6 h-6" />
               {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-orange-500 to-pink-500 text-white text-xs font-black rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                <span className={`absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br ${orgConfig.logoGradient} text-white text-xs font-black rounded-full flex items-center justify-center shadow-lg animate-bounce`}>
                   {itemCount > 9 ? '9+' : itemCount}
                 </span>
               )}
@@ -224,8 +332,8 @@ export function Header() {
               href="/fr/contact"
               className={`hidden md:flex items-center gap-2 px-6 py-3 font-bold rounded-xl transition-all shadow-lg ${
                 isScrolled
-                  ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-orange-500/30'
-                  : 'bg-white text-orange-500 hover:bg-gray-50 shadow-white/30'
+                  ? `${orgConfig.ctaBg} text-white ${orgConfig.ctaHover} ${orgConfig.ctaShadow}`
+                  : `bg-white ${orgConfig.activeColor} hover:bg-gray-50 shadow-white/30`
               }`}
             >
               <span>Devis gratuit</span>
@@ -260,7 +368,7 @@ export function Header() {
                 href={item.href}
                 className={`block px-4 py-3 rounded-xl font-semibold transition-colors ${
                   isActive(item.href)
-                    ? 'bg-orange-100 text-orange-600'
+                    ? `${orgConfig.mobileBg} ${orgConfig.mobileText}`
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}
@@ -273,7 +381,7 @@ export function Header() {
             <div className="pt-6 mt-6 border-t border-gray-200 space-y-3">
               <a
                 href="tel:+221775398139"
-                className="flex items-center gap-3 px-4 py-3 bg-orange-50 text-orange-600 rounded-xl font-semibold"
+                className={`flex items-center gap-3 px-4 py-3 ${orgConfig.mobileBg} ${orgConfig.mobileText} rounded-xl font-semibold`}
               >
                 <Phone className="w-5 h-5" />
                 <span>+221 77 539 81 39</span>
@@ -281,7 +389,7 @@ export function Header() {
 
               <Link
                 href="/fr/contact"
-                className="block text-center px-4 py-3 bg-orange-500 text-white font-bold rounded-xl"
+                className={`block text-center px-4 py-3 ${orgConfig.mobileCta} text-white font-bold rounded-xl`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Demander un devis
