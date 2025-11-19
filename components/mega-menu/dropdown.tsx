@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useParams, usePathname } from "next/navigation";
 import { 
   Nfc, 
   BadgeCheck, 
@@ -25,6 +26,15 @@ interface MegaMenuDropdownProps {
 }
 
 export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProps) {
+  const params = useParams();
+  const pathname = usePathname();
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr';
+  const slug = params?.slug as string | undefined;
+  const isMultitenant = pathname?.includes('/org/') && slug;
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`;
+  
   if (!isOpen) return null;
 
   const content = {
@@ -33,7 +43,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
       items: [
         {
           title: "Créer ma carte NFC",
-          href: "/fr/nfc-editor",
+          href: `${basePath}/nfc-editor`,
           description: "Wizard interactif en 5 minutes",
           icon: <Sparkles className="w-6 h-6" />,
           gradient: "from-orange-500 to-pink-500",
@@ -42,7 +52,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
         },
         {
           title: "Mes cartes",
-          href: "/fr/dashboard/cards",
+          href: `${basePath}/dashboard/cards`,
           description: "Gérer mes cartes créées",
           icon: <FileText className="w-6 h-6" />,
           gradient: "from-blue-500 to-purple-500",
@@ -50,7 +60,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
         },
         {
           title: "Générateur QR",
-          href: "/fr/qr-generator",
+          href: `${basePath}/qr-generator`,
           description: "QR codes personnalisés",
           icon: <QrCode className="w-6 h-6" />,
           gradient: "from-green-500 to-teal-500",
@@ -63,7 +73,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
       items: [
         {
           title: "Design de Badges",
-          href: "/fr/badge-editor/pro",
+          href: `${basePath}/badge-editor/pro`,
           description: "Canvas de design professionnel",
           icon: <Palette className="w-6 h-6" />,
           gradient: "from-blue-500 to-purple-500",
@@ -72,7 +82,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
         },
         {
           title: "Gestion d'Événements",
-          href: "/fr/badge-editor/events",
+          href: `${basePath}/badge-editor/events`,
           description: "Organiser vos événements",
           icon: <Calendar className="w-6 h-6" />,
           gradient: "from-purple-500 to-pink-500",
@@ -80,7 +90,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
         },
         {
           title: "Import CSV",
-          href: "/fr/badge-editor/import",
+          href: `${basePath}/badge-editor/import`,
           description: "Importer participants en masse",
           icon: <Users className="w-6 h-6" />,
           gradient: "from-green-500 to-emerald-500",
@@ -88,7 +98,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
         },
         {
           title: "Impression",
-          href: "/fr/badge-editor/print",
+          href: `${basePath}/badge-editor/print`,
           description: "File d'impression batch",
           icon: <Printer className="w-6 h-6" />,
           gradient: "from-gray-700 to-gray-900",
@@ -104,21 +114,21 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
           items: [
             {
               title: "Cartes PVC",
-              href: "/fr/products?category=cartes-pvc",
+              href: `${basePath}/shop?category=cartes-pvc`,
               description: "Cartes plastiques personnalisées",
               icon: <CreditCard className="w-6 h-6" />,
               gradient: "from-purple-500 to-indigo-500"
             },
             {
               title: "Badges Événements",
-              href: "/fr/products?category=badges",
+              href: `${basePath}/shop?category=badges`,
               description: "Badges professionnels",
               icon: <BadgeCheck className="w-6 h-6" />,
               gradient: "from-red-500 to-orange-500"
             },
             {
               title: "Tags NFC",
-              href: "/fr/products?category=tags-nfc",
+              href: `${basePath}/shop?category=tags-nfc`,
               description: "Tags et stickers NFC",
               icon: <Tag className="w-6 h-6" />,
               gradient: "from-cyan-500 to-blue-500"
@@ -130,7 +140,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
           items: [
             {
               title: "Imprimantes",
-              href: "/fr/products?category=imprimantes",
+              href: `${basePath}/shop?category=imprimantes`,
               description: "Imprimantes professionnelles",
               icon: <Printer className="w-6 h-6" />,
               gradient: "from-gray-700 to-gray-900",
@@ -138,7 +148,7 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
             },
             {
               title: "Accessoires",
-              href: "/fr/products?category=accessoires",
+              href: `${basePath}/shop?category=accessoires`,
               description: "Ribbons, cartouches, etc.",
               icon: <Tag className="w-6 h-6" />,
               gradient: "from-blue-500 to-teal-500"
@@ -271,11 +281,11 @@ export function MegaMenuDropdown({ type, isOpen, onClose }: MegaMenuDropdownProp
               <div className="flex items-center justify-between">
                 <p className="text-sm text-gray-600">
                   Besoin d'aide ?
-                  <Link href="/fr/contact" className="text-orange-500 hover:underline ml-1" onClick={onClose}>
+                  <Link href={`${basePath}/contact`} className="text-orange-500 hover:underline ml-1" onClick={onClose}>
                     Contactez-nous
                   </Link>
                 </p>
-                <Link href={type === "products" ? "/fr/products" : type === "nfc" ? "/fr/nfc-editor" : "/fr/badge-editor/pro"}>
+                <Link href={type === "products" ? `${basePath}/shop` : type === "nfc" ? `${basePath}/nfc-editor` : `${basePath}/badge-editor/pro`}>
                   <button className="px-6 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-medium" onClick={onClose}>
                     Voir tout
                   </button>

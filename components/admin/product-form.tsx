@@ -5,15 +5,18 @@ import { X, Save } from 'lucide-react'
 import { useAppStore } from '@/lib/store/app-store'
 import toast from 'react-hot-toast'
 import { ImageUploadLocal } from './image-upload-local'
+import { createClient } from '@/lib/supabase/client'
 
 interface ProductFormProps {
   product?: any
   onClose: () => void
+  organizationId?: string // Optionnel pour compatibilité avec ancien code
 }
 
-export function ProductForm({ product, onClose }: ProductFormProps) {
+export function ProductForm({ product, onClose, organizationId }: ProductFormProps) {
   const addProduct = useAppStore(state => state.addProduct)
   const updateProduct = useAppStore(state => state.updateProduct)
+  const supabase = createClient()
 
   const [formData, setFormData] = useState({
     name: product?.name || '',
@@ -37,19 +40,57 @@ export function ProductForm({ product, onClose }: ProductFormProps) {
     const toastId = toast.loading(product ? 'Mise à jour...' : 'Création...')
 
     try {
-      if (product) {
-        await updateProduct(product.id, formData)
-        toast.success('✅ Produit mis à jour !', { id: toastId })
+      // Si organizationId est fourni, utiliser Supabase
+      if (organizationId) {
+        const productData = {
+          name: formData.name,
+          brand: formData.brand,
+          category: formData.category,
+          description: formData.description,
+          short_description: formData.shortDescription,
+          price: formData.price,
+          stock: formData.stock,
+          featured: formData.featured,
+          image_url: formData.mainImage || formData.images?.[0] || null,
+          organization_id: organizationId,
+        }
+
+        if (product) {
+          // Mise à jour
+          const { error } = await supabase
+            .from('products')
+            .update(productData)
+            .eq('id', product.id)
+            .eq('organization_id', organizationId) // Sécurité supplémentaire
+
+          if (error) throw error
+          toast.success('✅ Produit mis à jour !', { id: toastId })
+        } else {
+          // Création
+          const { error } = await supabase
+            .from('products')
+            .insert(productData)
+
+          if (error) throw error
+          toast.success('✅ Produit créé !', { id: toastId })
+        }
       } else {
-        await addProduct({
-          id: Date.now().toString(),
-          ...formData,
-        })
-        toast.success('✅ Produit créé !', { id: toastId })
+        // Fallback vers le store local (ancien comportement)
+        if (product) {
+          await updateProduct(product.id, formData)
+          toast.success('✅ Produit mis à jour !', { id: toastId })
+        } else {
+          await addProduct({
+            id: Date.now().toString(),
+            ...formData,
+          })
+          toast.success('✅ Produit créé !', { id: toastId })
+        }
       }
       onClose()
-    } catch (error) {
-      toast.error('❌ Erreur', { id: toastId })
+    } catch (error: any) {
+      console.error('Error saving product:', error)
+      toast.error(`❌ Erreur: ${error.message || 'Erreur inconnue'}`, { id: toastId })
     }
   }
 

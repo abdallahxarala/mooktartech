@@ -2,9 +2,18 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { useParams, usePathname } from 'next/navigation'
 import { Smartphone, CreditCard, Sparkles, Zap } from 'lucide-react'
 
 export function EditorsSection() {
+  const params = useParams()
+  const pathname = usePathname()
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr'
+  const slug = params?.slug as string | undefined
+  const isMultitenant = pathname?.includes('/org/') && slug
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`
   return (
     <section className="py-24 bg-gradient-to-br from-orange-50 via-white to-purple-50">
       <div className="container mx-auto px-6">
@@ -69,7 +78,7 @@ export function EditorsSection() {
 
               {/* CTA */}
               <Link
-                href="/fr/card-editor"
+                href={`${basePath}/nfc-editor`}
                 className="group/btn inline-flex items-center gap-2 w-full justify-center px-6 py-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-2xl hover:from-orange-600 hover:to-orange-700 transition-all shadow-lg hover:shadow-xl"
               >
                 <span>Créer ma carte NFC</span>
@@ -126,7 +135,7 @@ export function EditorsSection() {
 
               {/* CTA */}
               <Link
-                href="/fr/card-designer"
+                href={`${basePath}/badge-editor/pro`}
                 className="group/btn inline-flex items-center gap-2 w-full justify-center px-6 py-4 bg-white text-gray-900 font-semibold rounded-2xl hover:bg-gray-100 transition-all shadow-lg hover:shadow-xl"
               >
                 <span>Accéder à l'éditeur PVC</span>

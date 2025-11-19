@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useParams, usePathname } from "next/navigation";
 import { 
   Nfc, 
   BadgeCheck, 
@@ -23,35 +24,43 @@ interface MenuItem {
   features?: string[];
 }
 
-const menuItems: MenuItem[] = [
-  {
-    title: "NFC",
-    href: "/fr/nfc-editor",
-    description: "Carte de visite digitale instantanée",
-    icon: <Nfc className="w-16 h-16" />,
-    badge: "Gratuit",
-    features: [
-      "Wizard interactif",
-      "QR Code inclus",
-      "Analytics en temps réel"
-    ]
-  },
-  {
-    title: "Badges",
-    href: "/fr/badge-editor/pro",
-    description: "Design, événements & impression pro",
-    icon: <BadgeCheck className="w-16 h-16" />,
-    badge: "Pro",
-    features: [
-      "Canvas de design avancé",
-      "Gestion d'événements complète",
-      "Import CSV & impression batch"
-    ]
-  }
-];
-
 export function ModernMegaMenu({ isOpen }: { isOpen: boolean }) {
   const t = useTranslations("menu");
+  const params = useParams();
+  const pathname = usePathname();
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr';
+  const slug = params?.slug as string | undefined;
+  const isMultitenant = pathname?.includes('/org/') && slug;
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`;
+  
+  const menuItems: MenuItem[] = [
+    {
+      title: "NFC",
+      href: `${basePath}/nfc-editor`,
+      description: "Carte de visite digitale instantanée",
+      icon: <Nfc className="w-16 h-16" />,
+      badge: "Gratuit",
+      features: [
+        "Wizard interactif",
+        "QR Code inclus",
+        "Analytics en temps réel"
+      ]
+    },
+    {
+      title: "Badges",
+      href: `${basePath}/badge-editor/pro`,
+      description: "Design, événements & impression pro",
+      icon: <BadgeCheck className="w-16 h-16" />,
+      badge: "Pro",
+      features: [
+        "Canvas de design avancé",
+        "Gestion d'événements complète",
+        "Import CSV & impression batch"
+      ]
+    }
+  ];
 
   if (!isOpen) return null;
 
@@ -150,22 +159,22 @@ export function ModernMegaMenu({ isOpen }: { isOpen: boolean }) {
           <QuickLink
             icon={<QrCode className="w-5 h-5" />}
             title="Générateur QR"
-            href="/fr/qr-generator"
+            href={`${basePath}/qr-generator`}
           />
           <QuickLink
             icon={<Printer className="w-5 h-5" />}
             title="Imprimantes"
-            href="/fr/products/imprimantes"
+            href={`${basePath}/shop?category=imprimantes`}
           />
           <QuickLink
             icon={<Calendar className="w-5 h-5" />}
             title="Événements"
-            href="/fr/badge-editor/events"
+            href={`${basePath}/badge-editor/events`}
           />
           <QuickLink
             icon={<Users className="w-5 h-5" />}
             title="Support"
-            href="/fr/contact"
+            href={`${basePath}/contact`}
           />
         </div>
       </div>

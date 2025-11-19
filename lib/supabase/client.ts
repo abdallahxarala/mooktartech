@@ -25,3 +25,11 @@ export function createSupabaseBrowserClient() {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
   );
 }
+
+/**
+ * Alias pour compatibilité avec le code existant
+ * Utilise createSupabaseBrowserClient en interne
+ */
+export function createClient() {
+  return createSupabaseBrowserClient();
+}

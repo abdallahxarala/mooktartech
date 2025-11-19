@@ -2,12 +2,21 @@
 
 import React, { useEffect } from 'react'
 import Link from 'next/link'
+import { useParams, usePathname } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 import { useProductsSync } from '@/hooks/use-products-sync'
 import { generateUniqueKey } from '@/lib/utils/brutal-sync'
 
 export function FeaturedProducts() {
   const { products, isHydrated, lastUpdate } = useProductsSync()
+  const params = useParams()
+  const pathname = usePathname()
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr'
+  const slug = params?.slug as string | undefined
+  const isMultitenant = pathname?.includes('/org/') && slug
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`
   
   const featuredProducts = products.filter(p => p.featured).slice(0, 3)
 
@@ -47,7 +56,7 @@ export function FeaturedProducts() {
                  return (
                    <Link
                      key={uniqueKey}
-                     href="/fr/products"
+                     href={`${basePath}/shop`}
                      className="group relative bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-orange-500 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
                    >
                      {/* Image avec key unique */}
@@ -95,7 +104,7 @@ export function FeaturedProducts() {
         {/* CTA */}
         <div className="text-center">
           <Link
-            href="/fr/products"
+            href={`${basePath}/shop`}
             className="inline-flex items-center gap-2 text-lg font-semibold text-orange-500 hover:text-orange-600 group"
           >
             <span>Voir tous les produits ({products.length})</span>

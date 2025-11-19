@@ -2,9 +2,18 @@
 
 import React from 'react'
 import Link from 'next/link'
+import { useParams, usePathname } from 'next/navigation'
 import { ArrowRight, Sparkles } from 'lucide-react'
 
 export function HeroSection() {
+  const params = useParams()
+  const pathname = usePathname()
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr'
+  const slug = params?.slug as string | undefined
+  const isMultitenant = pathname?.includes('/org/') && slug
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`
   return (
     <section className="relative min-h-[90vh] flex items-center overflow-hidden">
       {/* Background ultra-subtil */}
@@ -58,7 +67,7 @@ export function HeroSection() {
             {/* CTA simple et impactant */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link
-                href="/fr/products"
+                href={`${basePath}/shop`}
                 className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-orange-500 text-white font-semibold rounded-2xl hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 hover:shadow-xl hover:shadow-orange-500/30 hover:scale-[1.02]"
               >
                 <span className="text-lg">Explorer nos produits</span>
@@ -66,7 +75,7 @@ export function HeroSection() {
               </Link>
 
               <Link
-                href="/fr/card-editor"
+                href={`${basePath}/nfc-editor`}
                 className="group inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-gray-900 font-semibold rounded-2xl border-2 border-gray-200 hover:border-orange-500 transition-all hover:scale-[1.02]"
               >
                 <span className="text-lg">Créer une carte</span>

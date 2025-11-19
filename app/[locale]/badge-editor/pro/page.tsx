@@ -1,11 +1,10 @@
-import { CardDesignerPro } from '@/components/card-designer-pro/CardDesignerPro'
+import { redirect } from 'next/navigation'
 
-export default async function BadgeDesignerProPage({ 
-  params: { locale } 
-}: { 
-  params: { locale: string } 
+export default function BadgeEditorRedirect({
+  params: { locale }
+}: {
+  params: { locale: string }
 }) {
-  return (
-    <CardDesignerPro />
-  )
+  // Rediriger vers Xarala Solutions par défaut
+  redirect(`/${locale}/org/xarala-solutions/badge-editor/pro`)
 }

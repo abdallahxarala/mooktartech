@@ -8,9 +8,10 @@ import { Smartphone, Tablet, Monitor, Save, Eye, Share2 } from 'lucide-react'
 interface CardEditorClientProps {
   locale: string
   translations: any
+  organizationSlug?: string
 }
 
-export function CardEditorClient({ locale, translations }: CardEditorClientProps) {
+export function CardEditorClient({ locale, translations, organizationSlug }: CardEditorClientProps) {
   const { 
     card, 
     activeTab, 
@@ -61,7 +62,7 @@ export function CardEditorClient({ locale, translations }: CardEditorClientProps
             {/* Sélecteur d'éditeur */}
             <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
               <a
-                href="/fr/card-editor"
+                href={organizationSlug ? `/${locale}/org/${organizationSlug}/card-editor` : `/${locale}/card-editor`}
                 className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium bg-white text-orange-600 shadow-sm"
               >
                 <span>📱</span>
@@ -69,7 +70,7 @@ export function CardEditorClient({ locale, translations }: CardEditorClientProps
               </a>
               
               <a
-                href="/fr/card-designer"
+                href={organizationSlug ? `/${locale}/org/${organizationSlug}/card-designer` : `/${locale}/card-designer`}
                 className="flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-gray-900"
               >
                 <span>💳</span>

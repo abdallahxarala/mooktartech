@@ -2,19 +2,27 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useParams } from 'next/navigation'
 import { CreditCard, Smartphone } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export function EditorSelector() {
   const pathname = usePathname()
-  const isNFCEditor = pathname.includes('/card-editor')
-  const isPVCEditor = pathname.includes('/card-designer')
+  const params = useParams()
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr'
+  const slug = params?.slug as string | undefined
+  const isMultitenant = pathname?.includes('/org/') && slug
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`
+  
+  const isNFCEditor = pathname?.includes('/nfc-editor') || pathname?.includes('/card-editor')
+  const isPVCEditor = pathname?.includes('/badge-editor') || pathname?.includes('/card-designer')
 
   return (
     <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
       <Link
-        href="/fr/card-editor"
+        href={`${basePath}/nfc-editor`}
         className={cn(
           "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
           isNFCEditor
@@ -27,7 +35,7 @@ export function EditorSelector() {
       </Link>
       
       <Link
-        href="/fr/card-designer"
+        href={`${basePath}/badge-editor/pro`}
         className={cn(
           "flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all",
           isPVCEditor

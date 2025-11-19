@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useParams } from 'next/navigation'
 import { ShoppingCart, Phone } from 'lucide-react'
 import { useCartStore } from '@/lib/store/cart-store'
 import { cn } from '@/lib/utils'
@@ -11,7 +11,16 @@ export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
+  const params = useParams()
   const items = useCartStore((state) => state.items)
+  
+  // Détecter le contexte multitenant
+  const locale = (params?.locale as string) || 'fr'
+  const slug = params?.slug as string | undefined
+  const isMultitenant = pathname?.includes('/org/') && slug
+  
+  // Construire les routes de base
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10)
@@ -66,7 +75,7 @@ export function Header() {
         <nav className="container mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/fr" className="flex items-center gap-3">
+            <Link href={basePath} className="flex items-center gap-3">
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg">
                 <span className="text-2xl font-black text-white">X</span>
               </div>
@@ -78,37 +87,37 @@ export function Header() {
             {/* Navigation */}
             <div className="hidden md:flex items-center gap-8">
               <Link 
-                href="/fr" 
+                href={basePath} 
                 className={cn(
                   "font-medium transition-colors",
-                  pathname === '/fr' ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
+                  pathname === basePath || pathname === `/${locale}` ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
                 )}
               >
                 Accueil
               </Link>
               <Link 
-                href="/fr/products" 
+                href={`${basePath}/shop`}
                 className={cn(
                   "font-medium transition-colors",
-                  pathname.includes('/products') ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
+                  pathname?.includes('/shop') || pathname?.includes('/products') ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
                 )}
               >
                 Produits
               </Link>
               <Link 
-                href="/fr/nfc-editor" 
+                href={`${basePath}/nfc-editor`}
                 className={cn(
                   "font-medium transition-colors",
-                  pathname.includes('/nfc-editor') ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
+                  pathname?.includes('/nfc-editor') ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
                 )}
               >
                 Créer ma carte
               </Link>
               <Link 
-                href="/fr/about" 
+                href={`${basePath}/about`}
                 className={cn(
                   "font-medium transition-colors",
-                  pathname.includes('/about') ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
+                  pathname?.includes('/about') ? "text-orange-500" : "text-gray-700 hover:text-orange-500"
                 )}
               >
                 À propos
@@ -119,7 +128,7 @@ export function Header() {
             <div className="flex items-center gap-3">
               {/* Panier - Link simple sans button */}
               <Link 
-                href="/fr/cart"
+                href={`${basePath}/cart`}
                 className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors inline-flex items-center justify-center"
               >
                 <ShoppingCart className="w-5 h-5 text-gray-700" />
@@ -133,7 +142,7 @@ export function Header() {
               <div className="hidden md:flex items-center gap-2">
                 {/* Connexion */}
                 <Link
-                  href="/fr/login"
+                  href={`${basePath}/login`}
                   className="px-4 py-2 text-gray-700 font-medium hover:text-orange-500 transition-colors"
                 >
                   Connexion
@@ -141,7 +150,7 @@ export function Header() {
                 
                 {/* Inscription */}
                 <Link
-                  href="/fr/register"
+                  href={`${basePath}/register`}
                   className="px-6 py-2.5 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20"
                 >
                   Inscription
