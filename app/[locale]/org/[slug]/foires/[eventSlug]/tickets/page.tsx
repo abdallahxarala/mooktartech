@@ -97,10 +97,25 @@ export default function TicketsPage({
   async function loadEvent() {
     setLoading(true)
     try {
+      // 1. Récupérer l'organization_id depuis le slug
+      const { data: organization } = await supabase
+        .from('organizations')
+        .select('id')
+        .eq('slug', params.slug)
+        .single()
+
+      if (!organization) {
+        console.error('Organization not found:', params.slug)
+        setLoading(false)
+        return
+      }
+
+      // 2. Récupérer l'événement avec vérification organization_id
       const { data, error } = await supabase
         .from('events')
         .select('*')
         .eq('slug', params.eventSlug)
+        .eq('organization_id', organization.id) // ✅ Isolation multitenant
         .single()
 
       if (error) {
@@ -142,148 +157,71 @@ export default function TicketsPage({
       return
     }
 
+    // Validation email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      alert('Veuillez entrer une adresse email valide')
+      return
+    }
+
     setSubmitting(true)
 
     try {
-      const createdTickets: Array<{ id: string; qrCode: string; ticketType: string }> = []
+      const buyerName = `${formData.firstName} ${formData.lastName}`
 
-      // Créer les billets pour chaque type sélectionné
-      for (const ticket of ticketTypes) {
-        const qty = quantities[ticket.id]
-        if (qty === 0) continue
+      // Pour simplifier, créer un seul ticket avec le total
+      // En production, on pourrait créer un ticket par type
+      const selectedTicketType = ticketTypes.find(t => quantities[t.id] > 0)
+      if (!selectedTicketType) {
+        throw new Error('Aucun billet sélectionné')
+      }
 
-        // Mapper le type de billet
-        const ticketTypeMap: Record<string, string> = {
-          standard: 'adulte',
-          vip: 'vip',
-          group: 'groupe',
-        }
-        const dbTicketType = ticketTypeMap[ticket.id] || 'adulte'
+      // Mapper le type de billet
+      const ticketTypeMap: Record<string, string> = {
+        standard: 'standard',
+        vip: 'vip',
+        group: 'groupe',
+      }
+      const dbTicketType = ticketTypeMap[selectedTicketType.id] || 'standard'
 
-        // Créer une entrée dans la table tickets (une par type, avec quantité)
-        const buyerName = `${formData.firstName} ${formData.lastName}`
-        const unitPrice = ticket.price
-        const totalPrice = unitPrice * qty
-
-        // Générer les données QR
-        const { buildTicketQRData, generateTicketQR } = await import('@/lib/services/tickets/qr-generator')
-        const qrData = buildTicketQRData(
-          '', // Sera rempli après création
-          params.eventSlug,
-          dbTicketType,
-          qty,
-          formData.email
-        )
-
-        // Créer le ticket dans la base
-        const { data: createdTicket, error: ticketError } = await supabase
-          .from('tickets')
-          .insert({
-            event_id: event.id,
-            organization_id: event.organization_id,
-            buyer_name: buyerName,
-            buyer_email: formData.email,
-            buyer_phone: formData.phone || null,
-            ticket_type: dbTicketType,
-            quantity: qty,
-            unit_price: unitPrice,
-            total_price: totalPrice,
-            qr_code_data: JSON.stringify(qrData), // Temporaire, sera mis à jour avec l'ID
-            payment_status: 'pending', // Sera mis à jour après paiement
-            metadata: {
-              company: formData.company || null,
-              order_date: new Date().toISOString(),
-            },
-          })
-          .select()
-          .single()
-
-        if (ticketError || !createdTicket) {
-          console.error('Error creating ticket:', ticketError)
-          throw new Error(`Erreur lors de la création du billet: ${ticketError?.message || 'Unknown error'}`)
-        }
-
-        // Mettre à jour les données QR avec l'ID réel
-        const finalQrData = buildTicketQRData(
-          createdTicket.id,
-          params.eventSlug,
-          dbTicketType,
-          qty,
-          formData.email
-        )
-
-        // Générer l'image QR code
-        const qrCodeImage = await generateTicketQR(finalQrData)
-
-        // Mettre à jour le ticket avec les données QR finales
-        const { error: updateError } = await supabase
-          .from('tickets')
-          .update({
-            qr_code_data: JSON.stringify(finalQrData),
-            qr_code_image_url: qrCodeImage, // Stocker l'image base64
-          })
-          .eq('id', createdTicket.id)
-
-        if (updateError) {
-          console.warn('Warning: Failed to update QR code data:', updateError)
-        }
-
-        createdTickets.push({
-          id: createdTicket.id,
-          qrCode: qrCodeImage,
-          ticketType: dbTicketType,
-        })
-
-        // Créer aussi les event_attendees pour compatibilité (un par billet individuel)
-        for (let i = 0; i < qty; i++) {
-          const badgeId = `BADGE-${Date.now()}-${Math.random().toString(36).slice(2, 11)}`
-
-          await supabase.from('event_attendees').insert({
-            event_id: event.id,
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            email: formData.email,
-            phone: formData.phone || null,
+      // Créer le ticket dans la base (sans QR code, sera généré après paiement)
+      const { data: createdTicket, error: ticketError } = await supabase
+        .from('tickets')
+        .insert({
+          event_id: event.id,
+          organization_id: event.organization_id,
+          buyer_name: buyerName,
+          buyer_email: formData.email,
+          buyer_phone: formData.phone || null,
+          ticket_type: dbTicketType,
+          quantity: totalTickets,
+          unit_price: Math.round(totalPrice / totalTickets), // Prix unitaire moyen
+          total_price: totalPrice,
+          payment_status: 'unpaid', // Sera mis à jour après paiement
+          metadata: {
             company: formData.company || null,
-            badge_id: badgeId,
-            access_level: ticket.type === 'vip' ? 'vip' : 'attendee',
-            metadata: {
-              ticket_id: createdTicket.id,
-              ticket_type: ticket.type,
-              ticket_price: ticket.price,
-              order_date: new Date().toISOString(),
-            },
-          })
-        }
-      }
-
-      // Envoyer email avec QR codes (en arrière-plan, non bloquant)
-      try {
-        const { sendTicketsEmail } = await import('@/lib/services/email/templates')
-        await sendTicketsEmail({
-          to: formData.email,
-          buyerName: `${formData.firstName} ${formData.lastName}`,
-          eventName: event.name || 'Foire Dakar 2025',
-          tickets: createdTickets.map((t) => ({
-            id: t.id,
-            type: t.ticketType,
-            qrCode: t.qrCode,
-          })),
-          eventSlug: params.eventSlug,
+            order_date: new Date().toISOString(),
+            ticket_types: ticketTypes.filter(t => quantities[t.id] > 0).map(t => ({
+              type: t.id,
+              quantity: quantities[t.id],
+              price: t.price,
+            })),
+          },
         })
-        console.log('✅ Email avec QR codes envoyé')
-      } catch (emailError) {
-        console.warn('⚠️ Erreur envoi email (non bloquant):', emailError)
+        .select()
+        .single()
+
+      if (ticketError || !createdTicket) {
+        console.error('Error creating ticket:', ticketError)
+        throw new Error(`Erreur lors de la création du billet: ${ticketError?.message || 'Unknown error'}`)
       }
 
-      // Redirection vers page de succès avec les IDs des tickets
-      const ticketIds = createdTickets.map((t) => t.id).join(',')
+      // Redirection vers page de paiement
       router.push(
-        `/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/tickets/success?email=${encodeURIComponent(formData.email)}&tickets=${encodeURIComponent(ticketIds)}`
+        `/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/tickets/${createdTicket.id}/payment`
       )
     } catch (error) {
       console.error('Error creating tickets:', error)
-      alert(`Erreur lors de la création des billets: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      alert(`Erreur lors de la création du billet: ${error instanceof Error ? error.message : 'Unknown error'}`)
     } finally {
       setSubmitting(false)
     }

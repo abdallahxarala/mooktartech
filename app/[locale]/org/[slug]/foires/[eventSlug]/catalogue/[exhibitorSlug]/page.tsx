@@ -38,7 +38,9 @@ export default async function ExhibitorDetailPage({
     .eq('slug', params.exhibitorSlug)
     .single()
 
-  if (!exhibitor || exhibitor.status !== 'approved') {
+  // Vérifier que l'exposant est approuvé (utiliser approval_status si disponible, sinon status)
+  const isApproved = (exhibitor as any).approval_status === 'approved' || exhibitor.status === 'approved'
+  if (!exhibitor || !isApproved) {
     notFound()
   }
 

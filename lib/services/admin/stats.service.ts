@@ -34,7 +34,8 @@ export interface EventStats {
     booth_location: string | null
     payment_amount: number | null
     payment_status: string | null
-    status: string | null
+    approval_status: string | null
+    status: string | null // Maintenir pour compatibilité
     created_at: string
   }>
 }
@@ -66,7 +67,7 @@ export async function getEventStats(eventId: string): Promise<EventStats> {
     // 2. Statistiques exposants (une seule requête optimisée)
     const { data: exhibitors, error: exhibitorsError } = await supabase
       .from('exhibitors')
-      .select('id, company_name, contact_name, contact_email, booth_location, payment_amount, payment_status, status, metadata, created_at')
+      .select('id, company_name, contact_name, contact_email, booth_location, payment_amount, payment_status, approval_status, status, metadata, created_at')
       .eq('event_id', eventId)
 
     if (exhibitorsError) {
@@ -165,7 +166,8 @@ export async function getEventStats(eventId: string): Promise<EventStats> {
         booth_location: ex.booth_location,
         payment_amount: ex.payment_amount ? Number(ex.payment_amount) : null,
         payment_status: ex.payment_status,
-        status: ex.status,
+        approval_status: (ex as any).approval_status || ex.status, // Utiliser approval_status si disponible, sinon status pour compatibilité
+        status: ex.status, // Maintenir pour compatibilité
         created_at: ex.created_at,
       }))
 
@@ -198,7 +200,8 @@ export async function getExhibitorsList(
   filters?: {
     pavillon?: string
     payment_status?: string
-    status?: string
+    approval_status?: string
+    status?: string // Maintenir pour compatibilité
     search?: string
     page?: number
     limit?: number
@@ -226,7 +229,10 @@ export async function getExhibitorsList(
     query = query.eq('payment_status', filters.payment_status)
   }
 
-  if (filters?.status) {
+  if (filters?.approval_status) {
+    query = query.eq('approval_status', filters.approval_status)
+  } else if (filters?.status) {
+    // Fallback vers status pour compatibilité
     query = query.eq('status', filters.status)
   }
 

@@ -30,11 +30,12 @@ export async function POST(
       )
     }
 
-    // Mettre à jour le statut
+    // Mettre à jour le statut d'approbation
     const { error: updateError } = await supabase
       .from('exhibitors')
       .update({
-        status: 'approved',
+        approval_status: 'approved',
+        status: 'approved', // Maintenir pour compatibilité si colonne existe
         updated_at: new Date().toISOString(),
       })
       .eq('id', params.id)

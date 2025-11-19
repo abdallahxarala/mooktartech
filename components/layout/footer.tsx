@@ -4,6 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useTranslations, useLocale } from 'next-intl'
+import { useParams, usePathname } from 'next/navigation'
 import { 
   Linkedin, 
   Twitter, 
@@ -15,29 +16,41 @@ import {
   Clock,
   ArrowRight,
   Heart,
-  Sparkles
+  Sparkles,
+  Package,
+  Building2,
+  Sparkles as SparklesIcon,
+  HelpCircle
 } from 'lucide-react'
 
 /**
  * Footer ultra-moderne 2025 avec gradient sombre et effets
  * Design avec glassmorphism, animations et micro-interactions
+ * Adapté pour la structure multitenant
  */
 export default function Footer() {
   const t = useTranslations('footer')
   const locale = useLocale()
+  const params = useParams()
+  const pathname = usePathname()
+  
+  // Détecter le contexte multitenant
+  const slug = params?.slug as string | undefined
+  const isMultitenant = pathname?.includes('/org/') && slug
+  const basePath = isMultitenant ? `/${locale}/org/${slug}` : `/${locale}`
 
   const quickLinks = [
-    { label: t('links.home'), href: `/${locale}` },
-    { label: t('links.products'), href: `/${locale}/products` },
-    { label: t('links.cardEditor'), href: `/${locale}/card-editor` },
-    { label: t('links.blog'), href: `/${locale}/blog` },
-    { label: t('links.contact'), href: `/${locale}/contact` },
+    { label: 'Accueil', href: basePath },
+    { label: 'Produits', href: `${basePath}/shop` },
+    { label: 'Créer ma carte NFC', href: `${basePath}/nfc-editor` },
+    { label: 'Éditeur de Badges', href: `${basePath}/badge-editor/pro` },
+    { label: 'Contact', href: `${basePath}/contact` },
   ]
 
   const legalLinks = [
-    { label: t('legal.terms'), href: `/${locale}/terms` },
-    { label: t('legal.privacy'), href: `/${locale}/privacy` },
-    { label: t('legal.cookies'), href: `/${locale}/cookies` },
+    { label: 'Mentions légales', href: `${basePath}/terms` },
+    { label: 'Confidentialité', href: `${basePath}/privacy` },
+    { label: 'Cookies', href: `${basePath}/cookies` },
   ]
 
   const socialLinks = [
@@ -62,17 +75,21 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
             {/* Company Info */}
             <div className="lg:col-span-1 animate-fade-in-up">
-              <Link href={`/${locale}`} className="flex items-center gap-3 mb-6 group">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg hover:scale-110 hover:rotate-5 transition-transform">
+              <Link href={basePath} className="flex items-center gap-3 mb-6 group">
+                <motion.div 
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className="w-12 h-12 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+                >
                   <span className="text-2xl font-black text-white">X</span>
-                </div>
+                </motion.div>
                 <span className="text-2xl font-black bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-orange-500 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
                   Xarala Solutions
                 </span>
               </Link>
               
               <p className="text-gray-200 mb-6 leading-relaxed">
-                {t('description')}
+                Solutions innovantes pour cartes PVC, NFC et badges professionnels. 
+                Créez votre carte digitale en quelques minutes.
               </p>
               
               {/* Social Links */}
@@ -95,7 +112,7 @@ export default function Footer() {
             {/* Quick Links */}
             <div className="animate-fade-in-up animation-delay-100">
               <h3 className="text-xl font-bold text-white mb-6">
-                {t('quickLinks.title')}
+                Liens rapides
               </h3>
               
               <ul className="space-y-4">
@@ -127,7 +144,7 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <h3 className="text-xl font-bold text-white mb-6">
-                {t('contact.title')}
+                Contact
               </h3>
               
               <div className="space-y-4">
@@ -203,18 +220,18 @@ export default function Footer() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h3 className="text-xl font-bold text-white mb-6">
-                {t('newsletter.title')}
+                Newsletter
               </h3>
               
               <p className="text-gray-200 mb-6">
-                {t('newsletter.description')}
+                Restez informé de nos dernières nouveautés et offres spéciales.
               </p>
               
               <div className="space-y-4">
                 <div className="relative">
                   <input
                     type="email"
-                    placeholder={t('newsletter.placeholder')}
+                    placeholder="Votre adresse email"
                     className="w-full px-4 py-3 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all"
                   />
                   <motion.button
@@ -227,7 +244,7 @@ export default function Footer() {
                 </div>
                 
                 <p className="text-gray-300/70 text-xs">
-                  {t('newsletter.disclaimer')}
+                  Nous ne partagerons jamais votre email avec des tiers.
                 </p>
               </div>
             </motion.div>

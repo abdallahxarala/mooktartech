@@ -14,7 +14,8 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '20')
     const pavillon = searchParams.get('pavillon') || undefined
     const payment_status = searchParams.get('payment_status') || undefined
-    const status = searchParams.get('status') || undefined
+    const approval_status = searchParams.get('approval_status') || undefined
+    const status = searchParams.get('status') || undefined // Maintenir pour compatibilité
     const search = searchParams.get('search') || undefined
     const sortBy = (searchParams.get('sortBy') || 'created_at') as 'created_at' | 'company_name' | 'payment_amount'
     const sortOrder = (searchParams.get('sortOrder') || 'desc') as 'asc' | 'desc'
@@ -29,7 +30,8 @@ export async function GET(request: NextRequest) {
     const result = await getExhibitorsList(eventId, {
       pavillon,
       payment_status,
-      status,
+      approval_status: approval_status || status, // Utiliser approval_status si fourni, sinon status pour compatibilité
+      status, // Maintenir pour compatibilité
       search,
       page,
       limit,

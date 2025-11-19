@@ -204,7 +204,8 @@ export default function InscriptionExposantPage({
         booth_location: formData.pavillonCode,
         category: formData.category || null,
         tags: formData.tags.length > 0 ? formData.tags : null,
-        status: paymentStatus === 'paid' ? 'approved' : 'pending',
+        approval_status: paymentStatus === 'paid' ? 'approved' : 'pending',
+        status: paymentStatus === 'paid' ? 'approved' : 'pending', // Maintenir pour compatibilité
         payment_status: paymentStatus,
         payment_method: paymentMethod === 'mobile' ? 'wave' : paymentMethod === 'transfer' ? 'bank_transfer' : paymentMethod === 'cash' ? 'cash' : null,
         payment_amount: formData.totalTTC,
@@ -1972,7 +1973,8 @@ function Step6Payment({
         booth_location: formData.pavillonCode,
         category: formData.category || null,
         tags: formData.tags.length > 0 ? formData.tags : null,
-        status: 'pending',
+        approval_status: 'pending',
+        status: 'pending', // Maintenir pour compatibilité
         payment_status: 'unpaid',
         payment_method: 'wave',
         payment_amount: formData.totalTTC,

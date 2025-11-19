@@ -15,7 +15,8 @@ interface Exhibitor {
   booth_location: string | null
   payment_amount: number | null
   payment_status: string | null
-  status: string | null
+  approval_status: string | null
+  status: string | null // Maintenir pour compatibilité
   created_at: string
   metadata: any
 }
@@ -56,7 +57,7 @@ export default function AdminExhibitorsPage() {
 
       // Récupérer les exposants
       const response = await fetch(
-        `/api/admin/exhibitors?eventId=${eventData.id}&page=${page}&limit=${limit}&pavillon=${pavillonFilter}&payment_status=${paymentStatusFilter}&status=${statusFilter}&search=${encodeURIComponent(search)}&sortBy=${sortBy}&sortOrder=${sortOrder}`
+        `/api/admin/exhibitors?eventId=${eventData.id}&page=${page}&limit=${limit}&pavillon=${pavillonFilter}&payment_status=${paymentStatusFilter}&approval_status=${statusFilter}&status=${statusFilter}&search=${encodeURIComponent(search)}&sortBy=${sortBy}&sortOrder=${sortOrder}`
       )
       const data = await response.json()
 
@@ -282,14 +283,14 @@ export default function AdminExhibitorsPage() {
                           <td className="py-3 px-4 text-center">
                             <span
                               className={`px-2 py-1 rounded text-xs font-semibold ${
-                                exhibitor.status === 'approved'
+                                (exhibitor.approval_status || exhibitor.status) === 'approved'
                                   ? 'bg-green-100 text-green-800'
-                                  : exhibitor.status === 'rejected'
+                                  : (exhibitor.approval_status || exhibitor.status) === 'rejected'
                                   ? 'bg-red-100 text-red-800'
                                   : 'bg-yellow-100 text-yellow-800'
                               }`}
                             >
-                              {exhibitor.status || 'pending'}
+                              {exhibitor.approval_status || exhibitor.status || 'pending'}
                             </span>
                           </td>
                           <td className="py-3 px-4">
@@ -301,7 +302,7 @@ export default function AdminExhibitorsPage() {
                               >
                                 <Eye className="h-4 w-4" />
                               </Link>
-                              {exhibitor.status !== 'approved' && (
+                              {(exhibitor.approval_status || exhibitor.status) !== 'approved' && (
                                 <button
                                   onClick={() => handleApprove(exhibitor.id)}
                                   className="p-2 text-green-600 hover:bg-green-50 rounded"
@@ -310,7 +311,7 @@ export default function AdminExhibitorsPage() {
                                   <CheckCircle className="h-4 w-4" />
                                 </button>
                               )}
-                              {exhibitor.status !== 'rejected' && (
+                              {(exhibitor.approval_status || exhibitor.status) !== 'rejected' && (
                                 <button
                                   onClick={() => handleReject(exhibitor.id)}
                                   className="p-2 text-red-600 hover:bg-red-50 rounded"

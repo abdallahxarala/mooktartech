@@ -10,7 +10,6 @@ import {
   X, 
   ChevronDown,
   Shield,
-  Settings,
   User,
   LogIn,
   Package,
@@ -40,7 +39,11 @@ interface MenuItem {
   children?: MenuItem[]
 }
 
-export function Header() {
+/**
+ * Header moderne pour Xarala Solutions
+ * Avec Mega Menu et navigation complète
+ */
+export function HeaderXarala() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -348,7 +351,7 @@ export function Header() {
                 )}
               </Link>
 
-              {/* Admin Button (si multitenant) */}
+              {/* Admin Button */}
               {isMultitenant && slug === 'xarala-solutions' && (
                 <Link
                   href={`${basePath}/admin`}
@@ -493,4 +496,3 @@ export function Header() {
   )
 }
 
-export default Header

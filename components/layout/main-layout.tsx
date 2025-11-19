@@ -19,23 +19,20 @@ interface MainLayoutProps {
 export default function MainLayout({ children, className }: MainLayoutProps) {
   const pathname = usePathname()
 
-  // Extraire locale et slug depuis le pathname
-  // Format attendu : /fr/org/mooktartech-com/...
+  // Détecter si on est sur une route org (qui a son propre layout)
+  const isOrgRoute = pathname?.includes('/org/')
+
+  // Si c'est une route org, ne pas afficher Header/Footer ici
+  // Le layout org/[slug]/layout.tsx s'en chargera
+  if (isOrgRoute) {
+    return <>{children}</>
+  }
+
+  // Extraire locale et slug depuis le pathname pour les routes non-org
   const pathSegments = pathname.split('/').filter(Boolean)
-
-  const locale = pathSegments[0] || 'fr' // Premier segment = locale (fr, en, etc.)
-  const slug = pathSegments[2] || 'xarala-solutions' // Troisième segment = slug (après /org/)
-
-  // Si pas de slug dans l'URL, utiliser un défaut
+  const locale = pathSegments[0] || 'fr'
+  const slug = pathSegments[2] || 'xarala-solutions'
   const organizationSlug = pathname.includes('/org/') ? slug : 'xarala-solutions'
-
-  // Debug logs temporaires
-  console.log('🔍 MainLayout Debug:', {
-    pathname,
-    pathSegments,
-    locale,
-    slug: organizationSlug
-  })
 
   return (
     <div className="min-h-screen flex flex-col">

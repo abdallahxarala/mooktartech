@@ -186,7 +186,7 @@ export default function MonStandPage({
 
       <div className="container mx-auto px-4 py-8">
         {/* STATUT INSCRIPTION */}
-        {exhibitor.status === 'pending' && (
+        {((exhibitor as any).approval_status || exhibitor.status) === 'pending' && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 mb-8">
             <div className="flex items-start gap-4">
               <div className="text-3xl">⏳</div>
@@ -308,15 +308,15 @@ export default function MonStandPage({
                 <div>
                   <label className="text-sm text-gray-600 block mb-1">Statut</label>
                   <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold ${
-                    exhibitor.status === 'approved' 
+                    ((exhibitor as any).approval_status || exhibitor.status) === 'approved' 
                       ? 'bg-green-100 text-green-800'
-                      : exhibitor.status === 'pending'
+                      : ((exhibitor as any).approval_status || exhibitor.status) === 'pending'
                       ? 'bg-yellow-100 text-yellow-800'
                       : 'bg-gray-100 text-gray-800'
                   }`}>
-                    {exhibitor.status === 'approved' && '✅ Approuvé'}
-                    {exhibitor.status === 'pending' && '⏳ En attente'}
-                    {exhibitor.status === 'rejected' && '❌ Rejeté'}
+                    {((exhibitor as any).approval_status || exhibitor.status) === 'approved' && '✅ Approuvé'}
+                    {((exhibitor as any).approval_status || exhibitor.status) === 'pending' && '⏳ En attente'}
+                    {((exhibitor as any).approval_status || exhibitor.status) === 'rejected' && '❌ Rejeté'}
                   </span>
                 </div>
               </div>

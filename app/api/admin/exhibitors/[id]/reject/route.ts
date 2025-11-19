@@ -32,11 +32,12 @@ export async function POST(
       )
     }
 
-    // Mettre à jour le statut
+    // Mettre à jour le statut d'approbation
     const { error: updateError } = await supabase
       .from('exhibitors')
       .update({
-        status: 'rejected',
+        approval_status: 'rejected',
+        status: 'rejected', // Maintenir pour compatibilité si colonne existe
         metadata: {
           ...(exhibitor.metadata || {}),
           rejection_reason: reason || null,

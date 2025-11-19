@@ -49,11 +49,25 @@ export default function CataloguePage({
     setLoading(true)
 
     try {
-      // 1. Récupérer l'événement
+      // 1. Récupérer l'organization_id depuis le slug
+      const { data: organization } = await supabase
+        .from('organizations')
+        .select('id')
+        .eq('slug', params.slug)
+        .single()
+
+      if (!organization) {
+        console.error('Organization not found:', params.slug)
+        setLoading(false)
+        return
+      }
+
+      // 2. Récupérer l'événement avec vérification organization_id
       const { data: event, error: eventError } = await supabase
         .from('events')
         .select('id')
         .eq('slug', params.eventSlug)
+        .eq('organization_id', organization.id) // ✅ Isolation multitenant
         .single()
 
       if (eventError || !event) {
@@ -82,7 +96,7 @@ export default function CataloguePage({
           status
         `)
         .eq('event_id', event.id)
-        .eq('status', 'approved')
+        .or('approval_status.eq.approved,status.eq.approved') // Utiliser approval_status si disponible, sinon status
         .order('company_name')
 
       if (exhibitorsError) {
