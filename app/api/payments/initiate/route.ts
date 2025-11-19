@@ -37,7 +37,7 @@ interface InitiatePaymentResponse {
  */
 export async function POST(request: Request) {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Get authenticated session
     const {

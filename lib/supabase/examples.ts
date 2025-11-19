@@ -132,7 +132,7 @@ export async function processOrderExample() {
 export async function getAdminStatsExample() {
   // Dynamic import to avoid bundling server code in client
   const { createSupabaseServerClient } = await import('./server')
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   // Vérifier les permissions admin
   const { data: user, error: userError } = await supabase.auth.getCurrentUser()

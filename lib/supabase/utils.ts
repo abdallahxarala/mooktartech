@@ -3,7 +3,7 @@
  * Fonctions helper et utilitaires communs
  */
 
-import type { Database } from '@/lib/types/database.types'
+import type { Database } from './database.types'
 
 // === TYPES UTILITAIRES ===
 

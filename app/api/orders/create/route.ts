@@ -41,7 +41,7 @@ const createOrderSchema = z.object({
  */
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Get authenticated user
     const {

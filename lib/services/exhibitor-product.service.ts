@@ -50,7 +50,7 @@ export async function createProduct(
   params: CreateProductParams
 ): Promise<CreateProductResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
@@ -102,7 +102,7 @@ export async function updateProduct(
   params: UpdateProductParams
 ): Promise<UpdateProductResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
@@ -142,7 +142,7 @@ export async function deleteProduct(productId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: { session } } = await supabase.auth.getSession()
     if (!session) {
@@ -177,7 +177,7 @@ export async function getProductsByExhibitor(exhibitorId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: products, error } = await supabase
       .from('exhibitor_products')
@@ -207,7 +207,7 @@ export async function getExhibitorStats(exhibitorId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Récupérer les produits
     const { data: products, error: productsError } = await supabase
@@ -246,7 +246,7 @@ export async function getOrdersByExhibitor(exhibitorId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // TODO: Implémenter avec la vraie table exhibitor_orders
     // Pour l'instant, on retourne un tableau vide

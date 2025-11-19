@@ -16,7 +16,7 @@ import {
  */
 export async function POST(request: Request) {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Get authenticated session
     const {
@@ -201,7 +201,7 @@ export async function POST(request: Request) {
  */
 export async function GET(request: Request) {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const {
       data: { session },

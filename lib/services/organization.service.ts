@@ -4,7 +4,6 @@
  */
 
 import { createSupabaseServerClient } from '@/lib/supabase/server'
-import { createSupabaseBrowserClient } from '@/lib/supabase/client'
 import type { Database } from '@/lib/types/database.types'
 
 type Organization = Database['public']['Tables']['organizations']['Row']
@@ -31,7 +30,7 @@ export async function createOrganization(
   params: CreateOrganizationParams
 ): Promise<CreateOrganizationResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Vérifier que l'utilisateur est authentifié
     const {
@@ -117,7 +116,7 @@ export async function getOrganizationBySlug(
   slug: string
 ): Promise<{ organization: Organization | null; error: string | null }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: organization, error } = await supabase
       .from('organizations')
@@ -153,7 +152,7 @@ export async function updateOrganization(
   updates: OrganizationUpdate
 ): Promise<{ organization: Organization | null; error: string | null }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Vérifier que l'utilisateur est authentifié et membre de l'org
     const {

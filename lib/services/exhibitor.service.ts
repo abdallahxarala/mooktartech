@@ -71,7 +71,7 @@ export async function createExhibitor(
   params: CreateExhibitorParams
 ): Promise<CreateExhibitorResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Vérifier que l'utilisateur est authentifié
     const {
@@ -185,7 +185,7 @@ export async function updateExhibitor(
   params: UpdateExhibitorParams
 ): Promise<UpdateExhibitorResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: exhibitor, error } = await supabase
       .from('exhibitors')
@@ -226,7 +226,7 @@ export async function getExhibitorById(exhibitorId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: exhibitor, error } = await supabase
       .from('exhibitors')
@@ -261,7 +261,7 @@ export async function getExhibitorsByEvent(eventId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: exhibitors, error } = await supabase
       .from('exhibitors')

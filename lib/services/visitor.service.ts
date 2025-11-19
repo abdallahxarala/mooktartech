@@ -34,7 +34,7 @@ export async function createVisitor(
   params: CreateVisitorParams
 ): Promise<CreateVisitorResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Générer un badge_id unique
     const badgeId = `TKT-${uid.rnd().toUpperCase()}`
@@ -94,7 +94,7 @@ export async function getVisitorByBadgeId(badgeId: string): Promise<{
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: visitor, error } = await supabase
       .from('event_attendees')
@@ -133,7 +133,7 @@ export async function updateVisitorPaymentStatus(
   error: string | null
 }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: visitor } = await supabase
       .from('event_attendees')

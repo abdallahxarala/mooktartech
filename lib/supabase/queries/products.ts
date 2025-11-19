@@ -5,7 +5,7 @@
  */
 
 import { createSupabaseServerClient } from '../server'
-import type { Database } from '@/lib/types/database.types'
+import type { Database } from '../database.types'
 
 type ProductRow = Database['public']['Tables']['products']['Row']
 type CategoryRow = Database['public']['Tables']['categories']['Row']
@@ -45,7 +45,7 @@ export interface ProductListResult {
  * Get product by slug
  */
 export async function getProductBySlug(slug: string): Promise<ProductWithCategory | null> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('products')
@@ -68,7 +68,7 @@ export async function getProductBySlug(slug: string): Promise<ProductWithCategor
  * Get product by ID
  */
 export async function getProductById(id: string): Promise<ProductWithCategory | null> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('products')
@@ -93,7 +93,7 @@ export async function getProductById(id: string): Promise<ProductWithCategory | 
 export async function getProducts(
   options: ProductListOptions = {}
 ): Promise<ProductListResult> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const {
     page = 1,
@@ -186,7 +186,7 @@ export async function getProducts(
  * Get featured products
  */
 export async function getFeaturedProducts(limit = 8): Promise<ProductWithCategory[]> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('products')
@@ -210,7 +210,7 @@ export async function getFeaturedProducts(limit = 8): Promise<ProductWithCategor
  * Get new products
  */
 export async function getNewProducts(limit = 8): Promise<ProductWithCategory[]> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('products')
@@ -237,7 +237,7 @@ export async function getProductsByCategory(
   categorySlug: string,
   limit = 20
 ): Promise<ProductWithCategory[]> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   // First get category
   const { data: category } = await supabase
@@ -272,7 +272,7 @@ export async function getProductsByCategory(
  * Get all categories
  */
 export async function getAllCategories(): Promise<CategoryRow[]> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('categories')
@@ -291,7 +291,7 @@ export async function getAllCategories(): Promise<CategoryRow[]> {
  * Get all brands
  */
 export async function getAllBrands(): Promise<string[]> {
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
 
   const { data, error } = await supabase
     .from('products')

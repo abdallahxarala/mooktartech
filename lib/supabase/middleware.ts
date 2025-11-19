@@ -1,7 +1,7 @@
 import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
-import type { Database } from '@/lib/types/database.types'
+import type { Database } from './database.types'
 
 /**
  * Middleware Supabase pour Xarala Solutions

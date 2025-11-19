@@ -142,7 +142,7 @@ export default async function ShopPage({ params }: ShopPageProps) {
   }
 
   // Récupérer les produits depuis Supabase
-  const supabase = createSupabaseServerClient()
+  const supabase = await createSupabaseServerClient()
   
   const { data: products, error } = await supabase
     .from('products')

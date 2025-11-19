@@ -1,40 +1,40 @@
 // lib/supabase/server.ts
 
-import { cookies } from 'next/headers';
 import { createServerClient } from '@supabase/ssr';
-import type { Database } from '@/lib/types/database.types';
+import { cookies } from 'next/headers';
+import type { Database } from './database.types';
 
-/**
- * Create Supabase client for server-side usage
- * 
- * This is a synchronous helper function (not a server action).
- * Use this in:
- * - Server Components (app/* without 'use client')
- * - Route Handlers (app/api/*)
- * - Server Actions
- * 
- * DO NOT use this in:
- * - Client Components ('use client')
- * - Pages directory
- */
-export function createSupabaseServerClient() {
-  const cookieStore = cookies();
+export async function createClient() {
+  const cookieStore = await cookies();
 
   return createServerClient<Database>(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get(name: string) {
-          return cookieStore.get(name)?.value;
+        getAll() {
+          return cookieStore.getAll();
         },
-        set(name: string, value: string, options: any) {
-          cookieStore.set({ name, value, ...options });
-        },
-        remove(name: string, options: any) {
-          cookieStore.set({ name, value: '', ...options });
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            );
+          } catch {
+            // The `setAll` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
+          }
         },
       },
-    },
+    }
   );
+}
+
+/**
+ * Alias pour compatibilité avec le code existant
+ * @deprecated Utilisez createClient() à la place
+ */
+export async function createSupabaseServerClient() {
+  return await createClient();
 }

@@ -6,7 +6,7 @@
 
 import { createSupabaseBrowserClient } from './client'
 import type { SupabaseClient } from '@supabase/supabase-js'
-import type { Database } from '@/lib/types/database.types'
+import type { Database } from './database.types'
 
 export type StorageBucket = 'assets' | 'cards' | 'avatars' | 'badges'
 export type ImageFeature = 'avatar' | 'logo' | 'background' | 'cover' | 'photo' | 'badge'
@@ -248,7 +248,7 @@ export async function getSignedUrl(
   if (!supabaseClient) {
     // Dynamic import to avoid bundling server code in client
     const { createSupabaseServerClient } = await import('./server')
-    supabaseClient = createSupabaseServerClient()
+    supabaseClient = await createSupabaseServerClient()
   }
 
   const { data, error } = await supabaseClient.storage.from(bucket).createSignedUrl(path, expiresIn)
@@ -278,7 +278,7 @@ export async function uploadImageServer(
   if (!supabaseClient) {
     // Dynamic import to avoid bundling server code in client
     const { createSupabaseServerClient } = await import('./server')
-    supabaseClient = createSupabaseServerClient()
+    supabaseClient = await createSupabaseServerClient()
   }
 
   const { data, error } = await supabaseClient.storage.from(options.bucket).upload(options.path, options.file, {

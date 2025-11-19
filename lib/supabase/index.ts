@@ -30,7 +30,7 @@ export {
 } from '../hooks/use-supabase-query'
 
 // === TYPES ===
-export type { Database } from '../types/database.types'
+export type { Database } from './database.types'
 export type {
   User,
   Product,
@@ -228,7 +228,7 @@ export async function checkSupabaseConnection() {
 async function getAppStats() {
   try {
     const { createSupabaseServerClient } = await import('./server')
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
     
     const [
       { data: users },

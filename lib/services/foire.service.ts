@@ -59,7 +59,7 @@ export async function createFoire(
   params: CreateFoireParams
 ): Promise<CreateFoireResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Vérifier que l'utilisateur est authentifié
     const {
@@ -217,7 +217,7 @@ export async function getFoireBySlug(
   slug: string
 ): Promise<{ foire: Event | null; error: string | null }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: foire, error } = await supabase
       .from('events')
@@ -253,7 +253,7 @@ export async function getFoiresByOrganization(
   organizationId: string
 ): Promise<{ foires: Event[]; error: string | null }> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     const { data: foires, error } = await supabase
       .from('events')

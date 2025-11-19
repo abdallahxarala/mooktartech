@@ -58,7 +58,7 @@ export async function sendOrderConfirmationEmail(
   locale: string = 'fr'
 ): Promise<EmailResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Fetch order details
     const { data: order, error: orderError } = await supabase
@@ -214,7 +214,7 @@ export async function sendLeadNotificationEmail(
   locale: string = 'fr'
 ): Promise<EmailResult> {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Fetch lead details
     const { data: lead, error: leadError } = await supabase

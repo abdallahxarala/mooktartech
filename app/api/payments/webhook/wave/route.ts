@@ -21,7 +21,7 @@ interface WebhookResponse {
  */
 export async function POST(request: Request) {
   try {
-    const supabase = createSupabaseServerClient()
+    const supabase = await createSupabaseServerClient()
 
     // Get webhook signature from headers
     const signature = request.headers.get('x-wave-signature') || 
