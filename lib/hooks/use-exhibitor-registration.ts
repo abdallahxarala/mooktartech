@@ -13,7 +13,8 @@ import {
   type ExhibitorRegistrationFormData,
   stepSchemas,
 } from '@/lib/schemas/exhibitor-registration.schema'
-import { createExhibitor, updateExhibitor } from '@/lib/services/exhibitor.service'
+// Using API routes instead of direct server calls
+// import { createExhibitor, updateExhibitor } from '@/lib/services/exhibitor.service'
 import { useToast } from '@/components/ui/use-toast'
 import { z } from 'zod'
 
@@ -230,22 +231,32 @@ export function useExhibitorRegistration({
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/^-+|-+$/g, '')
 
-      const result = await createExhibitor({
-        event_id: eventId,
-        organization_id: organizationId,
-        company_name: formData.company_name,
-        slug: `${slug}-${Date.now()}`,
-        description: formData.description,
-        logo_url: formData.logo_url || undefined,
-        contact_name: formData.contact_name,
-        contact_email: formData.contact_email,
-        contact_phone: formData.contact_phone,
-        website: formData.website || undefined,
-        booth_number: formData.booth_number,
-        booth_location: formData.booth_location || undefined,
-        category: formData.category,
-        tags: formData.tags,
+      // Use API route instead of direct server call
+      const createResponse = await fetch('/api/exhibitors/create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_id: eventId,
+          organization_id: organizationId,
+          company_name: formData.company_name,
+          slug: `${slug}-${Date.now()}`,
+          description: formData.description,
+          logo_url: formData.logo_url || undefined,
+          contact_name: formData.contact_name,
+          contact_email: formData.contact_email,
+          contact_phone: formData.contact_phone,
+          website: formData.website || undefined,
+          booth_number: formData.booth_number,
+          booth_location: formData.booth_location || undefined,
+          category: formData.category,
+          tags: formData.tags,
+        }),
       })
+      
+      const createData = await createResponse.json()
+      const result = createData.error 
+        ? { exhibitor: null, error: createData.error }
+        : { exhibitor: createData.exhibitor, error: null }
 
       if (result.error || !result.exhibitor) {
         throw new Error(result.error || 'Erreur lors de la création de l\'exposant')
@@ -253,12 +264,24 @@ export function useExhibitorRegistration({
 
       // Mettre à jour le statut de paiement si nécessaire
       if (formData.payment_confirmed) {
-        await updateExhibitor({
-          exhibitor_id: result.exhibitor.id,
-          updates: {
-            payment_status: 'paid',
-            payment_amount: formData.payment_amount,
-            currency: formData.currency,
+        // Use API route instead of direct server call
+        const updateResponse = await fetch('/api/exhibitors/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            exhibitor_id: result.exhibitor.id,
+            updates: {
+              payment_status: 'paid',
+              payment_amount: formData.payment_amount,
+              currency: formData.currency,
+            },
+          }),
+        })
+        
+        const updateData = await updateResponse.json()
+        if (updateData.error) {
+          console.error('Error updating exhibitor payment:', updateData.error)
+        }
           },
         })
       }
