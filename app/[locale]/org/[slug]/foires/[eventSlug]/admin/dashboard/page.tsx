@@ -6,7 +6,7 @@ import { Users, Square, DollarSign, Ticket, TrendingUp, TrendingDown, Download }
 import { LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { getEventStats } from '@/lib/services/admin/stats.service'
 import type { EventStats } from '@/lib/services/admin/stats.service'
-import { downloadExcel } from '@/lib/services/exports/reports'
+// import { downloadExcel } from '@/lib/services/exports/reports' // Temporarily disabled - requires server component
 import Link from 'next/link'
 
 const COLORS = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe']

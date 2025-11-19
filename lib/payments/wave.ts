@@ -211,5 +211,4 @@ export class WavePaymentProvider extends BasePaymentProvider {
 }
 
 // Export helper functions
-export { WavePaymentProvider }
 export * from './wave-helpers'
