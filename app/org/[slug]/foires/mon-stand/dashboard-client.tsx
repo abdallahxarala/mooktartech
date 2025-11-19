@@ -45,7 +45,10 @@ export function DashboardClient({
     openProductForm,
   } = useFoireStore()
 
-  const { products, isLoadingProducts } = useProducts(exhibitorId)
+  // Temporarily disabled - requires server component
+  // const { products, isLoadingProducts } = useProducts(exhibitorId)
+  const products: any[] = []
+  const isLoadingProducts = false
 
   // Initialiser l'exposant dans le store
   useEffect(() => {

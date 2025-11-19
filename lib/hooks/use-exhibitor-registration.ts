@@ -282,8 +282,6 @@ export function useExhibitorRegistration({
         if (updateData.error) {
           console.error('Error updating exhibitor payment:', updateData.error)
         }
-          },
-        })
       }
 
       toast({
