@@ -7,7 +7,8 @@
 import { useEffect } from 'react'
 import { useFoireStore } from '@/lib/store/foire-store'
 import { useProducts } from '@/lib/hooks/use-products'
-import { getExhibitorStats, getOrdersByExhibitor } from '@/lib/services/exhibitor-product.service'
+// Temporarily disabled - requires server component
+// import { getExhibitorStats, getOrdersByExhibitor } from '@/lib/services/exhibitor-product.service'
 import { StatsCards } from '@/components/exhibitor-dashboard/stats-cards'
 import { ProductList } from '@/components/exhibitor-dashboard/product-list'
 import { ProductForm } from '@/components/exhibitor-dashboard/product-form'
@@ -51,37 +52,37 @@ export function DashboardClient({
     setExhibitor(exhibitorId, eventId)
   }, [exhibitorId, eventId, setExhibitor])
 
-  // Charger les stats
-  useEffect(() => {
-    const loadStats = async () => {
-      setLoadingStats(true)
-      const { stats: fetchedStats, error } = await getExhibitorStats(exhibitorId)
-      if (!error && fetchedStats) {
-        setStats(fetchedStats)
-      }
-      setLoadingStats(false)
-    }
+  // Charger les stats - Temporarily disabled (requires server component)
+  // useEffect(() => {
+  //   const loadStats = async () => {
+  //     setLoadingStats(true)
+  //     const { stats: fetchedStats, error } = await getExhibitorStats(exhibitorId)
+  //     if (!error && fetchedStats) {
+  //       setStats(fetchedStats)
+  //     }
+  //     setLoadingStats(false)
+  //   }
 
-    if (exhibitorId) {
-      loadStats()
-    }
-  }, [exhibitorId, setStats, setLoadingStats])
+  //   if (exhibitorId) {
+  //     loadStats()
+  //   }
+  // }, [exhibitorId, setStats, setLoadingStats])
 
-  // Charger les commandes
-  useEffect(() => {
-    const loadOrders = async () => {
-      setLoadingOrders(true)
-      const { orders: fetchedOrders, error } = await getOrdersByExhibitor(exhibitorId)
-      if (!error && fetchedOrders) {
-        setOrders(fetchedOrders)
-      }
-      setLoadingOrders(false)
-    }
+  // Charger les commandes - Temporarily disabled (requires server component)
+  // useEffect(() => {
+  //   const loadOrders = async () => {
+  //     setLoadingOrders(true)
+  //     const { orders: fetchedOrders, error } = await getOrdersByExhibitor(exhibitorId)
+  //     if (!error && fetchedOrders) {
+  //       setOrders(fetchedOrders)
+  //     }
+  //     setLoadingOrders(false)
+  //   }
 
-    if (exhibitorId) {
-      loadOrders()
-    }
-  }, [exhibitorId, setOrders, setLoadingOrders])
+  //   if (exhibitorId) {
+  //     loadOrders()
+  //   }
+  // }, [exhibitorId, setOrders, setLoadingOrders])
 
   const handleUpdateOrder = async (orderId: string, status: string) => {
     // TODO: Implémenter la mise à jour de commande
