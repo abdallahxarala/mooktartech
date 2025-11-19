@@ -22,7 +22,8 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Switch } from '@/components/ui/switch'
-import { useProducts } from '@/lib/hooks/use-products'
+// Temporarily disabled - requires server component
+// import { useProducts } from '@/lib/hooks/use-products'
 import { useFoireStore } from '@/lib/store/foire-store'
 import {
   MoreVertical,
@@ -52,7 +53,12 @@ interface ProductListProps {
 }
 
 export function ProductList({ exhibitorId }: ProductListProps) {
-  const { products, isLoadingProducts, toggleVisibility, remove } = useProducts(exhibitorId)
+  // Temporarily disabled - requires server component
+  // const { products, isLoadingProducts, toggleVisibility, remove } = useProducts(exhibitorId)
+  const products: any[] = []
+  const isLoadingProducts = false
+  const toggleVisibility = async () => {}
+  const remove = async () => {}
   const { openProductForm } = useFoireStore()
   const { toast } = useToast()
   const [productToDelete, setProductToDelete] = useState<ExhibitorProduct | null>(null)
