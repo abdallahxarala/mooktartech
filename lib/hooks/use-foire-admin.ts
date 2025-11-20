@@ -236,7 +236,7 @@ export function useFoireAdmin({ eventId }: UseFoireAdminOptions): UseFoireAdminR
         setIsLoadingOrders(false)
       }
     },
-    [supabase, toast]
+    []
   )
 
   const updateOrderStatus = useCallback(

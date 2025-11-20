@@ -30,6 +30,7 @@ export function useSafeCallback<T extends (...args: any[]) => any>(callback: T) 
 }
 
 export function useSafeMemo<T>(factory: () => T, deps: any[]) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => {
     const value = factory();
     return typeof value === 'object'

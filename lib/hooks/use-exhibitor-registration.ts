@@ -95,7 +95,7 @@ export function useExhibitorRegistration({
     if (isValid && currentStep < totalSteps) {
       setCurrentStep(currentStep + 1)
     }
-  }, [currentStep, totalSteps])
+  }, [currentStep, totalSteps, validateStep])
 
   const previousStep = useCallback(() => {
     if (currentStep > 1) {

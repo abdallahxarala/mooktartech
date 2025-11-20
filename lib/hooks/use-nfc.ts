@@ -84,6 +84,29 @@ export function useNFC({
     }
   }, [onReading]);
 
+  const compareNDEFMessages = (a: NDEFMessage, b: NDEFMessage): boolean => {
+    if (a.records.length !== b.records.length) return false;
+    return a.records.every((record, i) => 
+      record.recordType === b.records[i].recordType &&
+      record.data.toString() === b.records[i].data.toString()
+    );
+  };
+
+  // Vérification post-écriture
+  const verifyWriteCallback = useCallback(async (ndef: any, message: NDEFMessage): Promise<boolean> => {
+    // Vérification post-écriture
+    try {
+      const readMessage = await new Promise<NDEFMessage>((resolve) => {
+        ndef.addEventListener("reading", ({ message }: any) => resolve(message), { once: true });
+      });
+
+      // Comparer les messages
+      return compareNDEFMessages(message, readMessage);
+    } catch {
+      return false;
+    }
+  }, []);
+
   // Écrire des données NFC
   const writeData = useCallback(async (data: any, options: { format?: NFCFormat } = {}) => {
     if (!('NDEFReader' in window)) {
@@ -98,7 +121,7 @@ export function useNFC({
       onWriting?.('success');
 
       // Vérification post-écriture
-      const verificationResult = await verifyWrite(ndef, message);
+      const verificationResult = await verifyWriteCallback(ndef, message);
       if (!verificationResult) {
         throw new Error('Échec de la vérification post-écriture');
       }
@@ -107,7 +130,7 @@ export function useNFC({
       onWriting?.('error', err as Error);
       throw err;
     }
-  }, [onWriting]);
+  }, [onWriting, verifyWriteCallback]);
 
   // Utilitaires
   const detectFormat = (message: NDEFMessage): NFCFormat => {
@@ -155,27 +178,6 @@ export function useNFC({
     return { records } as NDEFMessage;
   };
 
-  const verifyWrite = async (ndef: any, message: NDEFMessage): Promise<boolean> => {
-    // Vérification post-écriture
-    try {
-      const readMessage = await new Promise<NDEFMessage>((resolve) => {
-        ndef.addEventListener("reading", ({ message }: any) => resolve(message), { once: true });
-      });
-
-      // Comparer les messages
-      return compareNDEFMessages(message, readMessage);
-    } catch {
-      return false;
-    }
-  };
-
-  const compareNDEFMessages = (a: NDEFMessage, b: NDEFMessage): boolean => {
-    if (a.records.length !== b.records.length) return false;
-    return a.records.every((record, i) => 
-      record.recordType === b.records[i].recordType &&
-      record.data.toString() === b.records[i].data.toString()
-    );
-  };
 
   return {
     status,
