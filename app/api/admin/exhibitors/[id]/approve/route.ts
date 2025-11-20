@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
-import { sendExhibitorConfirmationEmail } from '@/lib/services/email/templates'
+// Dynamic import to avoid build-time errors with missing env vars
+// import { sendExhibitorConfirmationEmail } from '@/lib/services/email/templates'
 
 /**
  * API Endpoint pour approuver un exposant
@@ -56,16 +57,25 @@ export async function POST(
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
       const invoiceUrl = `${baseUrl}/api/foires/${event.slug}/invoices/${exhibitor.id}`
 
-      await sendExhibitorConfirmationEmail({
-        to: exhibitor.contact_email,
-        exhibitorName: exhibitor.contact_name,
-        companyName: exhibitor.company_name,
-        standNumber: exhibitor.booth_number || null,
-        pavilionName: pavillon?.nom || exhibitor.booth_location || 'Non assigné',
-        surfaceArea: (exhibitor.metadata as any)?.standSize || 0,
-        totalPrice: exhibitor.payment_amount || 0,
-        invoiceUrl,
-      })
+      // Send confirmation email if RESEND_API_KEY is configured
+      if (process.env.RESEND_API_KEY) {
+        try {
+          const { sendExhibitorConfirmationEmail } = await import('@/lib/services/email/templates')
+          await sendExhibitorConfirmationEmail({
+            to: exhibitor.contact_email,
+            exhibitorName: exhibitor.contact_name,
+            companyName: exhibitor.company_name,
+            standNumber: exhibitor.booth_number || null,
+            pavilionName: pavillon?.nom || exhibitor.booth_location || 'Non assigné',
+            surfaceArea: (exhibitor.metadata as any)?.standSize || 0,
+            totalPrice: exhibitor.payment_amount || 0,
+            invoiceUrl,
+          })
+        } catch (emailError) {
+          console.error('Error sending confirmation email:', emailError)
+          // Continue even if email fails
+        }
+      }
     } catch (emailError) {
       console.warn('Failed to send approval email:', emailError)
       // Continue même si l'email échoue
