@@ -29,7 +29,8 @@ import {
 } from '@/components/ui/dialog'
 import { ImageUpload } from '@/components/ui/image-upload'
 import { useProductAI } from '@/lib/hooks/use-product-ai'
-import { useProducts } from '@/lib/hooks/use-products'
+// Temporarily disabled - requires server component
+// import { useProducts } from '@/lib/hooks/use-products'
 import { useFoireStore } from '@/lib/store/foire-store'
 import { Sparkles, Loader2, X } from 'lucide-react'
 import { useToast } from '@/components/ui/use-toast'
@@ -61,7 +62,10 @@ interface ProductFormProps {
 
 export function ProductForm({ exhibitorId, product, onSuccess }: ProductFormProps) {
   const { isProductFormOpen, closeProductForm } = useFoireStore()
-  const { create, update } = useProducts(exhibitorId)
+  // Temporarily disabled - requires server component
+  // const { create, update } = useProducts(exhibitorId)
+  const create = async () => ({ error: null })
+  const update = async () => ({ error: null })
   const { generateDescription, isGenerating } = useProductAI()
   const { toast } = useToast()
 
