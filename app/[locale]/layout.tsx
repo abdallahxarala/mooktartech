@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
+import { getMessages, setRequestLocale } from 'next-intl/server'
 import { notFound } from 'next/navigation'
-import { locales } from '@/i18n.config'
+import { routing } from '@/i18n/routing'
 import { ThemeProvider } from '@/components/theme-provider'
 import { ToastProvider } from '@/components/ui/toast-provider'
 import { Toaster } from 'react-hot-toast'
@@ -12,7 +12,7 @@ import ScrollProgress from '@/components/ui/scroll-progress'
 import CustomCursor from '@/components/ui/custom-cursor'
 import '../globals.css'
 
-// Force dynamic rendering
+// Force dynamic
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
@@ -106,7 +106,7 @@ export const metadata: Metadata = {
  * Génération des paramètres statiques pour les locales
  */
 export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }))
+  return routing.locales.map((locale) => ({ locale }))
 }
 
 /**
@@ -120,11 +120,14 @@ export default async function LocaleLayout({
   params: { locale: string }
 }) {
   // Vérifier que la locale est supportée
-  if (!locales.includes(locale as any)) {
+  if (!routing.locales.includes(locale as any)) {
     notFound()
   }
 
-  // Charger les messages pour la locale
+  // Enable static rendering
+  setRequestLocale(locale)
+
+  // Get messages
   const messages = await getMessages()
 
   return (

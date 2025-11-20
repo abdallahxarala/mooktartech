@@ -1,8 +1,8 @@
 import { createServerClient } from '@supabase/ssr';
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
-import createIntlMiddleware from 'next-intl/middleware';
-import { locales, defaultLocale } from '@/i18n.config';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
 
 /**
  * Middleware Next.js 14 pour Xarala Solutions
@@ -10,13 +10,7 @@ import { locales, defaultLocale } from '@/i18n.config';
  */
 
 // Configuration du middleware d'internationalisation
-const intlMiddleware = createIntlMiddleware({
-  locales,
-  defaultLocale,
-  localePrefix: 'always',
-  // Détection automatique de la langue basée sur Accept-Language
-  localeDetection: true,
-});
+const intlMiddleware = createMiddleware(routing);
 
 // Routes protégées nécessitant une authentification
 const protectedRoutes = [
@@ -73,7 +67,7 @@ function shouldRedirect(pathname: string): boolean {
 function getLocaleFromPath(pathname: string): string | null {
   const segments = pathname.split('/');
   const locale = segments[1];
-  return locales.includes(locale as any) ? locale : null;
+  return routing.locales.includes(locale as any) ? locale : null;
 }
 
 /**
@@ -93,14 +87,14 @@ export async function middleware(request: NextRequest) {
 
   // 1. Redirection de la racine vers la locale par défaut
   if (pathname === '/') {
-    return NextResponse.redirect(new URL(`/${defaultLocale}`, request.url));
+    return NextResponse.redirect(new URL(`/${routing.defaultLocale}`, request.url));
   }
 
   // 2. Gestion des routes publiques non localisées
   if (!getLocaleFromPath(pathname) && !pathname.startsWith('/api/') && !pathname.startsWith('/_next/')) {
     // Rediriger vers la version localisée
-    const locale = request.headers.get('accept-language')?.split(',')[0]?.split('-')[0] || defaultLocale;
-    const validLocale = locales.includes(locale as any) ? locale : defaultLocale;
+    const locale = request.headers.get('accept-language')?.split(',')[0]?.split('-')[0] || routing.defaultLocale;
+    const validLocale = routing.locales.includes(locale as any) ? locale : routing.defaultLocale;
     return NextResponse.redirect(new URL(`/${validLocale}${pathname}`, request.url));
   }
 
@@ -185,7 +179,7 @@ export async function middleware(request: NextRequest) {
       const { data: { session } } = await supabase.auth.getSession();
 
       if (!session) {
-        const locale = getLocaleFromPath(pathname) || defaultLocale;
+        const locale = getLocaleFromPath(pathname) || routing.defaultLocale;
         const loginUrl = new URL(`/${locale}/auth/login`, request.url);
         loginUrl.searchParams.set('redirectTo', pathname);
         return NextResponse.redirect(loginUrl);
@@ -200,7 +194,7 @@ export async function middleware(request: NextRequest) {
           .single();
 
         if (!profile || profile.role !== 'admin') {
-          const locale = getLocaleFromPath(pathname) || defaultLocale;
+          const locale = getLocaleFromPath(pathname) || routing.defaultLocale;
           return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
         }
       }
@@ -208,14 +202,14 @@ export async function middleware(request: NextRequest) {
       return response;
     } catch (error) {
       console.error('Middleware error:', error);
-      const locale = getLocaleFromPath(pathname) || defaultLocale;
+      const locale = getLocaleFromPath(pathname) || routing.defaultLocale;
       return NextResponse.redirect(new URL(`/${locale}/auth/login`, request.url));
     }
   }
 
   // 5. Gestion des routes de redirection
   if (shouldRedirect(pathname)) {
-    const locale = getLocaleFromPath(pathname) || defaultLocale;
+    const locale = getLocaleFromPath(pathname) || routing.defaultLocale;
     const targetUrl = new URL(`/${locale}/auth/login`, request.url);
     return NextResponse.redirect(targetUrl);
   }
@@ -239,8 +233,10 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Correspond à tous les chemins sauf les fichiers statiques
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    // Match all pathnames except for
+    // - … if they start with `/api`, `/_next` or `/_vercel`
+    // - … the ones containing a dot (e.g. `favicon.ico`)
+    '/((?!api|_next|_vercel|.*\\..*).*)',
     // Inclut les routes API spécifiques
     '/api/cards/:path*',
     '/api/orders/:path*',
