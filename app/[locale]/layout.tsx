@@ -12,6 +12,10 @@ import ScrollProgress from '@/components/ui/scroll-progress'
 import CustomCursor from '@/components/ui/custom-cursor'
 import '../globals.css'
 
+// Force dynamic rendering
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 /**
  * Configuration de la police Inter
  */
