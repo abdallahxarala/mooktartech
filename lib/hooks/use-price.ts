@@ -69,7 +69,37 @@ export function usePrice({
   }, [amount, currency, includeVAT, showCurrency]);
 }
 
-// Hook pour formater directement un prix
+// Fonction utilitaire pour formater directement un prix (sans hook)
 export function formatPrice(amount: number, options: Omit<PriceOptions, 'amount'> = {}): string {
-  return usePrice({ amount, ...options }).formatted;
+  const currency = options.currency || defaultCurrency;
+  const includeVAT = options.includeVAT !== false;
+  const showCurrency = options.showCurrency !== false;
+
+  // Calcul des montants avec et sans TVA
+  const withoutVAT = amount;
+  const vatAmount = withoutVAT * VAT_RATE;
+  const withVAT = withoutVAT + vatAmount;
+
+  // Montant final à afficher
+  const finalAmount = includeVAT ? withVAT : withoutVAT;
+
+  // Formatage du nombre
+  const numberFormat = new Intl.NumberFormat('fr-FR', {
+    minimumFractionDigits: currency.format.decimals,
+    maximumFractionDigits: currency.format.decimals,
+    useGrouping: true,
+  });
+
+  // Construction de la chaîne formatée
+  let formatted = numberFormat.format(finalAmount);
+  formatted = formatted.replace(',', currency.format.decimalSeparator);
+  formatted = formatted.replace(/\s/g, currency.format.thousandsSeparator);
+
+  if (showCurrency) {
+    formatted = currency.format.position === 'before'
+      ? `${currency.symbol}${currency.format.spaceBetween ? ' ' : ''}${formatted}`
+      : `${formatted}${currency.format.spaceBetween ? ' ' : ''}${currency.symbol}`;
+  }
+
+  return formatted;
 }

@@ -1,6 +1,6 @@
 import { locales } from '@/i18n.config';
 import { getDictionary } from '@/lib/dictionaries';
-import { ModuleManager } from '@/components/modules/module-manager';
+import ModuleManager from '@/components/modules/module-manager';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({
