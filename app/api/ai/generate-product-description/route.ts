@@ -3,7 +3,6 @@
  */
 
 import { NextResponse } from 'next/server'
-import { generateProductDescription } from '@/lib/integrations/openai'
 
 export async function POST(request: Request) {
   try {
@@ -19,6 +18,9 @@ export async function POST(request: Request) {
         { status: 500 }
       )
     }
+
+    // Dynamic import to avoid build-time errors
+    const { generateProductDescription } = await import('@/lib/integrations/openai')
 
     // Utiliser le service OpenAI
     const firstImage = images && images.length > 0 ? images[0] : null
