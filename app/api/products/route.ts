@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getProducts, getAllCategories, getAllBrands } from '@/lib/supabase/queries/products'
+import { getProducts } from '@/lib/supabase/queries/products'
 import type { ProductListOptions } from '@/lib/supabase/queries/products'
 import { mapSupabaseProductToFrontend } from '@/lib/types/products'
 
@@ -75,49 +75,4 @@ export async function GET(request: NextRequest) {
   }
 }
 
-/**
- * GET /api/products/categories
- * Get all categories
- */
-export async function categories() {
-  try {
-    const categories = await getAllCategories()
-    return NextResponse.json({
-      success: true,
-      data: categories
-    })
-  } catch (error) {
-    console.error('Error fetching categories:', error)
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to fetch categories'
-      },
-      { status: 500 }
-    )
-  }
-}
-
-/**
- * GET /api/products/brands
- * Get all brands
- */
-export async function brands() {
-  try {
-    const brands = await getAllBrands()
-    return NextResponse.json({
-      success: true,
-      data: brands
-    })
-  } catch (error) {
-    console.error('Error fetching brands:', error)
-    return NextResponse.json(
-      {
-        success: false,
-        error: 'Failed to fetch brands'
-      },
-      { status: 500 }
-    )
-  }
-}
 

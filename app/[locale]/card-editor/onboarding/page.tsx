@@ -1,4 +1,4 @@
-import { locales } from '@/i18n.config';
+import { locales, type Locale } from '@/i18n.config';
 import { getDictionary } from '@/lib/dictionaries';
 import OnboardingClient from './onboardingClient';
 
@@ -11,14 +11,7 @@ export function generateStaticParams() {
 export default async function Page({
   params: { locale }
 }: {
-  params: { locale: string }
+  params: { locale: Locale }
 }) {
-  const translations = await getDictionary(locale);
-  
-  return (
-    <OnboardingClient
-      locale={locale}
-      translations={translations}
-    />
-  );
+  return <OnboardingClient />;
 }

@@ -172,7 +172,7 @@ export default function ImportCartesPage() {
       const newProduct = {
         ...carte,
         images: [],
-        mainImage: null,
+        mainImage: '',
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString()
       }
@@ -197,7 +197,7 @@ export default function ImportCartesPage() {
           const newProduct = {
             ...carte,
             images: [],
-            mainImage: null,
+            mainImage: '',
             createdAt: new Date().toISOString(),
             updatedAt: new Date().toISOString()
           }
@@ -215,7 +215,7 @@ export default function ImportCartesPage() {
     if (importCount > 0) {
       toast.success(`${importCount} cartes importées avec succès !`)
     } else {
-      toast.info('Toutes les cartes sont déjà importées')
+      toast('Toutes les cartes sont déjà importées')
     }
   }
 

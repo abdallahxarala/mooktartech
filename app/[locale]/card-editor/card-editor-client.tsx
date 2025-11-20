@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cardTemplates } from "@/components/card-editor/templates";
+import { cardTemplates, type CardTemplate } from "@/components/card-editor/templates";
 import { EditorWorkspace } from "@/components/card-editor/editor-workspace";
 import { useTranslations } from "next-intl";
 
@@ -14,7 +14,7 @@ interface CardEditorClientProps {
 }
 
 export function CardEditorClient({ locale, translations }: CardEditorClientProps) {
-  const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<CardTemplate | null>(null);
   const t = useTranslations("cards");
   const [ref, inView] = useInView({
     triggerOnce: true,

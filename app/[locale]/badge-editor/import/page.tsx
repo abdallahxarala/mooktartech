@@ -1,5 +1,5 @@
 import { getDictionary } from '@/lib/dictionaries'
-import { locales } from '@/i18n.config'
+import { locales, type Locale } from '@/i18n.config'
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 export default async function BadgeImportPage({ 
   params: { locale } 
 }: { 
-  params: { locale: string } 
+  params: { locale: Locale } 
 }) {
   const t = await getDictionary(locale)
 

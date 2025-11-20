@@ -197,7 +197,7 @@ export function ImageUpload({
           ) : (
             <>
               <Upload className="w-4 h-4 mr-2" />
-              {value ? 'Remplacer l'image' : 'Télécharger une image'}
+              {value ? "Remplacer l'image" : "Télécharger une image"}
             </>
           )}
         </Button>

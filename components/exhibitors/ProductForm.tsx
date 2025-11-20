@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,7 +36,8 @@ const productSchema = z.object({
 
 type ProductFormValues = z.infer<typeof productSchema>;
 
-export function ProductForm({ onSubmit }: { onSubmit: (values: ProductFormValues) => void }) {
+export function ProductForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<ProductFormValues>({
     resolver: zodResolver(productSchema),
     defaultValues: {
@@ -53,8 +54,39 @@ export function ProductForm({ onSubmit }: { onSubmit: (values: ProductFormValues
     name: "images"
   });
 
+  const handleSubmit = async (values: ProductFormValues) => {
+    setIsSubmitting(true);
+    try {
+      const newProduct: ExhibitorProduct = {
+        id: crypto.randomUUID(),
+        name: values.name,
+        description: values.description,
+        price: values.price ? Number(values.price) : undefined,
+        currency: values.currency,
+        featured: values.isFeatured,
+        tags: values.tags?.split(",").map((tag) => tag.trim()),
+        featuredImage: values.images?.[0]?.url
+      };
+
+      // Émettre un événement personnalisé pour notifier le parent (sérialisable)
+      if (typeof window !== 'undefined') {
+        window.dispatchEvent(
+          new CustomEvent('productAdded', { detail: newProduct })
+        );
+      }
+
+      // Réinitialiser le formulaire après succès
+      form.reset();
+      console.log("✅ Produit enregistré", newProduct);
+    } catch (error) {
+      console.error("Erreur lors de l'enregistrement du produit:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="name">Nom du produit</Label>
@@ -142,8 +174,8 @@ export function ProductForm({ onSubmit }: { onSubmit: (values: ProductFormValues
         </div>
       </div>
 
-      <Button type="submit" className="bg-orange-500 hover:bg-orange-600">
-        Enregistrer le produit
+      <Button type="submit" className="bg-orange-500 hover:bg-orange-600" disabled={isSubmitting}>
+        {isSubmitting ? "Enregistrement..." : "Enregistrer le produit"}
       </Button>
     </form>
   );
@@ -162,21 +194,22 @@ export function ProductManager() {
     }
   ]);
 
-  const handleSubmit = (values: ProductFormValues) => {
-    const newProduct: ExhibitorProduct = {
-      id: crypto.randomUUID(),
-      name: values.name,
-      description: values.description,
-      price: values.price ? Number(values.price) : undefined,
-      currency: values.currency,
-      featured: values.isFeatured,
-      tags: values.tags?.split(",").map((tag) => tag.trim()),
-      featuredImage: values.images?.[0]?.url
+  // Écouter l'événement personnalisé pour mettre à jour la liste des produits
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const handleProductAdded = (event: Event) => {
+      const customEvent = event as CustomEvent<ExhibitorProduct>;
+      if (customEvent.detail) {
+        setProducts((prev) => [customEvent.detail, ...prev]);
+      }
     };
 
-    setProducts((prev) => [newProduct, ...prev]);
-    console.log("✅ Produit enregistré", newProduct);
-  };
+    window.addEventListener('productAdded', handleProductAdded);
+    return () => {
+      window.removeEventListener('productAdded', handleProductAdded);
+    };
+  }, []);
 
   const baseHref = "/expo/demo-event/xarala-tech-lab";
 
@@ -187,7 +220,7 @@ export function ProductManager() {
           <CardTitle>Nouveau produit</CardTitle>
         </CardHeader>
         <CardContent>
-          <ProductForm onSubmit={handleSubmit} />
+          <ProductForm />
         </CardContent>
       </Card>
 

@@ -105,7 +105,7 @@ export default function ExhibitorsPage() {
     }
 
     if (data) {
-      setEventName(data.name)
+      setEventName((data as any).name || '')
     }
   }
 

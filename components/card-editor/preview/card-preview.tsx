@@ -218,7 +218,7 @@ export function CardPreview({ data, isDragging, onImageUpload }: CardPreviewProp
 
           {view === "3d" && (
             <div
-              key="3d">
+              key="3d"
               className="h-full animate-fade-in-up"
             >
               <Canvas>
@@ -233,7 +233,7 @@ export function CardPreview({ data, isDragging, onImageUpload }: CardPreviewProp
 
           {view === "device" && (
             <div
-              key="device">
+              key="device"
               className="h-full flex items-center justify-center bg-gray-900 animate-fade-in-up"
             >
               <div className="relative w-[280px] h-[560px] bg-black rounded-[3rem] p-4 shadow-2xl animate-fade-in-up">
@@ -256,10 +256,10 @@ export function CardPreview({ data, isDragging, onImageUpload }: CardPreviewProp
         {/* NFC scan animation */}
         
           {showNFCScan && (
-            <div>
+            <div
               className="absolute inset-0 bg-black/50 flex items-center justify-center backdrop-blur-sm animate-fade-in-up"
             >
-              <div>
+              <div
                 className="bg-white p-4 rounded-full animate-fade-in-up"
               >
                 <Scan className="h-8 w-8 text-primary-orange animate-pulse" />

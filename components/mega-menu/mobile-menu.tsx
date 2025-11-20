@@ -46,7 +46,7 @@ export function MobileMenu({ isOpen, onClose, navigation }: MobileMenuProps) {
 
                       
                         {activeMenu === item.label && (
-                          <div>
+                          <div
                             className="pl-4 space-y-2 animate-fade-in-up"
                           >
                             {item.children.map((child) => (

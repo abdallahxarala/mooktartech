@@ -224,9 +224,11 @@ export default function NewExhibitorPage() {
         return
       }
 
+      const organizationId = (membership as { organization_id: string }).organization_id
+
       const exhibitorData = {
         event_id: eventId,
-        organization_id: membership.organization_id,
+        organization_id: organizationId,
         company_name: formData.company_name.trim(),
         slug: formData.slug,
         contact_name: formData.contact_name.trim(),
@@ -242,7 +244,7 @@ export default function NewExhibitorPage() {
 
       const { data: exhibitor, error: exhibitorError } = await supabase
         .from('exhibitors')
-        .insert([exhibitorData])
+        .insert([exhibitorData] as any)
         .select()
         .single()
 
