@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useRef } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/utils/next-intl-fallback'
 import { useInView } from 'framer-motion'
 import { 
   Truck, 

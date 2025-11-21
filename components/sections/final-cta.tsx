@@ -1,6 +1,6 @@
 'use client'
 
-import { useTranslations } from 'next-intl'
+import { useTranslations } from '@/lib/utils/next-intl-fallback'
 import Link from 'next/link'
 import { ArrowRight, Smartphone, CreditCard, QrCode, Share2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'

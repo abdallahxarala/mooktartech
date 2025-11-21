@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Joyride, { Step } from "react-joyride";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/lib/utils/next-intl-fallback";
 
 interface TourProps {
   run: boolean;

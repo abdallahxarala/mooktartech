@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations, useLocale } from '@/lib/utils/next-intl-fallback'
 import { useParams, usePathname } from 'next/navigation'
 import { 
   Linkedin, 

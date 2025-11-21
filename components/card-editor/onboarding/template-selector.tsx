@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/lib/utils/next-intl-fallback";
 import { cardTemplates } from "../templates";
 import { Check } from "lucide-react";
 

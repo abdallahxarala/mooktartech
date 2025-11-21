@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/lib/utils/next-intl-fallback";
 import { useParams, usePathname } from "next/navigation";
 import { 
   Nfc, 

@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useMemo } from 'react'
 import { useParams, useRouter } from 'next/navigation'
-import { useTranslations, useLocale } from 'next-intl'
+import { useTranslations, useLocale } from '@/lib/utils/next-intl-fallback'
 import { z } from 'zod'
 import { createClient } from '@/lib/supabase/client'
 import { slugify, isValidEmail } from '@/lib/utils'

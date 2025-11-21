@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { cardTemplates, type CardTemplate } from "@/components/card-editor/templates";
 import { EditorWorkspace } from "@/components/card-editor/editor-workspace";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/lib/utils/next-intl-fallback";
 
 interface CardEditorClientProps {
   locale: string;

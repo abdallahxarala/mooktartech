@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
-import { useTranslations } from 'next-intl'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations } from '@/lib/utils/next-intl-server-fallback'
 import LoginForm from '@/components/auth/login-form'
 
 /**

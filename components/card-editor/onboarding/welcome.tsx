@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { useTranslations } from "@/lib/utils/next-intl-fallback";
 import { CreditCard, Smartphone, Zap } from "lucide-react";
 
 interface WelcomeProps {
