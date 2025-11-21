@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react'
+import Image from 'next/image'
 import { useProducts, useProductsActions, useProductsFilters } from './products-store'
 
 /**
@@ -204,9 +205,11 @@ export default function ProductsStoreExample() {
             {filteredProducts.map(product => (
               <div key={product.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                 <div className="aspect-w-16 aspect-h-9 mb-3">
-                  <img
+                  <Image
                     src={product.image_url || '/placeholder-product.jpg'}
                     alt={product.name}
+                    width={400}
+                    height={200}
                     className="w-full h-32 object-cover rounded-md"
                   />
                 </div>
