@@ -11,7 +11,7 @@ export function generateStaticParams() {
 export default async function Page({
   params: { locale }
 }: {
-  params: { locale: Locale }
+  params: { locale: 'fr' | 'en' | 'wo' }
 }) {
   const translations = await getDictionary(locale);
   

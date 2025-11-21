@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
+  // Rediriger / vers /fr
   if (pathname === '/') {
     return NextResponse.redirect(new URL('/fr', request.url));
   }
