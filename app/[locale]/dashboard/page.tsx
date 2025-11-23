@@ -1,24 +1,13 @@
-import { locales, type Locale } from '@/i18n.config';
-import { getDictionary } from '@/lib/dictionaries';
 import DashboardClient from './dashboardClient';
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({
-    locale,
-  }));
-}
+export const dynamic = 'force-dynamic';
 
-export default async function Page({
+export const revalidate = 0;
+
+export default async function DashboardPage({
   params: { locale }
 }: {
   params: { locale: 'fr' | 'en' | 'wo' }
 }) {
-  const translations = await getDictionary(locale);
-  
-  return (
-    <DashboardClient
-      locale={locale}
-      translations={translations}
-    />
-  );
+  return <DashboardClient />;
 }
