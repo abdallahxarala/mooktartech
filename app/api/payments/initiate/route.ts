@@ -187,19 +187,21 @@ export async function POST(request: Request) {
       )
     }
 
+    const paymentData = payment as any;
+
     // Update order payment status
     await supabase
       .from('orders')
       .update({
         payment_status: 'processing',
         payment_method: validatedData.provider,
-        payment_id: payment.id
+        payment_id: paymentData.id
       })
       .eq('id', validatedData.order_id)
 
     // Log safe metadata
     console.log('Payment initiated:', {
-      paymentId: payment.id,
+      paymentId: paymentData.id,
       orderId: validatedData.order_id,
       provider: validatedData.provider,
       amount: amountInSmallestUnit
