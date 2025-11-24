@@ -73,7 +73,7 @@ export default function MonStandPage({
       const { data: exhibitorData } = await supabase
         .from('exhibitors_with_stats')
         .select('*')
-        .eq('event_id', eventData.id)
+        .eq('event_id', (eventData as any).id)
         .order('created_at', { ascending: false })
         .limit(1)
         .single()
@@ -87,18 +87,18 @@ export default function MonStandPage({
 
       // 3. Charger les stats
       setStats({
-        products: exhibitorData.products_count || 0,
+        products: (exhibitorData as any).products_count || 0,
         staff: 0, // Sera mis à jour après
-        pageViews: exhibitorData.page_views || 0,
-        qrScans: exhibitorData.qr_scans || 0,
-        uniqueVisitors: exhibitorData.unique_visitors || 0,
+        pageViews: (exhibitorData as any).page_views || 0,
+        qrScans: (exhibitorData as any).qr_scans || 0,
+        uniqueVisitors: (exhibitorData as any).unique_visitors || 0,
       })
 
       // 4. Produits récents
       const { data: productsData } = await supabase
         .from('exhibitor_products')
         .select('*')
-        .eq('exhibitor_id', exhibitorData.id)
+        .eq('exhibitor_id', (exhibitorData as any).id)
         .order('created_at', { ascending: false })
         .limit(5)
 
@@ -108,7 +108,7 @@ export default function MonStandPage({
       const { data: staffData } = await supabase
         .from('exhibitor_staff')
         .select('*')
-        .eq('exhibitor_id', exhibitorData.id)
+        .eq('exhibitor_id', (exhibitorData as any).id)
         .order('created_at', { ascending: false })
 
       setStaffMembers(staffData || [])

@@ -217,7 +217,7 @@ export default function TicketsPage({
 
       // Redirection vers page de paiement
       router.push(
-        `/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/tickets/${createdTicket.id}/payment`
+        `/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/tickets/${(createdTicket as any).id}/payment`
       )
     } catch (error) {
       console.error('Error creating tickets:', error)

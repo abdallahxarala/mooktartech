@@ -61,7 +61,7 @@ export default function ProduitsPage({
       const { data: exhibitorData } = await supabase
         .from('exhibitors')
         .select('*')
-        .eq('event_id', eventData.id)
+        .eq('event_id', (eventData as any).id)
         .order('created_at', { ascending: false })
         .limit(1)
         .single()
@@ -74,7 +74,7 @@ export default function ProduitsPage({
       const { data: productsData } = await supabase
         .from('exhibitor_products')
         .select('*')
-        .eq('exhibitor_id', exhibitorData.id)
+        .eq('exhibitor_id', (exhibitorData as any).id)
         .order('display_order', { ascending: true })
         .order('created_at', { ascending: false })
 

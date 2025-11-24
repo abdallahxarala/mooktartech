@@ -76,7 +76,7 @@ export default function NouveauProduitPage({
       const { data: exhibitorData } = await supabase
         .from('exhibitors')
         .select('*')
-        .eq('event_id', eventData.id)
+        .eq('event_id', (eventData as any).id)
         .order('created_at', { ascending: false })
         .limit(1)
         .single()

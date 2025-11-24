@@ -37,7 +37,7 @@ export default function BadgesAdminPage({
 
     if (eventData) {
       // Récupérer tous les badges
-      const badgesData = await getStaffBadgesForEvent(eventData.id)
+      const badgesData = await getStaffBadgesForEvent((eventData as any).id)
       setBadges(badgesData)
     }
 
