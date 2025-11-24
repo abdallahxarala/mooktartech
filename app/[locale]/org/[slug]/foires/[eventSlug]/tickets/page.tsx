@@ -184,29 +184,31 @@ export default function TicketsPage({
       const dbTicketType = ticketTypeMap[selectedTicketType.id] || 'standard'
 
       // Créer le ticket dans la base (sans QR code, sera généré après paiement)
+      const ticketData = {
+        event_id: event.id,
+        organization_id: event.organization_id,
+        buyer_name: buyerName,
+        buyer_email: formData.email,
+        buyer_phone: formData.phone || null,
+        ticket_type: dbTicketType,
+        quantity: totalTickets,
+        unit_price: Math.round(totalPrice / totalTickets), // Prix unitaire moyen
+        total_price: totalPrice,
+        payment_status: 'unpaid', // Sera mis à jour après paiement
+        metadata: {
+          company: formData.company || null,
+          order_date: new Date().toISOString(),
+          ticket_types: ticketTypes.filter((t: any) => quantities[t.id] > 0).map((t: any) => ({
+            type: t.id,
+            quantity: quantities[t.id],
+            price: t.price,
+          })),
+        },
+      } as any
+
       const { data: createdTicket, error: ticketError } = await supabase
         .from('tickets')
-        .insert({
-          event_id: event.id,
-          organization_id: event.organization_id,
-          buyer_name: buyerName,
-          buyer_email: formData.email,
-          buyer_phone: formData.phone || null,
-          ticket_type: dbTicketType,
-          quantity: totalTickets,
-          unit_price: Math.round(totalPrice / totalTickets), // Prix unitaire moyen
-          total_price: totalPrice,
-          payment_status: 'unpaid', // Sera mis à jour après paiement
-          metadata: {
-            company: formData.company || null,
-            order_date: new Date().toISOString(),
-            ticket_types: ticketTypes.filter(t => quantities[t.id] > 0).map(t => ({
-              type: t.id,
-              quantity: quantities[t.id],
-              price: t.price,
-            })),
-          },
-        })
+        .insert(ticketData)
         .select()
         .single()
 
