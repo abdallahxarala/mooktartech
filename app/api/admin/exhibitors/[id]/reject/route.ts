@@ -32,6 +32,8 @@ export async function POST(
       )
     }
 
+    const exhibitorData = exhibitor as any;
+
     // Mettre à jour le statut d'approbation
     const { error: updateError } = await supabase
       .from('exhibitors')
@@ -39,7 +41,7 @@ export async function POST(
         approval_status: 'rejected',
         status: 'rejected', // Maintenir pour compatibilité si colonne existe
         metadata: {
-          ...(exhibitor.metadata || {}),
+          ...(exhibitorData.metadata || {}),
           rejection_reason: reason || null,
           rejected_at: new Date().toISOString(),
         },

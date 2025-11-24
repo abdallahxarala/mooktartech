@@ -30,8 +30,10 @@ export async function GET(
 
     if (error) throw error;
 
+    const cardData = card as any;
+
     // Vérifier les permissions
-    if (!card.is_public && (!session || card.user_id !== session.user.id)) {
+    if (!cardData.is_public && (!session || cardData.user_id !== session.user.id)) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
@@ -40,7 +42,7 @@ export async function GET(
 
     // Enregistrer l'événement analytique
     await supabase.from('card_analytics').insert({
-      card_id: card.id,
+      card_id: cardData.id,
       event_type: 'view',
       ip_address: request.headers.get('x-forwarded-for'),
       user_agent: request.headers.get('user-agent'),
@@ -92,7 +94,8 @@ export async function PATCH(
       .eq('id', params.id)
       .single();
 
-    if (!existingCard || existingCard.user_id !== session.user.id) {
+    const existingCardData = existingCard as any;
+    if (!existingCardData || existingCardData.user_id !== session.user.id) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
@@ -104,7 +107,7 @@ export async function PATCH(
       .from('virtual_cards')
       .update({
         ...json,
-        version: existingCard.version + 1,
+        version: existingCardData.version + 1,
         updated_at: new Date().toISOString(),
       })
       .eq('id', params.id)
@@ -113,7 +116,8 @@ export async function PATCH(
 
     if (error) throw error;
 
-    return NextResponse.json(card);
+    const cardData_patch = card as any;
+    return NextResponse.json(cardData_patch);
   } catch (error) {
     console.error('Error updating card:', error);
     return NextResponse.json(
@@ -157,7 +161,8 @@ export async function DELETE(
       .eq('id', params.id)
       .single();
 
-    if (!existingCard || existingCard.user_id !== session.user.id) {
+    const existingCardData_delete = existingCard as any;
+    if (!existingCardData_delete || existingCardData_delete.user_id !== session.user.id) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }

@@ -50,7 +50,8 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
 
     if (error) throw error
 
-    return NextResponse.json({ success: true, lead: data })
+    const leadData = data as any;
+    return NextResponse.json({ success: true, lead: leadData })
   } catch (error) {
     console.error('[Leads] update failed', error)
     if (error instanceof z.ZodError) {

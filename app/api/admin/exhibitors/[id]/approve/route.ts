@@ -31,6 +31,8 @@ export async function POST(
       )
     }
 
+    const exhibitorData = exhibitor as any;
+
     // Mettre à jour le statut d'approbation
     const { error: updateError } = await supabase
       .from('exhibitors')
@@ -47,28 +49,28 @@ export async function POST(
 
     // Envoyer email de confirmation (en arrière-plan, non bloquant)
     try {
-      const event = exhibitor.events as any
+      const event = exhibitorData.events as any
       const foireConfig = event?.foire_config || {}
       const pavillons = foireConfig.pavillons || {}
       const pavillon = Object.values(pavillons).find(
-        (p: any) => p.code === exhibitor.booth_location
+        (p: any) => p.code === exhibitorData.booth_location
       ) as any
 
       const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-      const invoiceUrl = `${baseUrl}/api/foires/${event.slug}/invoices/${exhibitor.id}`
+      const invoiceUrl = `${baseUrl}/api/foires/${event.slug}/invoices/${exhibitorData.id}`
 
       // Send confirmation email if RESEND_API_KEY is configured
       if (process.env.RESEND_API_KEY) {
         try {
           const { sendExhibitorConfirmationEmail } = await import('@/lib/services/email/templates')
           await sendExhibitorConfirmationEmail({
-            to: exhibitor.contact_email,
-            exhibitorName: exhibitor.contact_name,
-            companyName: exhibitor.company_name,
-            standNumber: exhibitor.booth_number || null,
-            pavilionName: pavillon?.nom || exhibitor.booth_location || 'Non assigné',
-            surfaceArea: (exhibitor.metadata as any)?.standSize || 0,
-            totalPrice: exhibitor.payment_amount || 0,
+            to: exhibitorData.contact_email,
+            exhibitorName: exhibitorData.contact_name,
+            companyName: exhibitorData.company_name,
+            standNumber: exhibitorData.booth_number || null,
+            pavilionName: pavillon?.nom || exhibitorData.booth_location || 'Non assigné',
+            surfaceArea: (exhibitorData.metadata as any)?.standSize || 0,
+            totalPrice: exhibitorData.payment_amount || 0,
             invoiceUrl,
           })
         } catch (emailError) {

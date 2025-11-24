@@ -36,7 +36,8 @@ export async function GET(
       .eq('id', params.id)
       .single();
 
-    if (!card || card.user_id !== session.user.id) {
+    const cardData = card as any;
+    if (!cardData || cardData.user_id !== session.user.id) {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }

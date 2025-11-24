@@ -28,8 +28,10 @@ export async function GET(
       )
     }
 
+    const eventData = event as any;
+
     // Récupérer les statistiques
-    const stats = await getEventStats(event.id)
+    const stats = await getEventStats(eventData.id)
 
     return NextResponse.json(stats)
   } catch (error) {

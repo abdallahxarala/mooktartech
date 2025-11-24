@@ -26,7 +26,8 @@ export async function GET(
       )
     }
 
-    return NextResponse.json(event)
+    const eventData = event as any;
+    return NextResponse.json(eventData)
   } catch (error) {
     console.error('Error fetching event info:', error)
     return NextResponse.json(

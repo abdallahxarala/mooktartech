@@ -30,11 +30,13 @@ export async function GET(
       )
     }
 
+    const eventData_get = event as any;
+
     // 2. Récupérer les exposants avec paiement en attente
     const { data: exhibitors, error: exhibitorsError } = await supabase
       .from('exhibitors')
       .select('id, company_name, contact_name, contact_email, payment_status, payment_amount, created_at')
-      .eq('event_id', event.id)
+      .eq('event_id', eventData_get.id)
       .in('payment_status', ['unpaid', 'pending'])
 
     if (exhibitorsError) {
@@ -57,9 +59,9 @@ export async function GET(
 
     return NextResponse.json({
       event: {
-        id: event.id,
-        name: event.name,
-        slug: event.slug,
+        id: eventData_get.id,
+        name: eventData_get.name,
+        slug: eventData_get.slug,
       },
       exhibitors: exhibitorsWithDays,
       total: exhibitorsWithDays.length,
@@ -99,12 +101,14 @@ export async function POST(
       )
     }
 
+    const eventData_post = event as any;
+
     if (isBulk) {
       // Envoi en masse
       const { data: exhibitors, error: exhibitorsError } = await supabase
         .from('exhibitors')
         .select('*')
-        .eq('event_id', event.id)
+        .eq('event_id', eventData_post.id)
         .in('payment_status', ['unpaid', 'pending'])
 
       if (exhibitorsError) {
@@ -122,13 +126,15 @@ export async function POST(
 
       for (const exhibitor of exhibitors || []) {
         try {
-          await sendReminderToExhibitor(exhibitor, event)
+          const exhibitorData_bulk = exhibitor as any;
+          await sendReminderToExhibitor(exhibitorData_bulk, eventData_post)
           results.sent++
-          results.details.push({ exhibitorId: exhibitor.id, status: 'sent' })
+          results.details.push({ exhibitorId: exhibitorData_bulk.id, status: 'sent' })
         } catch (error) {
+          const exhibitorData_bulk = exhibitor as any;
           results.errors++
           results.details.push({
-            exhibitorId: exhibitor.id,
+            exhibitorId: exhibitorData_bulk.id,
             status: 'error',
             error: error instanceof Error ? error.message : 'Unknown error',
           })
@@ -155,7 +161,7 @@ export async function POST(
         .from('exhibitors')
         .select('*')
         .eq('id', exhibitorId)
-        .eq('event_id', event.id)
+        .eq('event_id', eventData_post.id)
         .single()
 
       if (exhibitorError || !exhibitor) {
@@ -165,7 +171,8 @@ export async function POST(
         )
       }
 
-      await sendReminderToExhibitor(exhibitor, event)
+      const exhibitorData = exhibitor as any;
+      await sendReminderToExhibitor(exhibitorData, eventData_post)
 
       return NextResponse.json({
         success: true,

@@ -128,9 +128,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const orderData_result = order as any;
+
     // Create order items
     const orderItems = data.items.map((item) => ({
-      order_id: order.id,
+      order_id: orderData_result.id,
       product_id: item.product_id,
       quantity: item.quantity,
       unit_price: item.unit_price,
@@ -147,14 +149,14 @@ export async function POST(request: NextRequest) {
     }
 
     // Send order confirmation email (non-blocking)
-    sendOrderConfirmationEmail(order.id, data.locale).catch((emailError) => {
+    sendOrderConfirmationEmail(orderData_result.id, data.locale).catch((emailError) => {
       // Log but don't fail the request
       console.error('Failed to send order confirmation email:', emailError)
     })
 
     console.log('Order created successfully:', {
-      orderId: order.id,
-      orderNumber: order.order_number,
+      orderId: orderData_result.id,
+      orderNumber: orderData_result.order_number,
       total: data.totals.total
     })
 
@@ -162,8 +164,8 @@ export async function POST(request: NextRequest) {
       {
         success: true,
         order: {
-          id: order.id,
-          order_number: order.order_number
+          id: orderData_result.id,
+          order_number: orderData_result.order_number
         }
       },
       { status: 201 }

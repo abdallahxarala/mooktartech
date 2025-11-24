@@ -33,12 +33,14 @@ export async function GET(
       )
     }
 
+    const eventData = event as any;
+
     // 2. Récupérer les données de l'exposant
     const { data: exhibitor, error: exhibitorError } = await supabase
       .from('exhibitors')
       .select('*')
       .eq('id', params.exhibitorId)
-      .eq('event_id', event.id)
+      .eq('event_id', eventData.id)
       .single()
 
     if (exhibitorError || !exhibitor) {
@@ -48,8 +50,10 @@ export async function GET(
       )
     }
 
+    const exhibitorData = exhibitor as any;
+
     // 3. Construire les données de facture
-    const invoiceData = buildInvoiceDataFromExhibitor(exhibitor, event)
+    const invoiceData = buildInvoiceDataFromExhibitor(exhibitorData, eventData)
 
     // 4. Générer le PDF
     const pdfBlob = await generateInvoicePDF(invoiceData)
@@ -63,7 +67,7 @@ export async function GET(
       )
 
       // Mettre à jour l'exposant avec l'URL de la facture dans metadata
-      const currentMetadata = exhibitor.metadata || {}
+      const currentMetadata = exhibitorData.metadata || {}
       await supabase
         .from('exhibitors')
         .update({
@@ -126,12 +130,14 @@ export async function POST(
       )
     }
 
+    const eventData_post = event as any;
+
     // 2. Vérifier que l'exposant existe et appartient à l'événement
     const { data: exhibitor, error: exhibitorError } = await supabase
       .from('exhibitors')
       .select('id')
       .eq('id', params.exhibitorId)
-      .eq('event_id', event.id)
+      .eq('event_id', eventData_post.id)
       .single()
 
     if (exhibitorError || !exhibitor) {

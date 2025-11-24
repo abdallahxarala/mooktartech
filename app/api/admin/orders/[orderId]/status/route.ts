@@ -31,6 +31,8 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
       throw error
     }
 
+    const orderData = data as any;
+
     await createPaymentAuditLog({
       eventType: 'order.status.updated',
       provider: 'system',
@@ -41,7 +43,7 @@ export async function PATCH(request: NextRequest, { params }: RouteParams) {
       source: 'api'
     })
 
-    return NextResponse.json({ success: true, order: data })
+    return NextResponse.json({ success: true, order: orderData })
   } catch (error: any) {
     console.error('Admin order status update failed:', error)
     const status = error instanceof z.ZodError ? 400 : 500

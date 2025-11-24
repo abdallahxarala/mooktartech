@@ -101,8 +101,10 @@ export async function POST(request: Request) {
       )
     }
 
+    const orderData = order as any;
+
     // Verify order belongs to authenticated user
-    if (order.user_id !== session.user.id) {
+    if (orderData.user_id !== session.user.id) {
       return NextResponse.json<ErrorResponse>(
         {
           success: false,
@@ -113,7 +115,7 @@ export async function POST(request: Request) {
     }
 
     // Check if order already has a completed payment
-    if (order.payment_status === 'paid') {
+    if (orderData.payment_status === 'paid') {
       return NextResponse.json<ErrorResponse>(
         {
           success: false,
@@ -138,13 +140,13 @@ export async function POST(request: Request) {
     const paymentProvider = PaymentServiceFactory.getProvider(validatedData.provider)
 
     // Convert amount to smallest currency unit (cents/santims)
-    const amountInSmallestUnit = Math.round(parseFloat(order.total_amount.toString()) * 100)
+    const amountInSmallestUnit = Math.round(parseFloat(orderData.total_amount.toString()) * 100)
 
     // Initiate payment with provider
     const providerResponse = await paymentProvider.initiatePayment({
       order_id: validatedData.order_id,
       amount: amountInSmallestUnit,
-      currency: order.currency || 'XOF',
+      currency: orderData.currency || 'XOF',
       customer: validatedData.customer,
       metadata: validatedData.metadata
     })
@@ -156,7 +158,7 @@ export async function POST(request: Request) {
         order_id: validatedData.order_id,
         provider: validatedData.provider,
         amount: amountInSmallestUnit,
-        currency: order.currency || 'XOF',
+        currency: orderData.currency || 'XOF',
         status: 'pending',
         provider_payment_id: providerResponse.provider_payment_id,
         checkout_url: providerResponse.checkout_url,

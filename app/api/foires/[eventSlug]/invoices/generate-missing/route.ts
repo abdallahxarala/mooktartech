@@ -31,12 +31,14 @@ export async function POST(
       )
     }
 
+    const eventData = event as any;
+
     // 2. Générer les factures manquantes
-    const result = await generateMissingInvoices(event.id)
+    const result = await generateMissingInvoices(eventData.id)
 
     return NextResponse.json({
       success: true,
-      eventId: event.id,
+      eventId: eventData.id,
       eventSlug: params.eventSlug,
       ...result,
       message: `${result.generated} factures générées, ${result.errors} erreurs`,
