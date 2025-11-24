@@ -1,6 +1,9 @@
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import { AdminProductsClient } from './admin-products-client'
+import type { Database } from '@/lib/supabase/database.types'
+
+type Organization = Database['public']['Tables']['organizations']['Row']
 
 interface AdminProductsPageProps {
   params: {
@@ -22,13 +25,14 @@ export default async function AdminProductsPage({ params }: AdminProductsPagePro
     .from('organizations')
     .select('id, name, slug')
     .eq('slug', slug)
-    .single()
+    .single<Organization>()
 
   if (orgError || !organization) {
     console.error('❌ Organization not found:', { slug, error: orgError })
     notFound()
   }
 
+  // TypeScript now knows organization is of type Organization after the check above
   const orgId = organization.id
 
   // Debug log pour vérification
