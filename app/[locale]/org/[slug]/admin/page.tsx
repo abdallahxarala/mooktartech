@@ -36,7 +36,7 @@ export default async function AdminDashboard({ params }: AdminDashboardProps) {
     .from('organizations')
     .select('id, name, slug')
     .eq('slug', slug)
-    .single()
+    .single<Organization>()
 
   // Early return si pas trouvé
   if (orgError || !organization) {
@@ -44,8 +44,8 @@ export default async function AdminDashboard({ params }: AdminDashboardProps) {
     notFound()
   }
 
-  // TypeScript assertion - organization existe après la vérification ci-dessus
-  const orgId = organization!.id
+  // TypeScript now knows organization is of type Organization after the check above
+  const orgId = organization.id
 
   // Debug log pour vérification
   console.log('✅ Admin Dashboard - Organization found:', { id: orgId, name: organization.name, slug: organization.slug })
