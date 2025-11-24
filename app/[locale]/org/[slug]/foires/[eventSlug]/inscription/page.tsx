@@ -1949,6 +1949,12 @@ function Step6Payment({
     try {
       const supabase = createSupabaseBrowserClient()
       
+      // Vérifier que l'événement existe
+      const eventData = event as any
+      if (!eventData || !eventData.id) {
+        throw new Error('Événement non trouvé')
+      }
+      
       // 1. Générer slug unique
       const baseSlug = formData.companyName
         .toLowerCase()
