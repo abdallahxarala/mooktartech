@@ -211,8 +211,8 @@ export default function NouveauProduitPage({
       }
 
       // Insérer dans Supabase
-      const { data, error } = await supabase
-        .from('exhibitor_products')
+      const { data, error } = await (supabase
+        .from('exhibitor_products') as any)
         .insert([productData])
         .select()
         .single()

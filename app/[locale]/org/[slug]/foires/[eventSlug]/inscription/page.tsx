@@ -204,8 +204,8 @@ export default function InscriptionExposantPage({
         booth_location: formData.pavillonCode,
         category: formData.category || null,
         tags: formData.tags.length > 0 ? formData.tags : null,
-        approval_status: paymentStatus === 'paid' ? 'approved' : 'pending',
-        status: paymentStatus === 'paid' ? 'approved' : 'pending', // Maintenir pour compatibilité
+        approval_status: (paymentStatus as any) === 'paid' ? 'approved' : 'pending',
+        status: (paymentStatus as any) === 'paid' ? 'approved' : 'pending', // Maintenir pour compatibilité
         payment_status: paymentStatus,
         payment_method: paymentMethod === 'mobile' ? 'wave' : paymentMethod === 'transfer' ? 'bank_transfer' : paymentMethod === 'cash' ? 'cash' : null,
         payment_amount: formData.totalTTC,
@@ -233,8 +233,8 @@ export default function InscriptionExposantPage({
 
       // 1. Créer l'exposant
       console.log('Création de l\'exposant...')
-      const { data: exhibitor, error: exhibitorError } = await supabase
-        .from('exhibitors')
+      const { data: exhibitor, error: exhibitorError } = await (supabase
+        .from('exhibitors') as any)
         .insert([exhibitorData])
         .select()
         .single()
@@ -297,7 +297,7 @@ export default function InscriptionExposantPage({
 
       // 3. Créer les staff members
       const validStaff = formData.staffMembers.filter(
-        (s) => s.firstName && s.lastName
+        (s: any) => s.firstName && s.lastName
       )
 
       console.log(`Création de ${validStaff.length} membre(s) du staff...`)
@@ -316,8 +316,8 @@ export default function InscriptionExposantPage({
           is_primary_contact: index === 0,
         }))
 
-        const { error: staffError } = await supabase
-          .from('exhibitor_staff')
+        const { error: staffError } = await (supabase
+          .from('exhibitor_staff') as any)
           .insert(staffInserts)
 
         if (staffError) {
@@ -491,6 +491,7 @@ export default function InscriptionExposantPage({
                 setFormData={setFormData}
                 event={event}
                 onSubmit={handleSubmit}
+                onNext={handleNext}
                 onPrev={handlePrev}
                 submitting={submitting}
                 params={params}
@@ -653,7 +654,7 @@ function Step2Activity({ formData, setFormData, onNext, onPrev }: StepProps) {
   function removeTag(tag: string) {
     setFormData({
       ...formData,
-      tags: formData.tags.filter((t) => t !== tag),
+      tags: formData.tags.filter((t: any) => t !== tag),
     })
   }
 
@@ -720,7 +721,7 @@ function Step2Activity({ formData, setFormData, onNext, onPrev }: StepProps) {
 
           {formData.tags.length > 0 && (
             <div className="flex flex-wrap gap-2">
-              {formData.tags.map((tag) => (
+              {formData.tags.map((tag: any) => (
                 <span
                   key={tag}
                   className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm flex items-center gap-2"
@@ -806,7 +807,7 @@ function Step3BoothSelection({ formData, setFormData, event, onNext, onPrev }: S
     console.log('Sélection taille:', size)
     
     const subtotalHT = size * PRIX_M2
-    const furnitureTotalHT = Object.entries(formData.furnitureOptions).reduce((total, [key, qty]) => {
+    const furnitureTotalHT = Object.entries(formData.furnitureOptions).reduce((total, [key, qty]: [string, any]) => {
       const option = OPTIONS_MEUBLES[key]
       return total + (option?.prix_unitaire || 0) * qty
     }, 0)
@@ -861,7 +862,7 @@ function Step3BoothSelection({ formData, setFormData, event, onNext, onPrev }: S
     // Recalcul avec nouveaux meubles
     const subtotalHT = formData.standSize * PRIX_M2
     
-    const furnitureTotalHT = Object.entries(updatedFurniture).reduce((total, [key, qty]) => {
+    const furnitureTotalHT = Object.entries(updatedFurniture).reduce((total, [key, qty]: [string, any]) => {
       const option = OPTIONS_MEUBLES[key]
       return total + (option?.prix_unitaire || 0) * qty
     }, 0)
@@ -1232,7 +1233,7 @@ function Step3BoothSelection({ formData, setFormData, event, onNext, onPrev }: S
                     <div className="text-sm text-gray-600 font-semibold mt-3 mb-2">
                       Options et équipements :
                     </div>
-                    {Object.entries(formData.furnitureOptions).map(([key, qty]) => {
+                    {Object.entries(formData.furnitureOptions).map(([key, qty]: [string, any]) => {
                       const option = OPTIONS_MEUBLES[key]
                       return (
                         <div key={key} className="flex justify-between text-sm text-gray-600 pl-4">
@@ -1650,7 +1651,7 @@ function Step5StaffMembers({ formData, setFormData, onNext, onPrev }: StepProps)
       alert('Vous devez avoir au moins un exposant')
       return
     }
-    const updated = formData.staffMembers.filter((_, i) => i !== index)
+    const updated = formData.staffMembers.filter((_: any, i: number) => i !== index)
     setFormData({
       ...formData,
       numberOfStaff: formData.numberOfStaff - 1,
@@ -1666,7 +1667,7 @@ function Step5StaffMembers({ formData, setFormData, onNext, onPrev }: StepProps)
 
     // Validation : au moins un exposant avec nom/prénom
     const hasValidStaff = formData.staffMembers.some(
-      (s) => s.firstName && s.lastName
+      (s: any) => s.firstName && s.lastName
     )
 
     if (!hasValidStaff) {
@@ -1691,7 +1692,7 @@ function Step5StaffMembers({ formData, setFormData, onNext, onPrev }: StepProps)
 
         {/* Navigation entre exposants */}
         <div className="flex items-center gap-2 mb-6 overflow-x-auto pb-2">
-          {formData.staffMembers.map((staff, idx) => (
+          {formData.staffMembers.map((staff: any, idx: number) => (
             <button
               key={idx}
               type="button"
@@ -1867,7 +1868,7 @@ function Step5StaffMembers({ formData, setFormData, onNext, onPrev }: StepProps)
       {/* Compteur */}
       <div className="mt-8 p-4 bg-purple-50 rounded-lg text-center">
         <p className="text-purple-900 font-semibold">
-          {formData.staffMembers.filter((s) => s.firstName && s.lastName).length} /{' '}
+          {formData.staffMembers.filter((s: any) => s.firstName && s.lastName).length} /{' '}
           {formData.staffMembers.length} exposant(s) renseigné(s)
         </p>
       </div>
@@ -1992,8 +1993,8 @@ function Step6Payment({
         },
       }
 
-      const { data: exhibitor, error: exhibitorError } = await supabase
-        .from('exhibitors')
+      const { data: exhibitor, error: exhibitorError } = await (supabase
+        .from('exhibitors') as any)
         .insert([exhibitorData])
         .select()
         .single()
@@ -2072,8 +2073,8 @@ function Step6Payment({
           is_primary_contact: index === 0,
         }))
 
-        const { error: staffError } = await supabase
-          .from('exhibitor_staff')
+        const { error: staffError } = await (supabase
+          .from('exhibitor_staff') as any)
           .insert(staffInserts)
 
         if (staffError) {
@@ -2116,8 +2117,8 @@ function Step6Payment({
       const payment = await response.json()
 
       // 5. Mettre à jour l'exhibitor avec la référence de paiement
-      await supabase
-        .from('exhibitors')
+      await (supabase
+        .from('exhibitors') as any)
         .update({
           payment_reference: payment.id,
         })
@@ -2164,7 +2165,7 @@ function Step6Payment({
           <div className="flex justify-between">
             <span className="text-gray-600">Nombre d&apos;exposants</span>
             <span className="font-semibold">
-              {formData.staffMembers.filter((s) => s.firstName && s.lastName).length} personne(s)
+              {formData.staffMembers.filter((s: any) => s.firstName && s.lastName).length} personne(s)
             </span>
           </div>
 

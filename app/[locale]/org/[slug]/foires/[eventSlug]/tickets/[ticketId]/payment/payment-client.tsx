@@ -70,8 +70,8 @@ export function PaymentPageClient({
       // Pour MVP : marquer comme payé directement
       // En production : intégrer vraie API Wave/Orange Money
       
-      const { error: updateError } = await supabase
-        .from('tickets')
+      const { error: updateError } = await (supabase
+        .from('tickets') as any)
         .update({
           payment_status: 'paid',
           payment_method: paymentMethod,

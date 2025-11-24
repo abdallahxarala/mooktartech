@@ -111,8 +111,8 @@ export default function ProduitsPage({
   }
 
   async function toggleAvailability(productId: string, currentStatus: boolean) {
-    const { error } = await supabase
-      .from('exhibitor_products')
+    const { error } = await (supabase
+      .from('exhibitor_products') as any)
       .update({ is_available: !currentStatus })
       .eq('id', productId)
 
@@ -124,8 +124,8 @@ export default function ProduitsPage({
   }
 
   async function toggleFeatured(productId: string, currentStatus: boolean) {
-    const { error } = await supabase
-      .from('exhibitor_products')
+    const { error } = await (supabase
+      .from('exhibitor_products') as any)
       .update({ is_featured: !currentStatus })
       .eq('id', productId)
 

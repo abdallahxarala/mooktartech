@@ -73,9 +73,9 @@ export default async function ConfirmationPage({
     const qrCodeData = `FOIRE2025-${ticketData.id}-${params.eventSlug}`
     
     // Mettre à jour avec QR code
-    const { error: updateError } = await supabase
-      .from('tickets')
-      .update({ 
+    const { error: updateError } = await (supabase
+      .from('tickets') as any)
+      .update({
         qr_code: qrCodeData,
         qr_code_data: {
           ticket_id: ticketData.id,
@@ -90,7 +90,7 @@ export default async function ConfirmationPage({
     if (updateError) {
       console.error('Error updating QR code:', updateError)
     } else {
-      ticket.qr_code = qrCodeData
+      ticketData.qr_code = qrCodeData
     }
   }
 

@@ -298,7 +298,7 @@ export default function CataloguePage({
                   {/* Tags */}
                   {exhibitor.tags && exhibitor.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 mb-4">
-                      {exhibitor.tags.slice(0, 3).map((tag, index) => (
+                      {exhibitor.tags.slice(0, 3).map((tag: any, index: number) => (
                         <span
                           key={index}
                           className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded"

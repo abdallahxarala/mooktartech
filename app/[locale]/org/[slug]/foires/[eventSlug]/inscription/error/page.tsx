@@ -27,6 +27,7 @@ export default function InscriptionErrorPage({
   }, [exhibitorId])
 
   async function loadExhibitor() {
+    if (!exhibitorId) return
     try {
       const { data, error } = await supabase
         .from('exhibitors')
