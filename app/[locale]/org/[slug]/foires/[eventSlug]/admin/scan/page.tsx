@@ -159,12 +159,20 @@ export default function ScanQRPage() {
         try {
           // Utiliser Html5Qrcode pour décoder depuis l'image
           const scanner = new Html5Qrcode('qr-reader')
-          const qrData = await scanner.scanFile(imageDataUrl, true)
+          
+          // Convertir base64 en File
+          const response = await fetch(imageDataUrl)
+          const blob = await response.blob()
+          const file = new File([blob], 'qr-upload.png', { type: 'image/png' })
+          
+          // Scanner le fichier
+          const qrData = await scanner.scanFile(file, true)
 
           // Valider le QR code
           await handleQRScanned(qrData)
         } catch (err) {
-          setError('Impossible de lire le QR code depuis l\'image')
+          console.error('Erreur scan QR:', err)
+          setError('Impossible de lire le code QR de cette image')
           setResult({
             success: false,
             valid: false,
