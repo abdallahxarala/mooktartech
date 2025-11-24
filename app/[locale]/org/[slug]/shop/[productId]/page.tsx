@@ -65,15 +65,16 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
           return
         }
 
-        setProduct(prod as Product)
+        const prodData = prod as any
+        setProduct(prodData as Product)
 
         // Produits similaires (même catégorie, même organisation)
-        if (prod.category && prod.organization_id) {
+        if (prodData.category && prodData.organization_id) {
           const { data: similar } = await supabase
             .from('products')
             .select('*')
-            .eq('organization_id', prod.organization_id)
-            .eq('category', prod.category)
+            .eq('organization_id', prodData.organization_id)
+            .eq('category', prodData.category)
             .neq('id', productId)
             .limit(4)
 
