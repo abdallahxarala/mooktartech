@@ -72,7 +72,8 @@ export function MooktarHomePageClient({ locale, slug }: MooktarHomePageClientPro
 
   const handleAddToCart = (product: any) => {
     addToCart({
-      id: product.id,
+      // id retiré - sera généré automatiquement par addToCart
+      productId: product.id,
       name: product.name,
       price: product.price,
       image: product.image_url,
