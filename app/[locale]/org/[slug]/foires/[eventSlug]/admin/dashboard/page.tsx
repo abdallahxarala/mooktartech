@@ -71,7 +71,15 @@ export default function AdminDashboardPage() {
 
       // Télécharger le fichier
       const blob = await response.blob()
-      downloadExcel(blob, `exposants-foire-dakar-2025-${new Date().toISOString().split('T')[0]}.xlsx`)
+      const filename = `exposants-foire-dakar-2025-${new Date().toISOString().split('T')[0]}.xlsx`
+      const url = URL.createObjectURL(blob)
+      const a = document.createElement('a')
+      a.href = url
+      a.download = filename
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      URL.revokeObjectURL(url)
     } catch (error) {
       console.error('Error exporting Excel:', error)
       alert(`Erreur lors de l'export: ${error instanceof Error ? error.message : 'Unknown error'}`)
