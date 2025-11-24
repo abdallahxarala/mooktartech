@@ -43,20 +43,23 @@ export default async function PaymentPage({
   if (!ticket) {
     notFound()
   }
+
+  // TypeScript assertion - ticket existe après la vérification ci-dessus
+  const ticketData = ticket as any
   
   // Vérifier que le ticket appartient à l'organisation
-  if (ticket.event.organization_id !== (organization as any).id) {
+  if (ticketData.event.organization_id !== (organization as any).id) {
     notFound()
   }
 
   // Si déjà payé, rediriger vers confirmation
-  if (ticket.payment_status === 'paid') {
-    redirect(`/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/tickets/${ticket.id}/confirmation`)
+  if (ticketData.payment_status === 'paid') {
+    redirect(`/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/tickets/${ticketData.id}/confirmation`)
   }
 
   return (
     <PaymentPageClient
-      ticket={ticket}
+      ticket={ticketData}
       locale={params.locale}
       slug={params.slug}
       eventSlug={params.eventSlug}

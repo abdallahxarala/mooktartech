@@ -46,28 +46,31 @@ export default async function ConfirmationPage({
     notFound()
   }
 
+  // TypeScript assertion - ticket existe après la vérification ci-dessus
+  const ticketData = ticket as any
+
   // Vérifier que le ticket appartient à l'organisation (double vérification)
-  if (ticket.organization_id !== (organization as any).id || ticket.event.organization_id !== (organization as any).id) {
+  if (ticketData.organization_id !== (organization as any).id || ticketData.event.organization_id !== (organization as any).id) {
     console.error('Ticket organization mismatch:', {
-      ticket_org_id: ticket.organization_id,
-      event_org_id: ticket.event.organization_id,
+      ticket_org_id: ticketData.organization_id,
+      event_org_id: ticketData.event.organization_id,
       expected_org_id: (organization as any).id
     })
     notFound()
   }
 
   // Si pas encore payé, rediriger vers paiement (ou notFound pour sécurité)
-  if (ticket.payment_status !== 'paid') {
+  if (ticketData.payment_status !== 'paid') {
     console.warn('Ticket not paid yet:', {
-      ticket_id: ticket.id,
-      payment_status: ticket.payment_status
+      ticket_id: ticketData.id,
+      payment_status: ticketData.payment_status
     })
     notFound()
   }
 
   // Générer QR code si pas déjà fait
-  if (!ticket.qr_code) {
-    const qrCodeData = `FOIRE2025-${ticket.id}-${params.eventSlug}`
+  if (!ticketData.qr_code) {
+    const qrCodeData = `FOIRE2025-${ticketData.id}-${params.eventSlug}`
     
     // Mettre à jour avec QR code
     const { error: updateError } = await supabase
@@ -75,14 +78,14 @@ export default async function ConfirmationPage({
       .update({ 
         qr_code: qrCodeData,
         qr_code_data: {
-          ticket_id: ticket.id,
+          ticket_id: ticketData.id,
           event_slug: params.eventSlug,
-          ticket_type: ticket.ticket_type,
-          buyer_email: ticket.buyer_email,
-          quantity: ticket.quantity,
+          ticket_type: ticketData.ticket_type,
+          buyer_email: ticketData.buyer_email,
+          quantity: ticketData.quantity,
         }
       })
-      .eq('id', ticket.id)
+      .eq('id', ticketData.id)
     
     if (updateError) {
       console.error('Error updating QR code:', updateError)
@@ -93,7 +96,7 @@ export default async function ConfirmationPage({
 
   return (
     <ConfirmationClient
-      ticket={ticket}
+      ticket={ticketData}
       locale={params.locale}
       slug={params.slug}
     />
