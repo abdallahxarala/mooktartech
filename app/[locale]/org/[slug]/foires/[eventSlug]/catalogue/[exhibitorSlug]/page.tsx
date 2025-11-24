@@ -59,8 +59,10 @@ export default async function ExhibitorDetailPage({
     .select('interaction_type')
     .eq('exhibitor_id', (exhibitor as any).id)
 
-  const pageViews = interactions?.filter(i => i.interaction_type === 'page_view').length || 0
-  const qrScans = interactions?.filter(i => i.interaction_type === 'qr_scan').length || 0
+  // TypeScript assertion pour interactions array
+  const interactionsData = (interactions as any) || []
+  const pageViews = interactionsData.filter((i: any) => i.interaction_type === 'page_view').length || 0
+  const qrScans = interactionsData.filter((i: any) => i.interaction_type === 'qr_scan').length || 0
 
   // 5. Récupérer les produits de l'exposant
   const { data: products } = await supabase
