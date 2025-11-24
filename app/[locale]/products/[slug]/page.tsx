@@ -100,7 +100,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 {/* Miniatures */}
                 {galleryImages.length > 1 && (
                   <div className="grid grid-cols-4 gap-4">
-                    {galleryImages.map((img, i) => (
+                    {galleryImages.map((img: any, i) => (
                       <div
                         key={i}
                         className="aspect-square bg-white rounded-lg border-2 border-gray-200 hover:border-orange-500 cursor-pointer overflow-hidden transition-all"
@@ -216,7 +216,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                     Caractéristiques principales
                   </h2>
                   <div className="grid gap-3">
-                    {product.features.map((feature, i) => (
+                    {product.features.map((feature: any, i) => (
                       <div
                         key={i}
                         className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-200"
@@ -234,7 +234,7 @@ export default function ProductDetailPage({ params }: { params: { slug: string }
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Applications</h2>
                   <div className="flex flex-wrap gap-2">
-                    {product.applications.map((app, i) => (
+                    {product.applications.map((app: any, i) => (
                       <span
                         key={i}
                         className="px-4 py-2 bg-blue-50 text-blue-700 rounded-lg text-sm font-medium"

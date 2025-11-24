@@ -70,7 +70,7 @@ export default function AboutPage() {
       <section className="py-16 bg-white">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+            {stats.map((stat: any, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-br from-orange-100 to-pink-100 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-600">
                   {/* Icon rendering handled by name; keep placeholder circle */}
@@ -101,7 +101,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-orange-500 to-pink-500 rounded-full hidden md:block" />
               <div className="space-y-12">
-                {milestones.map((milestone, index) => (
+                {milestones.map((milestone: any, index) => (
                   <div key={index} className="relative pl-0 md:pl-24">
                     <div className="absolute left-0 top-0 w-16 h-16 bg-gradient-to-br from-orange-500 to-pink-500 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-xl hidden md:flex">
                       {milestone.year}
@@ -138,7 +138,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {companyValues.map((value, index) => (
+            {companyValues.map((value: any, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-transparent hover:shadow-2xl transition-all"
@@ -167,7 +167,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx_auto">
-            {teamMembers.map((member, index) => (
+            {teamMembers.map((member: any, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2 border-2 border-gray-100"
@@ -202,7 +202,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-            {certifications.map((cert, index) => (
+            {certifications.map((cert: any, index) => (
               <div
                 key={index}
                 className="group bg_white rounded-2xl p-8 border-2 border-gray-100 hover:border-orange-500 hover:shadow-xl transition-all flex flex-col items-center justify-center text-center"

@@ -90,7 +90,7 @@ export function TicketsClient({
         {/* Progress */}
         {currentStep !== 'confirmation' && (
           <div className="flex items-center justify-center gap-4">
-            {steps.map((step, index) => (
+            {steps.map((step: any, index) => (
               <div key={step.id} className="flex items-center gap-4">
                 <div className="flex flex-col items-center">
                   <div

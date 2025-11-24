@@ -182,7 +182,7 @@ export default function ImportProductsPage() {
 
                   {/* Features */}
                   <div className="mb-4 space-y-1">
-                    {product.features.slice(0, 3).map((feature, i) => (
+                    {product.features.slice(0, 3).map((feature: any, i) => (
                       <div key={i} className="flex items-start gap-2 text-xs text-gray-600">
                         <span className="text-orange-500">•</span>
                         <span className="line-clamp-1">{feature}</span>

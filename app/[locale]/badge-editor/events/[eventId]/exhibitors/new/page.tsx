@@ -288,7 +288,7 @@ export default function NewExhibitorPage() {
       </div>
 
       <div className="flex items-center justify-center mb-8">
-        {STEPS.map((step, index) => (
+        {STEPS.map((step: any, index) => (
           <div key={step.number} className="flex items-center">
             <div
               className={`flex items-center justify-center w-10 h-10 rounded-full font-semibold ${
