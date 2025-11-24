@@ -191,7 +191,7 @@ export default function BadgesAdminPage({
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {filteredBadges.map((badge) => (
+                {filteredBadges.map((badge: any) => (
                   <tr key={badge.badge_id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 text-sm font-mono text-gray-900">
                       {badge.badge_id}

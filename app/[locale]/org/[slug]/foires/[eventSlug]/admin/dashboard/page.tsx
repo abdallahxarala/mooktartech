@@ -276,7 +276,7 @@ export default function AdminDashboardPage() {
                 </tr>
               </thead>
               <tbody>
-                {stats.recent_exhibitors.map((exhibitor) => (
+                {stats.recent_exhibitors.map((exhibitor: any) => (
                   <tr key={exhibitor.id} className="border-b hover:bg-gray-50">
                     <td className="py-3 px-4">{exhibitor.company_name}</td>
                     <td className="py-3 px-4">

@@ -256,7 +256,7 @@ export default function TicketsPage({
               <div className="lg:col-span-2 space-y-6">
                 <h2 className="text-2xl font-bold mb-6">Choisissez vos billets</h2>
 
-                {ticketTypes.map((ticket) => (
+                {ticketTypes.map((ticket: any) => (
                   <div
                     key={ticket.id}
                     className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transition"
@@ -393,7 +393,7 @@ export default function TicketsPage({
                   ) : (
                     <>
                       <div className="space-y-4 mb-6">
-                        {ticketTypes.map((ticket) => {
+                        {ticketTypes.map((ticket: any) => {
                           const qty = quantities[ticket.id]
                           if (qty === 0) return null
 

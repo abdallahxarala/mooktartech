@@ -117,7 +117,7 @@ export default function ProduitsPage({
       .eq('id', productId)
 
     if (!error) {
-      setProducts(products.map(p => 
+      setProducts(products.map((p: any) => 
         p.id === productId ? { ...p, is_available: !currentStatus } : p
       ))
     }
@@ -130,7 +130,7 @@ export default function ProduitsPage({
       .eq('id', productId)
 
     if (!error) {
-      setProducts(products.map(p => 
+      setProducts(products.map((p: any) => 
         p.id === productId ? { ...p, is_featured: !currentStatus } : p
       ))
     }
@@ -273,7 +273,7 @@ export default function ProduitsPage({
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-4">
-            {filteredProducts.map((product) => (
+            {filteredProducts.map((product: any) => (
               <div
                 key={product.id}
                 className="bg-white rounded-lg shadow-md hover:shadow-lg transition overflow-hidden"

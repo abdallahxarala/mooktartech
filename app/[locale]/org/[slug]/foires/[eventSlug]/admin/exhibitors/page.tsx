@@ -261,7 +261,7 @@ export default function AdminExhibitorsPage() {
                         </td>
                       </tr>
                     ) : (
-                      exhibitors.map((exhibitor) => (
+                      exhibitors.map((exhibitor: any) => (
                         <tr key={exhibitor.id} className="border-b hover:bg-gray-50">
                           <td className="py-3 px-4">
                             <div className="font-semibold">{exhibitor.company_name}</div>
