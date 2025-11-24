@@ -5,8 +5,7 @@
 'use client'
 
 import { useFormContext } from 'react-hook-form'
-// Temporarily disabled due to build error
-// import { ImageUpload } from '@/components/ui/image-upload'
+import { ImageUpload } from '@/components/ui/image-upload'
 import {
   FormField,
   FormItem,
@@ -42,19 +41,20 @@ export function StepLogoUpload({ onUpload, isUploading }: StepLogoUploadProps) {
               Logo *
             </FormLabel>
             <div className="max-w-md mx-auto">
-              {/* Temporarily disabled due to build error */}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files?.[0]
-                  if (file) {
-                    // TODO: Implement file upload
-                    console.log('File selected:', file.name)
+              <ImageUpload
+                value={field.value || null}
+                onChange={(url) => {
+                  field.onChange(url)
+                  if (url && onUpload) {
+                    // The upload is handled by ImageUpload component internally
                   }
                 }}
+                bucket="assets"
+                feature="logo"
+                accept="image/*"
+                showPreview={true}
+                aspectRatio="square"
                 disabled={isUploading}
-                className="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg"
               />
             </div>
             <FormDescription className="text-center mt-4">

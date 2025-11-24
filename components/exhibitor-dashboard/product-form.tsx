@@ -27,8 +27,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog'
-// Temporarily disabled due to build error
-// import { ImageUpload } from '@/components/ui/image-upload'
+import { ImageUpload } from '@/components/ui/image-upload'
 import { useProductAI } from '@/lib/hooks/use-product-ai'
 // Temporarily disabled - requires server component
 // import { useProducts } from '@/lib/hooks/use-products'
@@ -224,18 +223,21 @@ export function ProductForm({ exhibitorId, product, onSuccess }: ProductFormProp
           <div>
             <Label>Images du produit</Label>
             <div className="mt-2 space-y-4">
-              {/* Temporarily disabled due to build error */}
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files?.[0]
-                  if (file) {
-                    // TODO: Implement file upload
-                    console.log('File selected:', file.name)
+              <ImageUpload
+                value={featuredImage}
+                onChange={(url) => {
+                  if (url) {
+                    addImage(url)
+                    setFeaturedImage(url)
+                  } else {
+                    setFeaturedImage(null)
                   }
                 }}
-                className="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg"
+                bucket="assets"
+                feature="photo"
+                accept="image/*"
+                showPreview={true}
+                aspectRatio="square"
               />
               {images.length > 0 && (
                 <div className="grid grid-cols-4 gap-4">
