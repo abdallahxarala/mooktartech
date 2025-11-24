@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { exportExhibitorsReport } from '@/lib/services/exports/reports'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * API Endpoint pour exporter les exposants en Excel
  * 

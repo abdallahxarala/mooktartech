@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import ShortUniqueId from 'short-unique-id';
 import QRCode from 'qrcode';
 
+export const dynamic = 'force-dynamic'
+
 const uid = new ShortUniqueId({ length: 8 });
 
 export async function POST(request: Request) {

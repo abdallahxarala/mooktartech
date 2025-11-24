@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { sendPaymentReminderEmail } from '@/lib/services/email/templates'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * Endpoint pour gérer les rappels de paiement
  * 

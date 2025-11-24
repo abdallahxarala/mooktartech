@@ -3,6 +3,8 @@ import { getProducts } from '@/lib/supabase/queries/products'
 import type { ProductListOptions } from '@/lib/supabase/queries/products'
 import { mapSupabaseProductToFrontend } from '@/lib/types/products'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * GET /api/products
  * 

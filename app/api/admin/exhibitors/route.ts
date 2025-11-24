@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getExhibitorsList } from '@/lib/services/admin/stats.service'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * API Endpoint pour récupérer la liste des exposants avec filtres
  * 
