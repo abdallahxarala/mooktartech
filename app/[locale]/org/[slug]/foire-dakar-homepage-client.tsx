@@ -60,9 +60,9 @@ export function FoireDakarHomePageClient({ locale, slug }: FoireDakarHomePageCli
           setEvent(eventsData)
           
           // Calculer le nombre de jours
-          if (eventsData.start_date && eventsData.end_date) {
-            const start = new Date(eventsData.start_date)
-            const end = new Date(eventsData.end_date)
+          if ((eventsData as any).start_date && (eventsData as any).end_date) {
+            const start = new Date((eventsData as any).start_date)
+            const end = new Date((eventsData as any).end_date)
             const days = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)) + 1
             setStats(prev => ({ ...prev, days }))
           }
@@ -77,7 +77,7 @@ export function FoireDakarHomePageClient({ locale, slug }: FoireDakarHomePageCli
 
         if (exhibitorsData) {
           setExhibitors(exhibitorsData)
-          setStats(prev => ({ ...prev, exhibitorsCount: exhibitorsData.length }))
+          setStats(prev => ({ ...prev, exhibitorsCount: (exhibitorsData as any).length }))
         }
       } catch (error) {
         console.error('Error loading data:', error)
