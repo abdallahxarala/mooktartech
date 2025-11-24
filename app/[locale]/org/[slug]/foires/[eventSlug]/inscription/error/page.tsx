@@ -38,7 +38,7 @@ export default function InscriptionErrorPage({
       if (error) {
         console.error('Error loading exhibitor:', error)
       } else {
-        setExhibitor(data)
+        setExhibitor(data as any)
       }
     } catch (error) {
       console.error('Unexpected error:', error)

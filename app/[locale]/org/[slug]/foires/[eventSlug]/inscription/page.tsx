@@ -159,7 +159,8 @@ export default function InscriptionExposantPage({
         throw new Error('Le montant total est invalide (0 ou NaN)')
       }
 
-      if (!event || !event.id) {
+      const eventData = event as any
+      if (!eventData || !eventData.id) {
         throw new Error('Événement non trouvé')
       }
 
@@ -190,8 +191,8 @@ export default function InscriptionExposantPage({
 
       // Préparer les données exposant
       const exhibitorData = {
-        event_id: event.id,
-        organization_id: event.organization_id,
+        event_id: eventData.id,
+        organization_id: eventData.organization_id,
         company_name: formData.companyName,
         slug: slug,
         description: formData.description || null,
@@ -244,13 +245,14 @@ export default function InscriptionExposantPage({
         throw new Error(`Erreur lors de la création de l'exposant: ${exhibitorError.message}`)
       }
 
-      console.log('✅ Exposant créé:', exhibitor.id)
+      const exhibitorData_result = exhibitor as any
+      console.log('✅ Exposant créé:', exhibitorData_result.id)
 
       // 2. Générer la facture PDF automatiquement via API (en arrière-plan, non bloquant)
       let invoiceUrl: string | undefined
       try {
         const response = await fetch(
-          `/api/foires/${params.eventSlug}/invoices/${exhibitor.id}`,
+          `/api/foires/${params.eventSlug}/invoices/${exhibitorData_result.id}`,
           { method: 'POST' }
         )
         
@@ -304,7 +306,7 @@ export default function InscriptionExposantPage({
 
       if (validStaff.length > 0) {
         const staffInserts = validStaff.map((staff: any, index: number) => ({
-          exhibitor_id: exhibitor.id,
+          exhibitor_id: exhibitorData_result.id,
           first_name: staff.firstName,
           last_name: staff.lastName,
           function: staff.function || '',
@@ -333,7 +335,7 @@ export default function InscriptionExposantPage({
       alert(`✅ Inscription réussie ! Total: ${new Intl.NumberFormat('fr-FR').format(formData.totalTTC)} FCFA`)
       
       router.push(
-        `/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/inscription/success?exhibitor=${exhibitor.id}`
+        `/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/inscription/success?exhibitor=${exhibitorData_result.id}`
       )
     } catch (error: any) {
       console.error('=== ERREUR INSCRIPTION ===')
@@ -1960,8 +1962,8 @@ function Step6Payment({
 
       // 2. Créer l'exhibitor
       const exhibitorData = {
-        event_id: event.id,
-        organization_id: event.organization_id,
+        event_id: eventData.id,
+        organization_id: eventData.organization_id,
         company_name: formData.companyName,
         slug: slug,
         description: formData.description || null,
@@ -2003,13 +2005,14 @@ function Step6Payment({
         throw new Error(`Erreur lors de la création de l'exposant: ${exhibitorError.message}`)
       }
 
-      console.log('✅ Exposant créé:', exhibitor.id)
+      const exhibitorData_result2 = exhibitor as any
+      console.log('✅ Exposant créé:', exhibitorData_result2.id)
 
       // 3. Générer la facture PDF automatiquement via API (en arrière-plan, non bloquant)
       let invoiceUrl: string | undefined
       try {
         const response = await fetch(
-          `/api/foires/${params.eventSlug}/invoices/${exhibitor.id}`,
+          `/api/foires/${params.eventSlug}/invoices/${exhibitorData_result2.id}`,
           { method: 'POST' }
         )
         
@@ -2061,7 +2064,7 @@ function Step6Payment({
 
       if (validStaff.length > 0) {
         const staffInserts = validStaff.map((staff: StaffFormData, index: number) => ({
-          exhibitor_id: exhibitor.id,
+          exhibitor_id: exhibitorData_result2.id,
           first_name: staff.firstName,
           last_name: staff.lastName,
           function: staff.function || '',
@@ -2089,12 +2092,12 @@ function Step6Payment({
       const paymentData: WavePaymentRequest = {
         amount: Math.round(formData.totalTTC), // Wave attend un entier
         currency: 'XOF',
-        success_url: `${baseUrl}/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/inscription/success?exhibitor=${exhibitor.id}&payment=wave`,
-        error_url: `${baseUrl}/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/inscription/error?exhibitor=${exhibitor.id}`,
+        success_url: `${baseUrl}/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/inscription/success?exhibitor=${exhibitorData_result2.id}&payment=wave`,
+        error_url: `${baseUrl}/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/inscription/error?exhibitor=${exhibitorData_result2.id}`,
         metadata: {
-          exhibitor_id: exhibitor.id,
-          event_id: event.id,
-          organization_id: event.organization_id,
+          exhibitor_id: exhibitorData_result2.id,
+          event_id: eventData.id,
+          organization_id: eventData.organization_id,
           company_name: formData.companyName,
           contact_email: formData.contactEmail,
         },
