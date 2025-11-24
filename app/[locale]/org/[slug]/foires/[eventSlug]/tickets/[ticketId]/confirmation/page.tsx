@@ -1,6 +1,9 @@
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import { ConfirmationClient } from './confirmation-client'
+import type { Database } from '@/lib/supabase/database.types'
+
+type Organization = Database['public']['Tables']['organizations']['Row']
 
 export default async function ConfirmationPage({
   params,
@@ -15,15 +18,17 @@ export default async function ConfirmationPage({
   const supabase = await createSupabaseServerClient()
   
   // Récupérer l'organization
-  const { data: organization } = await supabase
+  const { data: organization, error: orgError } = await supabase
     .from('organizations')
     .select('id')
     .eq('slug', params.slug)
-    .single()
+    .single<Organization>()
 
-  if (!organization) {
+  if (orgError || !organization) {
     notFound()
   }
+
+  // TypeScript now knows organization is of type Organization after the check above
 
   // Récupérer le ticket avec l'événement
   const { data: ticket } = await supabase
@@ -33,7 +38,7 @@ export default async function ConfirmationPage({
       event:events(*)
     `)
     .eq('id', params.ticketId)
-    .eq('organization_id', organization.id) // ✅ Isolation multitenant
+    .eq('organization_id', (organization as any).id) // ✅ Isolation multitenant
     .single()
 
   if (!ticket) {
@@ -42,11 +47,11 @@ export default async function ConfirmationPage({
   }
 
   // Vérifier que le ticket appartient à l'organisation (double vérification)
-  if (ticket.organization_id !== organization.id || ticket.event.organization_id !== organization.id) {
+  if (ticket.organization_id !== (organization as any).id || ticket.event.organization_id !== (organization as any).id) {
     console.error('Ticket organization mismatch:', {
       ticket_org_id: ticket.organization_id,
       event_org_id: ticket.event.organization_id,
-      expected_org_id: organization.id
+      expected_org_id: (organization as any).id
     })
     notFound()
   }

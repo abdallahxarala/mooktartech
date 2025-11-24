@@ -1,6 +1,9 @@
 import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { notFound, redirect } from 'next/navigation'
 import { PaymentPageClient } from './payment-client'
+import type { Database } from '@/lib/supabase/database.types'
+
+type Organization = Database['public']['Tables']['organizations']['Row']
 
 export default async function PaymentPage({
   params,
@@ -15,15 +18,17 @@ export default async function PaymentPage({
   const supabase = await createSupabaseServerClient()
   
   // Récupérer l'organization
-  const { data: organization } = await supabase
+  const { data: organization, error: orgError } = await supabase
     .from('organizations')
     .select('id')
     .eq('slug', params.slug)
-    .single()
+    .single<Organization>()
 
-  if (!organization) {
+  if (orgError || !organization) {
     notFound()
   }
+
+  // TypeScript now knows organization is of type Organization after the check above
 
   // Récupérer le ticket avec l'événement
   const { data: ticket } = await supabase
@@ -40,7 +45,7 @@ export default async function PaymentPage({
   }
   
   // Vérifier que le ticket appartient à l'organisation
-  if (ticket.event.organization_id !== organization.id) {
+  if (ticket.event.organization_id !== (organization as any).id) {
     notFound()
   }
 

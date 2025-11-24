@@ -45,10 +45,10 @@ export default async function AdminDashboard({ params }: AdminDashboardProps) {
   }
 
   // TypeScript now knows organization is of type Organization after the check above
-  const orgId = organization.id
+  const orgId = (organization as any).id
 
   // Debug log pour vérification
-  console.log('✅ Admin Dashboard - Organization found:', { id: orgId, name: organization.name, slug: organization.slug })
+  console.log('✅ Admin Dashboard - Organization found:', { id: orgId, name: (organization as any).name, slug: (organization as any).slug })
 
   // ====================================
   // ÉTAPE 2 : RÉCUPÉRER LES PRODUITS
@@ -67,7 +67,7 @@ export default async function AdminDashboard({ params }: AdminDashboardProps) {
   const productsList = (products || []) as Product[]
 
   // Debug log pour vérification
-  console.log(`✅ Admin Dashboard - Products count for ${organization.name}:`, productsList.length)
+  console.log(`✅ Admin Dashboard - Products count for ${(organization as any).name}:`, productsList.length)
 
   // Statistiques
   const stats = {
@@ -88,7 +88,7 @@ export default async function AdminDashboard({ params }: AdminDashboardProps) {
                 Tableau de bord
               </h1>
               <p className="text-gray-600 mt-2">
-                Bienvenue dans votre espace d&apos;administration - {organization.name}
+                Bienvenue dans votre espace d&apos;administration - {(organization as any).name}
               </p>
             </div>
             <Link

@@ -115,7 +115,7 @@ export default function TicketsPage({
         .from('events')
         .select('*')
         .eq('slug', params.eventSlug)
-        .eq('organization_id', organization.id) // ✅ Isolation multitenant
+        .eq('organization_id', (organization as any).id) // ✅ Isolation multitenant
         .single()
 
       if (error) {

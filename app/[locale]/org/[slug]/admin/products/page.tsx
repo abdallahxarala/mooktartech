@@ -33,10 +33,10 @@ export default async function AdminProductsPage({ params }: AdminProductsPagePro
   }
 
   // TypeScript now knows organization is of type Organization after the check above
-  const orgId = organization.id
+  const orgId = (organization as any).id
 
   // Debug log pour vérification
-  console.log(`✅ Admin Products - Organization found: ${organization.name} (${orgId})`)
+  console.log(`✅ Admin Products - Organization found: ${(organization as any).name} (${orgId})`)
 
   // ====================================
   // ÉTAPE 2 : RÉCUPÉRER LES PRODUITS FILTRÉS
@@ -54,7 +54,7 @@ export default async function AdminProductsPage({ params }: AdminProductsPagePro
   const productsList = products || []
 
   // Debug log pour vérification
-  console.log(`📊 Admin Products - Products count for ${organization.name}: ${productsList.length}`)
+  console.log(`📊 Admin Products - Products count for ${(organization as any).name}: ${productsList.length}`)
 
   // ====================================
   // ÉTAPE 3 : RÉCUPÉRER STATS

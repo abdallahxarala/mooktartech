@@ -67,7 +67,7 @@ export default function CataloguePage({
         .from('events')
         .select('id')
         .eq('slug', params.eventSlug)
-        .eq('organization_id', organization.id) // ✅ Isolation multitenant
+        .eq('organization_id', (organization as any).id) // ✅ Isolation multitenant
         .single()
 
       if (eventError || !event) {

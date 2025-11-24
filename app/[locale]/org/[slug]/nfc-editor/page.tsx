@@ -2,6 +2,9 @@ import { createSupabaseServerClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { NFCEditorClient } from '@/components/nfc-wizard/nfc-editor-client'
+import type { Database } from '@/lib/supabase/database.types'
+
+type Organization = Database['public']['Tables']['organizations']['Row']
 
 interface NFCEditorPageProps {
   params: {
@@ -23,15 +26,16 @@ export default async function NFCEditorPage({ params }: NFCEditorPageProps) {
     .from('organizations')
     .select('id, name, slug')
     .eq('slug', slug)
-    .single()
+    .single<Organization>()
 
   if (orgError || !organization) {
     console.error('❌ Organization not found:', { slug, error: orgError })
     notFound()
   }
 
+  // TypeScript now knows organization is of type Organization after the check above
   // Debug log pour vérification
-  console.log('✅ NFC Editor - Organization found:', { id: organization.id, name: organization.name, slug: organization.slug })
+  console.log('✅ NFC Editor - Organization found:', { id: (organization as any).id, name: (organization as any).name, slug: (organization as any).slug })
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-orange-50">
