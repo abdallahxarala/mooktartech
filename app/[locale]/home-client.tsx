@@ -7,7 +7,7 @@ import { PopularProducts } from "@/components/sections/popular-products";
 import { VirtualCard } from "@/components/sections/virtual-card";
 import { SectorSolutions } from "@/components/sections/sector-solutions";
 import { WhyChooseUs } from "@/components/sections/why-choose-us";
-import { FinalCTA } from "@/components/sections/final-cta";
+import FinalCTA from "@/components/sections/final-cta";
 import { Footer } from "@/components/footer";
 import { useSafeState } from "@/lib/hooks/use-safe-state";
 import { logComponentMount, logComponentUnmount, logStateChange } from "@/lib/utils/error-logger";
