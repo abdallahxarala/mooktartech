@@ -338,7 +338,7 @@ export function XaralaHomePageClient({ locale, slug }: XaralaHomePageClientProps
             </div>
 
             <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {featuredProducts.map((product, index) => (
+              {featuredProducts.map((product: any, index: number) => (
                 <div
                   key={product.id}
                   className={`group bg-white rounded-3xl overflow-hidden transition-all duration-500 ${
@@ -544,7 +544,7 @@ export function XaralaHomePageClient({ locale, slug }: XaralaHomePageClientProps
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  {testimonials.map((_, index) => (
+                  {testimonials.map((_: any, index: number) => (
                     <button
                       key={index}
                       onClick={() => setActiveTestimonial(index)}
@@ -604,7 +604,7 @@ export function XaralaHomePageClient({ locale, slug }: XaralaHomePageClientProps
                 desc: 'Assistance technique locale en français',
                 color: 'purple'
               }
-            ].map((item, index) => (
+            ].map((item: any, index: number) => (
               <div key={index} className="relative text-center">
                 {index < 3 && (
                   <div className="hidden md:block absolute top-12 left-1/2 w-full h-0.5 bg-gray-200 z-0" />
@@ -738,7 +738,7 @@ export function XaralaHomePageClient({ locale, slug }: XaralaHomePageClientProps
                 q: "Puis-je avoir un devis personnalisé ?",
                 a: "Bien sûr ! Contactez-nous par téléphone (+221 77 539 81 39) ou formulaire et vous recevrez votre devis gratuit sous 2h."
               }
-            ].map((faq, index) => (
+            ].map((faq: any, index: number) => (
               <details
                 key={index}
                 className="group bg-white rounded-2xl border-2 border-gray-200 hover:border-orange-500 transition-all overflow-hidden"

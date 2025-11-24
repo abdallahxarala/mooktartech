@@ -219,7 +219,7 @@ export default function AdminDashboardPage() {
                   fill="#8884d8"
                   dataKey="count"
                 >
-                  {stats.pavilions_distribution.map((entry, index) => (
+                  {stats.pavilions_distribution.map((entry: any, index: number) => (
                     <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                   ))}
                 </Pie>

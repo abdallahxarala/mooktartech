@@ -294,7 +294,7 @@ export default function NouveauProduitPage({
               {/* Prévisualisation des images */}
               {images.length > 0 && (
                 <div className="space-y-4">
-                  {images.map((img, index) => (
+                  {images.map((img: any, index: number) => (
                     <div key={index} className="relative group">
                       <img
                         src={img.preview}

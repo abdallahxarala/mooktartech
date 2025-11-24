@@ -180,7 +180,7 @@ export function FoireDakarHomePageClient({ locale, slug }: FoireDakarHomePageCli
       <section className="py-12 -mt-8">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {eventInfo.map((info, idx) => (
+            {eventInfo.map((info: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
@@ -251,13 +251,13 @@ export function FoireDakarHomePageClient({ locale, slug }: FoireDakarHomePageCli
 
           {isLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[...Array(8)].map((_, i) => (
+              {[...Array(8)].map((_: any, i: number) => (
                 <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-48" />
               ))}
             </div>
           ) : exhibitors.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {exhibitors.map((exhibitor, idx) => (
+              {exhibitors.map((exhibitor: any, idx: number) => (
                 <motion.div
                   key={exhibitor.id}
                   initial={{ opacity: 0, y: 20 }}

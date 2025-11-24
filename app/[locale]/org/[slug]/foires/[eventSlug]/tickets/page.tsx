@@ -79,7 +79,7 @@ export default function TicketsPage({
   ]
 
   const [quantities, setQuantities] = useState<Record<string, number>>(
-    ticketTypes.reduce((acc, t) => ({ ...acc, [t.id]: 0 }), {})
+    ticketTypes.reduce((acc: any, t: any) => ({ ...acc, [t.id]: 0 }), {})
   )
 
   const [formData, setFormData] = useState({
@@ -138,9 +138,9 @@ export default function TicketsPage({
     })
   }
 
-  const totalTickets = Object.values(quantities).reduce((sum, qty) => sum + qty, 0)
+  const totalTickets = Object.values(quantities).reduce((sum: number, qty: any) => sum + qty, 0)
   const totalPrice = ticketTypes.reduce(
-    (sum, ticket) => sum + ticket.price * quantities[ticket.id],
+    (sum: number, ticket: any) => sum + ticket.price * quantities[ticket.id],
     0
   )
 
@@ -269,7 +269,7 @@ export default function TicketsPage({
                         <p className="text-gray-600 mb-4">{ticket.description}</p>
 
                         <ul className="space-y-2 mb-4">
-                          {ticket.features.map((feature, idx) => (
+                          {ticket.features.map((feature: any, idx: number) => (
                             <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
                               <Check className="h-4 w-4 text-green-600 flex-shrink-0" />
                               <span>{feature}</span>

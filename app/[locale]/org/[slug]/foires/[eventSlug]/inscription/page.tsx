@@ -303,7 +303,7 @@ export default function InscriptionExposantPage({
       console.log(`Création de ${validStaff.length} membre(s) du staff...`)
 
       if (validStaff.length > 0) {
-        const staffInserts = validStaff.map((staff, index) => ({
+        const staffInserts = validStaff.map((staff: any, index: number) => ({
           exhibitor_id: exhibitor.id,
           first_name: staff.firstName,
           last_name: staff.lastName,
@@ -389,7 +389,7 @@ export default function InscriptionExposantPage({
           {/* STEPPER */}
           <div className="mb-12">
             <div className="flex items-center justify-between">
-              {steps.map((step, idx) => {
+              {steps.map((step: any, idx: number) => {
                 const Icon = step.icon
                 const isActive = idx === currentStep
                 const isCompleted = idx < currentStep

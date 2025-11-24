@@ -157,7 +157,7 @@ export function MooktarHomePageClient({ locale, slug }: MooktarHomePageClientPro
           <div className="container mx-auto px-6">
             <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Nos catégories</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-              {categories.map((category, idx) => (
+              {categories.map((category: any, idx: number) => (
                 <Link
                   key={category}
                   href={`/${locale}/org/${slug}/shop?category=${encodeURIComponent(category)}`}
@@ -191,13 +191,13 @@ export function MooktarHomePageClient({ locale, slug }: MooktarHomePageClientPro
 
           {isLoading ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[...Array(8)].map((_, i) => (
+              {[...Array(8)].map((_: any, i: number) => (
                 <div key={i} className="bg-gray-200 animate-pulse rounded-lg h-80" />
               ))}
             </div>
           ) : products.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {products.map((product, idx) => (
+              {products.map((product: any, idx: number) => (
                 <motion.div
                   key={product.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -261,7 +261,7 @@ export function MooktarHomePageClient({ locale, slug }: MooktarHomePageClientPro
         <div className="container mx-auto px-6">
           <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Pourquoi choisir Mooktar Tech ?</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, idx) => (
+            {features.map((feature: any, idx: number) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
