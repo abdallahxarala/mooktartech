@@ -34,27 +34,30 @@ export default async function ExhibitorDetailPage({
   const { data: exhibitor } = await supabase
     .from('exhibitors')
     .select('*')
-    .eq('event_id', event.id)
+    .eq('event_id', (event as any).id)
     .eq('slug', params.exhibitorSlug)
     .single()
 
   // Vérifier que l'exposant est approuvé (utiliser approval_status si disponible, sinon status)
-  const isApproved = (exhibitor as any).approval_status === 'approved' || exhibitor.status === 'approved'
+  const isApproved = (exhibitor as any).approval_status === 'approved' || (exhibitor as any).status === 'approved'
   if (!exhibitor || !isApproved) {
     notFound()
   }
+
+  // TypeScript assertion - exhibitor existe après la vérification ci-dessus
+  const exhibitorData = exhibitor as any
 
   // 3. Compter les produits et récupérer les stats
   const { count: productsCount } = await supabase
     .from('exhibitor_products')
     .select('*', { count: 'exact', head: true })
-    .eq('exhibitor_id', exhibitor.id)
+    .eq('exhibitor_id', (exhibitor as any).id)
 
   // 4. Récupérer les interactions pour les stats
   const { data: interactions } = await supabase
     .from('exhibitor_interactions')
     .select('interaction_type')
-    .eq('exhibitor_id', exhibitor.id)
+    .eq('exhibitor_id', (exhibitor as any).id)
 
   const pageViews = interactions?.filter(i => i.interaction_type === 'page_view').length || 0
   const qrScans = interactions?.filter(i => i.interaction_type === 'qr_scan').length || 0
@@ -63,22 +66,22 @@ export default async function ExhibitorDetailPage({
   const { data: products } = await supabase
     .from('exhibitor_products')
     .select('*')
-    .eq('exhibitor_id', exhibitor.id)
+    .eq('exhibitor_id', (exhibitor as any).id)
     .eq('is_available', true)
     .order('display_order', { ascending: true })
     .order('created_at', { ascending: false })
 
   // 6. Parser social links
-  const socialLinks = (exhibitor.social_links as any) || {}
+  const socialLinks = (exhibitorData.social_links as any) || {}
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* BANNIÈRE */}
       <div className="relative h-64 bg-gradient-to-r from-purple-600 to-blue-600">
-        {exhibitor.banner_url ? (
+        {exhibitorData.banner_url ? (
           <img
-            src={exhibitor.banner_url}
-            alt={exhibitor.company_name}
+            src={exhibitorData.banner_url}
+            alt={exhibitorData.company_name}
             className="w-full h-full object-cover"
           />
         ) : (
@@ -96,10 +99,10 @@ export default async function ExhibitorDetailPage({
             {/* Logo */}
             <div className="flex-shrink-0">
               <div className="bg-white rounded-lg shadow-md p-4 w-32 h-32 flex items-center justify-center">
-                {exhibitor.logo_url ? (
+                {exhibitorData.logo_url ? (
                   <img
-                    src={exhibitor.logo_url}
-                    alt={exhibitor.company_name}
+                    src={exhibitorData.logo_url}
+                    alt={exhibitorData.company_name}
                     className="max-w-full max-h-full object-contain"
                   />
                 ) : (
@@ -121,25 +124,25 @@ export default async function ExhibitorDetailPage({
                 </Link>
               </div>
 
-              <h1 className="text-4xl font-bold mb-3">{exhibitor.company_name}</h1>
+              <h1 className="text-4xl font-bold mb-3">{exhibitorData.company_name}</h1>
 
-              {exhibitor.category && (
+              {exhibitorData.category && (
                 <span className="inline-block bg-purple-100 text-purple-800 px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  {exhibitor.category}
+                  {exhibitorData.category}
                 </span>
               )}
 
-              {exhibitor.description && (
-                <p className="text-gray-700 mb-6">{exhibitor.description}</p>
+              {exhibitorData.description && (
+                <p className="text-gray-700 mb-6">{exhibitorData.description}</p>
               )}
 
               {/* Localisation stand */}
-              {exhibitor.booth_number && (
+              {exhibitorData.booth_number && (
                 <div className="flex items-center gap-2 text-gray-600 mb-4">
                   <MapPin className="h-5 w-5 text-purple-600" />
-                  <span className="font-semibold">Stand {exhibitor.booth_number}</span>
-                  {exhibitor.booth_location && (
-                    <span className="text-sm">• {exhibitor.booth_location}</span>
+                  <span className="font-semibold">Stand {exhibitorData.booth_number}</span>
+                  {exhibitorData.booth_location && (
+                    <span className="text-sm">• {exhibitorData.booth_location}</span>
                   )}
                 </div>
               )}
@@ -174,9 +177,9 @@ export default async function ExhibitorDetailPage({
 
               {/* Contact & Liens */}
               <div className="flex flex-wrap gap-4">
-                {exhibitor.website && (
+                {exhibitorData.website && (
                   <a
-                    href={exhibitor.website}
+                    href={exhibitorData.website}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition"
@@ -185,18 +188,18 @@ export default async function ExhibitorDetailPage({
                     <span>Site web</span>
                   </a>
                 )}
-                {exhibitor.contact_email && (
+                {exhibitorData.contact_email && (
                   <a
-                    href={`mailto:${exhibitor.contact_email}`}
+                    href={`mailto:${exhibitorData.contact_email}`}
                     className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition"
                   >
                     <Mail className="h-5 w-5" />
                     <span>Email</span>
                   </a>
                 )}
-                {exhibitor.contact_phone && (
+                {exhibitorData.contact_phone && (
                   <a
-                    href={`tel:${exhibitor.contact_phone}`}
+                    href={`tel:${exhibitorData.contact_phone}`}
                     className="flex items-center gap-2 text-purple-600 hover:text-purple-700 transition"
                   >
                     <Phone className="h-5 w-5" />
@@ -208,7 +211,7 @@ export default async function ExhibitorDetailPage({
 
             {/* Actions */}
             <div className="flex flex-col gap-3">
-              {exhibitor.qr_code_url && (
+              {exhibitorData.qr_code_url && (
                 <button className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition">
                   <QrCode className="h-5 w-5" />
                   Voir QR Code
@@ -222,10 +225,10 @@ export default async function ExhibitorDetailPage({
           </div>
 
           {/* Tags */}
-          {exhibitor.tags && exhibitor.tags.length > 0 && (
+          {exhibitorData.tags && exhibitorData.tags.length > 0 && (
             <div className="mt-6 pt-6 border-t border-gray-200">
               <div className="flex flex-wrap gap-2">
-                {exhibitor.tags.map((tag: string) => (
+                {exhibitorData.tags.map((tag: string) => (
                   <span
                     key={tag}
                     className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm"
@@ -356,23 +359,23 @@ export default async function ExhibitorDetailPage({
             Contactez-nous pour plus d&apos;informations ou visitez notre stand
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            {exhibitor.contact_email && (
+            {exhibitorData.contact_email && (
               <a
-                href={`mailto:${exhibitor.contact_email}`}
+                href={`mailto:${exhibitorData.contact_email}`}
                 className="bg-white hover:bg-gray-100 text-purple-600 px-8 py-3 rounded-full font-semibold transition"
               >
                 📧 Envoyer un email
               </a>
             )}
-            {exhibitor.contact_phone && (
+            {exhibitorData.contact_phone && (
               <a
-                href={`tel:${exhibitor.contact_phone}`}
+                href={`tel:${exhibitorData.contact_phone}`}
                 className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition"
               >
                 📞 Appeler
               </a>
             )}
-            {exhibitor.booth_number && (
+            {exhibitorData.booth_number && (
               <Link
                 href={`/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/catalogue`}
                 className="border-2 border-white hover:bg-white/10 text-white px-8 py-3 rounded-full font-semibold transition"

@@ -95,7 +95,7 @@ export default function CataloguePage({
           contact_phone,
           status
         `)
-        .eq('event_id', event.id)
+        .eq('event_id', (event as any).id)
         .or('approval_status.eq.approved,status.eq.approved') // Utiliser approval_status si disponible, sinon status
         .order('company_name')
 
