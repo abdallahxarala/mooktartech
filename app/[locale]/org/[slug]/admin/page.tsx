@@ -38,12 +38,14 @@ export default async function AdminDashboard({ params }: AdminDashboardProps) {
     .eq('slug', slug)
     .single()
 
+  // Early return si pas trouvé
   if (orgError || !organization) {
     console.error('❌ Organization not found:', { slug, error: orgError })
     notFound()
   }
 
-  const orgId = organization.id
+  // TypeScript assertion - organization existe après la vérification ci-dessus
+  const orgId = organization!.id
 
   // Debug log pour vérification
   console.log('✅ Admin Dashboard - Organization found:', { id: orgId, name: organization.name, slug: organization.slug })
