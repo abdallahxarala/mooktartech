@@ -211,10 +211,10 @@ export async function POST(request: Request) {
       {
         success: true,
         payment: {
-          id: payment.id,
-          provider: payment.provider,
-          checkout_url: payment.checkout_url,
-          expires_at: payment.metadata?.expires_at as string | undefined,
+          id: paymentData.id,
+          provider: paymentData.provider,
+          checkout_url: paymentData.checkout_url,
+          expires_at: paymentData.metadata?.expires_at as string | undefined,
           qr_code: providerResponse.qr_code
         }
       },
