@@ -44,7 +44,7 @@ export async function GET(
       event_type: 'view',
       ip_address: request.headers.get('x-forwarded-for'),
       user_agent: request.headers.get('user-agent'),
-    });
+    } as any);
 
     return NextResponse.json(card);
   } catch (error) {

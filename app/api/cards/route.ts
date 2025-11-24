@@ -49,7 +49,7 @@ export async function POST(request: Request) {
         short_id: shortId,
         qr_code_url: qrCodeUrl,
         version: 1,
-      })
+      } as any)
       .select()
       .single();
 

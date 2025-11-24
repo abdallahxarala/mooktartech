@@ -166,7 +166,7 @@ export async function POST(request: Request) {
           ...validatedData.metadata,
           expires_at: providerResponse.expires_at
         }
-      })
+      } as any)
       .select('id, provider, checkout_url, metadata')
       .single()
 

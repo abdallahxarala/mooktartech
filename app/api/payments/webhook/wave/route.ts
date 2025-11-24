@@ -119,7 +119,7 @@ export async function POST(request: Request) {
           error: 'Payment not found',
           webhook_data: webhookData
         }
-      })
+      } as any)
 
       return NextResponse.json<ErrorResponse>(
         {
@@ -210,7 +210,7 @@ export async function POST(request: Request) {
         internal_status: internalStatus,
         webhook_data: webhookData
       }
-    })
+    } as any)
 
     // Log safe metadata
     console.log('Wave webhook processed:', {

@@ -145,7 +145,7 @@ export async function POST(request: Request) {
       await supabase.from('card_analytics').insert({
         card_id: validatedData.card_id,
         event_type: 'contact' // Using 'contact' as it's the closest match in the enum
-      }).catch((err) => {
+      } as any).catch((err) => {
         // Log but don't fail the request if analytics fails
         console.error('Analytics event creation failed:', err)
       })

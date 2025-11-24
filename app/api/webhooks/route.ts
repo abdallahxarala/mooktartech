@@ -41,7 +41,7 @@ export async function POST(request: Request) {
         events,
         secret_key: secretKey,
         is_active: true,
-      })
+      } as any)
       .select()
       .single();
 
