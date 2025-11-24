@@ -4,9 +4,18 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   
-  // Rediriger / vers /fr
+  // Rediriger la racine vers Foire Dakar (page principale)
   if (pathname === '/') {
-    return NextResponse.redirect(new URL('/fr', request.url));
+    return NextResponse.redirect(
+      new URL('/fr/org/foire-dakar-2025', request.url)
+    );
+  }
+  
+  // Rediriger /fr vers la page principale aussi
+  if (pathname === '/fr' || pathname === '/fr/') {
+    return NextResponse.redirect(
+      new URL('/fr/org/foire-dakar-2025', request.url)
+    );
   }
   
   return NextResponse.next();
