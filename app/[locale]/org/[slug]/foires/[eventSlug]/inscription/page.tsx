@@ -279,13 +279,13 @@ export default function InscriptionExposantPage({
 
         // Construire l'URL de la facture (utiliser celle générée ou fallback vers endpoint API)
         const baseUrl = typeof window !== 'undefined' ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || '')
-        const invoiceApiUrl = invoiceUrl || `${baseUrl}/api/foires/${params.eventSlug}/invoices/${exhibitor.id}`
+        const invoiceApiUrl = invoiceUrl || `${baseUrl}/api/foires/${params.eventSlug}/invoices/${exhibitorData_result.id}`
 
         await sendExhibitorConfirmationEmail({
           to: formData.contactEmail,
           exhibitorName: formData.contactName,
           companyName: formData.companyName,
-          standNumber: exhibitor.booth_number || null,
+          standNumber: exhibitorData_result.booth_number || null,
           pavilionName: pavillon?.nom || formData.pavillonCode || 'Non assigné',
           surfaceArea: formData.standSize,
           totalPrice: formData.totalTTC,
@@ -2039,13 +2039,13 @@ function Step6Payment({
 
         // Construire l'URL de la facture (utiliser celle générée ou fallback vers endpoint API)
         const baseUrl = typeof window !== 'undefined' ? window.location.origin : (process.env.NEXT_PUBLIC_SITE_URL || '')
-        const invoiceApiUrl = invoiceUrl || `${baseUrl}/api/foires/${params.eventSlug}/invoices/${exhibitor.id}`
+        const invoiceApiUrl = invoiceUrl || `${baseUrl}/api/foires/${params.eventSlug}/invoices/${exhibitorData_result2.id}`
 
         await sendExhibitorConfirmationEmail({
           to: formData.contactEmail,
           exhibitorName: formData.contactName,
           companyName: formData.companyName,
-          standNumber: exhibitor.booth_number || null,
+          standNumber: exhibitorData_result2.booth_number || null,
           pavilionName: pavillon?.nom || formData.pavillonCode || 'Non assigné',
           surfaceArea: formData.standSize,
           totalPrice: formData.totalTTC,
@@ -2125,7 +2125,7 @@ function Step6Payment({
         .update({
           payment_reference: payment.id,
         })
-        .eq('id', exhibitor.id)
+          .eq('id', exhibitorData_result2.id)
 
       // 6. Rediriger vers Wave
       if (payment.wave_launch_url) {
