@@ -33,7 +33,7 @@ export default async function OrganizationTemplatesPage({ params }: TemplatesPag
   const { data: templates } = await supabase
     .from('organization_templates')
     .select('*')
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
     .order('created_at', { ascending: false })
 
   return (
@@ -49,16 +49,16 @@ export default async function OrganizationTemplatesPage({ params }: TemplatesPag
           <div className="w-full max-w-xs">
             <OrgSwitcher
               organizations={organizations.map((org: any) => ({
-                id: org.id,
-                name: org.name,
-                slug: org.slug,
-                logoUrl: org.logo_url,
-                plan: org.plan
+                id: (org as any).id,
+                name: (org as any).name,
+                slug: (org as any).slug,
+                logoUrl: (org as any).logo_url,
+                plan: (org as any).plan
               }))}
               activeSlug={params.slug}
               onSelect={(org) => {
-                if (org.slug !== params.slug) {
-                  window.location.href = `/org/${org.slug}/templates`
+                if ((org as any).slug !== params.slug) {
+                  window.location.href = `/org/${(org as any).slug}/templates`
                 }
               }}
             />
@@ -66,8 +66,8 @@ export default async function OrganizationTemplatesPage({ params }: TemplatesPag
         </div>
 
         <TemplateEditor
-          organizationId={context.organization.id}
-          plan={(context.organization.plan as any) ?? 'free'}
+          organizationId={(context.organization as any).id}
+          plan={((context.organization as any).plan as any) ?? 'free'}
           role={context.membership.role}
           templates={
             templates?.map((template) => ({

@@ -48,7 +48,7 @@ export default async function OrganizationCardsPage({ params }: CardsPageProps) 
         )
       `
     )
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
 
   return (
     <div className="min-h-screen bg-slate-50 pb-24 pt-24">
@@ -63,16 +63,16 @@ export default async function OrganizationCardsPage({ params }: CardsPageProps) 
           <div className="w-full max-w-xs">
             <OrgSwitcher
               organizations={organizations.map((org: any) => ({
-                id: org.id,
-                name: org.name,
-                slug: org.slug,
-                logoUrl: org.logo_url,
-                plan: org.plan
+                id: (org as any).id,
+                name: (org as any).name,
+                slug: (org as any).slug,
+                logoUrl: (org as any).logo_url,
+                plan: (org as any).plan
               }))}
               activeSlug={params.slug}
               onSelect={(org) => {
-                if (org.slug !== params.slug) {
-                  window.location.href = `/org/${org.slug}/cards`
+                if ((org as any).slug !== params.slug) {
+                  window.location.href = `/org/${(org as any).slug}/cards`
                 }
               }}
             />
@@ -80,8 +80,8 @@ export default async function OrganizationCardsPage({ params }: CardsPageProps) 
         </div>
 
         <CardsManager
-          organizationId={context.organization.id}
-          plan={(context.organization.plan as any) ?? 'free'}
+          organizationId={(context.organization as any).id}
+          plan={((context.organization as any).plan as any) ?? 'free'}
           canManage={canManageCards(context.membership.role)}
           cards={
             cards?.map((card) => ({

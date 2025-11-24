@@ -62,7 +62,7 @@ export function XaralaHomePageClient({ locale, slug }: XaralaHomePageClientProps
         const { data: productsData } = await supabase
           .from('products')
           .select('*')
-          .eq('organization_id', org.id)
+          .eq('organization_id', (org as any).id)
           .eq('featured', true)
           .order('created_at', { ascending: false })
 

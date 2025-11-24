@@ -51,7 +51,7 @@ export function FoireDakarHomePageClient({ locale, slug }: FoireDakarHomePageCli
         const { data: eventsData } = await supabase
           .from('events')
           .select('*')
-          .eq('organization_id', org.id)
+          .eq('organization_id', (org as any).id)
           .order('start_date', { ascending: false })
           .limit(1)
           .single()
@@ -72,7 +72,7 @@ export function FoireDakarHomePageClient({ locale, slug }: FoireDakarHomePageCli
         const { data: exhibitorsData } = await supabase
           .from('exhibitors')
           .select('*, events!inner(*)')
-          .eq('events.organization_id', org.id)
+          .eq('events.organization_id', (org as any).id)
           .limit(12)
 
         if (exhibitorsData) {

@@ -36,7 +36,7 @@ export default async function CataloguePage({ params }: CataloguePageProps) {
   const { data: foire } = await supabase
     .from('events')
     .select('*')
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
     .eq('event_type', 'foire')
     .order('created_at', { ascending: false })
     .limit(1)

@@ -49,7 +49,7 @@ export default async function FoireAdminPage({ params }: FoireAdminPageProps) {
   const { data: foire } = await supabase
     .from('events')
     .select('*')
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
     .eq('event_type', 'foire')
     .order('created_at', { ascending: false })
     .limit(1)
@@ -75,7 +75,7 @@ export default async function FoireAdminPage({ params }: FoireAdminPageProps) {
   return (
     <AdminClient
       organizationSlug={params.slug}
-      organizationName={context.organization.name}
+      organizationName={(context.organization as any).name}
       eventId={foire.id}
       eventName={foire.name}
     />

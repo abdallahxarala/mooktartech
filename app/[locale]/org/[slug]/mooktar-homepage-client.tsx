@@ -49,7 +49,7 @@ export function MooktarHomePageClient({ locale, slug }: MooktarHomePageClientPro
         const { data: productsData } = await supabase
           .from('products')
           .select('*')
-          .eq('organization_id', org.id)
+          .eq('organization_id', (org as any).id)
           .order('created_at', { ascending: false })
           .limit(12)
 

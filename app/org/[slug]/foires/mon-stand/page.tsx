@@ -46,7 +46,7 @@ export default async function MonStandPage({ params }: MonStandPageProps) {
   const { data: exhibitor } = await supabase
     .from('exhibitors')
     .select('id, event_id, company_name, status')
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
     .eq('contact_email', session.user.email || '')
     .single()
 
@@ -71,7 +71,7 @@ export default async function MonStandPage({ params }: MonStandPageProps) {
   return (
     <DashboardClient
       organizationSlug={params.slug}
-      organizationName={context.organization.name}
+      organizationName={(context.organization as any).name}
       exhibitorId={exhibitor.id}
       eventId={exhibitor.event_id}
       companyName={exhibitor.company_name}

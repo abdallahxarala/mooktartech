@@ -36,19 +36,19 @@ export default async function OrganizationDashboard({ params }: DashboardPagePro
     supabase
       .from('organization_members')
       .select('id')
-      .eq('organization_id', context.organization.id),
+      .eq('organization_id', (context.organization as any).id),
     supabase
       .from('nfc_cards')
       .select('id, is_active, assigned_to')
-      .eq('organization_id', context.organization.id),
+      .eq('organization_id', (context.organization as any).id),
     supabase
       .from('organization_templates')
       .select('id, is_default')
-      .eq('organization_id', context.organization.id),
+      .eq('organization_id', (context.organization as any).id),
     supabase
       .from('leads')
       .select('id, status, created_at')
-      .eq('organization_id', context.organization.id)
+      .eq('organization_id', (context.organization as any).id)
   ])
 
   const membersCount = membersRes.data?.length ?? 0
@@ -73,7 +73,7 @@ export default async function OrganizationDashboard({ params }: DashboardPagePro
             <p className="text-xs font-semibold uppercase tracking-widest text-orange-500">
               Tableau de bord
             </p>
-            <h1 className="text-4xl font-black text-slate-900">{context.organization.name}</h1>
+            <h1 className="text-4xl font-black text-slate-900">{(context.organization as any).name}</h1>
             <p className="mt-2 text-sm text-slate-500">
               Gérez vos équipes, cartes NFC et templates de manière centralisée.
             </p>
@@ -81,16 +81,16 @@ export default async function OrganizationDashboard({ params }: DashboardPagePro
           <div className="w-full max-w-xs">
             <OrgSwitcher
               organizations={organizations.map((org: any) => ({
-                id: org.id,
-                name: org.name,
-                slug: org.slug,
-                logoUrl: org.logo_url,
-                plan: org.plan
+                id: (org as any).id,
+                name: (org as any).name,
+                slug: (org as any).slug,
+                logoUrl: (org as any).logo_url,
+                plan: (org as any).plan
               }))}
               activeSlug={params.slug}
               onSelect={(org) => {
-                if (org.slug !== params.slug) {
-                  window.location.href = `/org/${org.slug}/dashboard`
+                if ((org as any).slug !== params.slug) {
+                  window.location.href = `/org/${(org as any).slug}/dashboard`
                 }
               }}
             />

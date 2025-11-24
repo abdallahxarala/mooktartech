@@ -47,7 +47,7 @@ export default async function LeadsPage({ params }: LeadsPageProps) {
         )
       `
     )
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
     .order('created_at', { ascending: false })
 
   const leads: LeadRow[] =
@@ -96,16 +96,16 @@ export default async function LeadsPage({ params }: LeadsPageProps) {
           <div className="w-full max-w-xs">
             <OrgSwitcher
               organizations={organizations.map((org: any) => ({
-                id: org.id,
-                name: org.name,
-                slug: org.slug,
-                logoUrl: org.logo_url,
-                plan: org.plan
+                id: (org as any).id,
+                name: (org as any).name,
+                slug: (org as any).slug,
+                logoUrl: (org as any).logo_url,
+                plan: (org as any).plan
               }))}
               activeSlug={params.slug}
               onSelect={(org) => {
-                if (org.slug !== params.slug) {
-                  window.location.href = `/org/${org.slug}/leads`
+                if ((org as any).slug !== params.slug) {
+                  window.location.href = `/org/${(org as any).slug}/leads`
                 }
               }}
             />

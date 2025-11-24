@@ -42,7 +42,7 @@ export default async function TicketsPage({ params, searchParams }: TicketsPageP
   const { data: foire } = await supabase
     .from('events')
     .select('*')
-    .eq('organization_id', context.organization.id)
+    .eq('organization_id', (context.organization as any).id)
     .eq('event_type', 'foire')
     .order('created_at', { ascending: false })
     .limit(1)

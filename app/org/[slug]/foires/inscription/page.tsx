@@ -71,7 +71,7 @@ export default async function InscriptionPage({
 
   if (searchParams.foire) {
     const foireResult = await getFoireBySlug(searchParams.foire)
-    if (foireResult.foire && foireResult.foire.organization_id === orgResult.organization.id) {
+    if (foireResult.foire && foireResult.foire.organization_id === (orgResult.organization as any).id) {
       foire = foireResult.foire
       foireConfig = foire.foire_config as any
     }
@@ -80,7 +80,7 @@ export default async function InscriptionPage({
     const { data: events } = await supabase
       .from('events')
       .select('*')
-      .eq('organization_id', orgResult.organization.id)
+      .eq('organization_id', (orgResult.organization as any).id)
       .eq('event_type', 'foire')
       .order('created_at', { ascending: false })
       .limit(1)
@@ -123,7 +123,7 @@ export default async function InscriptionPage({
           <CardContent>
             <ExhibitorRegistrationForm
               eventId={foire.id}
-              organizationId={orgResult.organization.id}
+              organizationId={(orgResult.organization as any).id}
               foireConfig={foireConfig}
               organizationSlug={params.slug}
               onSuccess={(exhibitorId) => {
