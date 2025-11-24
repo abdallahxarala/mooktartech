@@ -108,7 +108,7 @@ export default function CataloguePage({
       if (exhibitorsData) {
         // Pour chaque exposant, compter les produits
         const exhibitorsWithStats = await Promise.all(
-          exhibitorsData.map(async (exhibitor) => {
+          exhibitorsData.map(async (exhibitor: any) => {
             const { count } = await supabase
               .from('exhibitor_products')
               .select('*', { count: 'exact', head: true })
@@ -127,7 +127,7 @@ export default function CataloguePage({
         const uniqueCategories = [
           ...new Set(
             exhibitorsData
-              .map((e) => e.category)
+              .map((e: any) => e.category)
               .filter(Boolean)
           ),
         ] as string[]
@@ -239,7 +239,7 @@ export default function CataloguePage({
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredExhibitors.map((exhibitor) => (
+            {filteredExhibitors.map((exhibitor: any) => (
               <Link
                 key={exhibitor.id}
                 href={`/${params.locale}/org/${params.slug}/foires/${params.eventSlug}/catalogue/${exhibitor.slug}`}
